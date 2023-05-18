@@ -1,10 +1,6 @@
 <template>
-	<!-- <v-toolbar color="green"  >
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
-        <v-spacer></v-spacer>
-      </v-toolbar> -->
+
 	<v-app-bar color="green" prominent>
-		<!-- <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
 		<img
 			width="150"
 			aspect-ratio="1/1"
@@ -22,7 +18,7 @@
 	>
 		<v-list-item
 			prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
-			title="John Leider"
+			title="Doutor/Clinica Bernardo Braga"
 			nav
 		>
 			<template v-slot:append>
@@ -33,24 +29,38 @@
 				></v-btn>
 			</template>
 		</v-list-item>
+		<v-divider></v-divider>
+
+		<div class="LCD" v-if="!rail">
+			<div class="hours">{{ hours }}</div>
+			<div class="divider">:</div>
+			<div class="minutes">{{ minutes }}</div>
+			<div class="divider">:</div>
+			<div class="seconds">{{ seconds }}</div>
+		</div>
+
+<!--
+		<v-list-item
+			prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
+			title="John Leider"
+			nav
+		>
+			<template v-slot:append>
+				<v-btn
+					variant="text"
+					icon="mdi-chevron-left"
+					@click.stop="rail = !rail"
+				></v-btn>
+			</template>
+		</v-list-item> -->
 
 		<v-divider></v-divider>
 
 		<v-list density="compact" nav>
-			<v-list-item
-				prepend-icon="mdi-home-city"
-				title="Home"
-				value="home"
-			></v-list-item>
-			<v-list-item
-				prepend-icon="mdi-account"
-				title="My Account"
-				value="account"
-			></v-list-item>
-			<v-list-item
-				prepend-icon="mdi-account-group-outline"
-				title="Users"
-				value="users"
+			<v-list-item v-for="item in this.items"
+				:prepend-icon="item.icon"
+				:title="item.title"
+				:value="item.title"
 			></v-list-item>
 		</v-list>
 	</v-navigation-drawer>
@@ -62,11 +72,15 @@ export default {
 		return {
 			drawer: true,
 			items: [
-				{ title: "Home", icon: "mdi-home-city" },
-				{ title: "My Account", icon: "mdi-account" },
-				{ title: "Users", icon: "mdi-account-group-outline" },
+				{ title: "Resumo", icon: "mdi-note" },
+				{ title: "Atendimento", icon: "mdi-account" },
+				{ title: "Prescricoes", icon: "mdi-account-group-outline" },
+				{ title: "Imagens", icon: "mdi-account-group-outline" },
 			],
 			rail: true,
+			 hours: 0,
+      minutes: 0,
+      seconds: 0
 		};
 	},
 	watch: {
@@ -74,5 +88,36 @@ export default {
 			this.drawer = false;
 		},
 	},
-};
+  mounted() {
+    setInterval(() => this.setTime(), 1000)
+  },
+  methods: {
+    setTime() {
+      const date = new Date();
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let seconds = date.getSeconds();
+      hours = hours <= 9 ? `${hours}`.padStart(2, 0) : hours;
+      minutes = minutes <= 9 ? `${minutes}`.padStart(2, 0) : minutes;
+      seconds = seconds <= 9 ? `${seconds}`.padStart(2, 0) : seconds;
+      this.hours = hours;
+      this.minutes = minutes;
+      this.seconds = seconds;
+    }
+  }
+}
 </script>
+
+
+<style scoped>
+.LCD {
+	background-color: #ff0000;
+	display: flex;
+  justify-content: center;
+}
+
+.LCD>div {
+	font-family: "alarm clock";
+	font-size: x-large;
+}
+</style>
