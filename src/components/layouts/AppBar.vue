@@ -39,21 +39,6 @@
 			<div class="seconds">{{ seconds }}</div>
 		</div>
 
-<!--
-		<v-list-item
-			prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
-			title="John Leider"
-			nav
-		>
-			<template v-slot:append>
-				<v-btn
-					variant="text"
-					icon="mdi-chevron-left"
-					@click.stop="rail = !rail"
-				></v-btn>
-			</template>
-		</v-list-item> -->
-
 		<v-divider></v-divider>
 
 		<v-list density="compact" nav>
@@ -73,12 +58,12 @@ export default {
 			drawer: true,
 			items: [
 				{ title: "Resumo", icon: "mdi-note" },
-				{ title: "Atendimento", icon: "mdi-account" },
-				{ title: "Prescricoes", icon: "mdi-account-group-outline" },
-				{ title: "Imagens", icon: "mdi-account-group-outline" },
+				{ title: "Atendimento", icon: "mdi-account-group" },
+				{ title: "Prescricoes", icon: "mdi-pill-multiple" },
+				{ title: "Imagens", icon: "mdi-image-area" },
 			],
 			rail: true,
-			 hours: 0,
+			hours: 0,
       minutes: 0,
       seconds: 0
 		};

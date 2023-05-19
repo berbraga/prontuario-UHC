@@ -1,7 +1,7 @@
 <template>
-	<HelloWorld />
+	<GeralPatient/>
 </template>
 
 <script setup>
-import HelloWorld from "@/components/HelloWorld.vue";
+import GeralPatient from "@/components/card/GeralPatient.vue"
 </script>
