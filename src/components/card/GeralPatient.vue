@@ -1,9 +1,7 @@
 <template>
-	<v-sheet
-		class="d-flex align-center text-center fill-height h-auto"
-		height="100"
+	<v-card
+		class="d-flex align-center text-center fill-height h-auto mb-10 pa-1"
 		elevation="5"
-
 	>
 			<v-avatar
 				image="https://avatars.githubusercontent.com/u/81630194?v=4"
@@ -22,7 +20,7 @@
 
 			</v-sheet>
 
-	</v-sheet>
+	</v-card>
 </template>
 
 <script setup>
