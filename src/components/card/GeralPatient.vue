@@ -3,14 +3,13 @@
 		class="d-flex align-center text-center fill-height h-auto"
 		height="100"
 		elevation="5"
-		color="grey"
+
 	>
 			<v-avatar
 				image="https://avatars.githubusercontent.com/u/81630194?v=4"
 				size="170"
-				class=" mb-auto"
+				class=" mb-auto ma-3"
 			></v-avatar>
-
 			<v-sheet
 				color='transparent'
 
