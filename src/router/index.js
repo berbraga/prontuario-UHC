@@ -9,8 +9,7 @@ const routes = [
 			{
 				path: "",
 				name: "Home",
-				component: () =>
-					import("@/views/Home.vue"),
+				component: () => import("@/views/Home.vue"),
 			},
 		],
 	},
@@ -21,8 +20,7 @@ const routes = [
 			{
 				path: "/resume",
 				name: "Resume",
-				component: () =>
-					import("@/views/Resume.vue"),
+				component: () => import("@/views/Resume.vue"),
 			},
 		],
 	},
@@ -33,8 +31,7 @@ const routes = [
 			{
 				path: "/service",
 				name: "service",
-				component: () =>
-					import("@/views/Reception.vue"),
+				component: () => import("@/views/Reception.vue"),
 			},
 		],
 	},
@@ -45,8 +42,18 @@ const routes = [
 			{
 				path: "/prescriptions",
 				name: "Prescriptions",
-				component: () =>
-					import( "@/views/Prescriptions.vue"),
+				component: () => import("@/views/Prescriptions.vue"),
+			},
+		],
+	},
+	{
+		path: "/exam",
+		component: () => import("@/layouts/default/Default.vue"),
+		children: [
+			{
+				path: "/exam",
+				name: "Exam",
+				component: () => import("@/views/Exam.vue"),
 			},
 		],
 	},
@@ -57,8 +64,7 @@ const routes = [
 			{
 				path: "/pictures",
 				name: "Pictures",
-				component: () =>
-					import("@/views/Pictures.vue"),
+				component: () => import("@/views/Pictures.vue"),
 			},
 		],
 	},

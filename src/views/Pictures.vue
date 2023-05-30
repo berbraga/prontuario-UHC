@@ -1,14 +1,11 @@
 <template>
 	<v-container>
 		<GeralPatient />
-		<Images/>
+		<Images />
 	</v-container>
 </template>
 
 <script setup>
-
-import GeralPatient from "@/components/card/GeralPatient.vue"
-import Images from "@/components/service/Images.vue"
-
+import GeralPatient from "@/components/card/GeralPatient.vue";
+import Images from "@/components/service/Images.vue";
 </script>
-

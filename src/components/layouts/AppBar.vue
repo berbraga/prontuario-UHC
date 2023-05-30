@@ -1,5 +1,4 @@
 <template>
-
 	<v-app-bar color="green" prominent>
 		<img
 			width="150"
@@ -32,25 +31,29 @@
 		</v-list-item>
 		<v-divider></v-divider>
 
-		<div class="LCD" v-if="!rail">
+		<cronometer v-if="!rail" />
+		<!-- <div class="LCD" v-if="!rail">
 			<div class="hours">{{ hours }}</div>
 			<div class="divider">:</div>
 			<div class="minutes">{{ minutes }}</div>
 			<div class="divider">:</div>
 			<div class="seconds">{{ seconds }}</div>
-		</div>
+		</div> -->
 
 		<v-divider></v-divider>
 
 		<v-list density="compact" nav>
-			<v-list-item v-for="item in this.items" v-if="rail"
+			<v-list-item
+				v-for="item in this.items"
+				v-if="rail"
 				:prepend-icon="item.icon"
 				:title="item.title"
 				:value="item.title"
-
 			></v-list-item>
 
-			<v-list-item v-for="item in this.items" v-else
+			<v-list-item
+				v-for="item in this.items"
+				v-else
 				:prepend-icon="item.icon"
 				:title="item.title"
 				:value="item.title"
@@ -61,20 +64,29 @@
 </template>
 
 <script>
+import Cronometer from "../card/Cronometer.vue";
 export default {
+	components: {
+		Cronometer,
+	},
 	data() {
 		return {
 			drawer: true,
 			items: [
-				{ title: "Resumo", icon: "mdi-note", page:"" },
-				{ title: "Atendimento", icon: "mdi-account-group", page:"service" },
-				{ title: "Prescrições", icon: "mdi-pill-multiple", page:"prescriptions" },
-				{ title: "Imagens", icon: "mdi-image-area", page:"pictures" },
+				{ title: "Resumo", icon: "mdi-note", page: "" },
+				{ title: "Atendimento", icon: "mdi-account-group", page: "service" },
+				{
+					title: "Prescrições",
+					icon: "mdi-pill-multiple",
+					page: "prescriptions",
+				},
+				{ title: "Exame", icon: "mdi-medical-cotton-swab", page: "exam" },
+				{ title: "Imagens", icon: "mdi-image-area", page: "pictures" },
 			],
 			rail: true,
 			hours: 0,
-      minutes: 0,
-      seconds: 0
+			minutes: 0,
+			seconds: 0,
 		};
 	},
 	watch: {
@@ -82,40 +94,39 @@ export default {
 			this.drawer = false;
 		},
 	},
-  mounted() {
-    setInterval(() => this.setTime(), 1000)
-  },
-  methods: {
-		changePage: function(next){
+	mounted() {
+		setInterval(() => this.setTime(), 1000);
+	},
+	methods: {
+		changePage: function (next) {
 			console.clear();
 			console.log(next);
-			this.$router.push("/"+ next)
+			this.$router.push("/" + next);
 		},
-    setTime() {
-      const date = new Date();
-      let hours = date.getHours();
-      let minutes = date.getMinutes();
-      let seconds = date.getSeconds();
-      hours = hours <= 9 ? `${hours}`.padStart(2, 0) : hours;
-      minutes = minutes <= 9 ? `${minutes}`.padStart(2, 0) : minutes;
-      seconds = seconds <= 9 ? `${seconds}`.padStart(2, 0) : seconds;
-      this.hours = hours;
-      this.minutes = minutes;
-      this.seconds = seconds;
-    }
-  }
-}
+		setTime() {
+			const date = new Date();
+			let hours = date.getHours();
+			let minutes = date.getMinutes();
+			let seconds = date.getSeconds();
+			hours = hours <= 9 ? `${hours}`.padStart(2, 0) : hours;
+			minutes = minutes <= 9 ? `${minutes}`.padStart(2, 0) : minutes;
+			seconds = seconds <= 9 ? `${seconds}`.padStart(2, 0) : seconds;
+			this.hours = hours;
+			this.minutes = minutes;
+			this.seconds = seconds;
+		},
+	},
+};
 </script>
-
 
 <style scoped>
 .LCD {
 	background-color: #ff0000;
 	display: flex;
-  justify-content: center;
+	justify-content: center;
 }
 
-.LCD>div {
+.LCD > div {
 	font-family: "alarm clock";
 	font-size: x-large;
 }
