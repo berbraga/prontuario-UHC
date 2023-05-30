@@ -1,13 +1,12 @@
 <template>
 	<v-container>
 		<GeralPatient />
-		<Inputs/>
+		<Medicines />
 	</v-container>
 </template>
 
 <script setup>
 
 import GeralPatient from "@/components/card/GeralPatient.vue"
-import Inputs from "@/components/service/Inputs.vue";
-
+import Medicines from "@/components/service/Medicines.vue";
 </script>
