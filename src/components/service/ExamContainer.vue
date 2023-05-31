@@ -28,6 +28,7 @@
 			<v-sheet class=" d-flex w-100">
 				<v-autocomplete
 					clearable
+					chips
 					label="Selecione a indicacao do Exame"
 					:items="['RX - Cabeca', 'Ultrasson - completo', 'Ultrasson - transvaginal', 'colonoscopia', 'Endoscopia', 'Eletrocardiograma']"
 					class="mr-2 ml-1 width: auto"
@@ -36,6 +37,7 @@
 				></v-autocomplete>
 				<v-autocomplete
 					clearable
+					chips
 					label="Selecione o Remedio"
 					:items="['Novalgina', 'Diclofenaco', 'Paracetamol', 'Diazepan', 'Ritalina', 'Ibuprofeno', 'Nimesulina']"
 					class="ml-1 width: auto"
@@ -43,20 +45,6 @@
 					variant="outlined"
 				></v-autocomplete>
 			</v-sheet>
-			<!-- <v-input
-	          :messages="['Messages']"
-	          append-icon="mdi-close"
-	          prepend-icon="mdi-phone"
-	        >
-	          Default Slot
-	        </v-input>  -->
-			 <!-- <v-text-field label="Another input"></v-text-field> -->
-		  <!-- <v-textarea
-	      label="Quantidade"
-	      no-resize
-				class="ml-1 "
-	      rows="1"
-	    ></v-textarea> -->
 
 		</v-card>
 	</v-card>

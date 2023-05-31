@@ -58,6 +58,17 @@ const routes = [
 		],
 	},
 	{
+		path: "/attest",
+		component: () => import("@/layouts/default/Default.vue"),
+		children: [
+			{
+				path: "/attest",
+				name: "Attest",
+				component: () => import("@/views/Attest.vue"),
+			},
+		],
+	},
+	{
 		path: "/pictures",
 		component: () => import("@/layouts/default/Default.vue"),
 		children: [
