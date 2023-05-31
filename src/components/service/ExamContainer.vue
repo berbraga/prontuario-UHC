@@ -2,16 +2,20 @@
 	<v-card
 		elevation="2"
 		color="blue-grey-lighten-5"
-		class="d-flex justify-center flex-column align-center pa-3"
+		class="d-flex  flex-column  pa-3 justify-start "
 	>
 		<!-- class="d-flex flex-wrap bg-surface-variant" -->
 
-		<div class="d-flex bg-green pa-1">
+		<div class="d-flex  pa-1 justify-space-between">
 			<h3>Exame</h3>
 			<DateToday />
 		</div>
 		<!-- <v-divider  :thickness="2" class="border-opacity-40" ></v-divider> -->
-		<v-sheet color="primary" elevation="1" class="rounded pa-2 mt-3 d-flex">
+		<v-sheet
+			color="secundary"
+			elevation="1"
+			class="rounded pa-2 mt-3 d-flex justify-center"
+		>
 			bernardo
 		</v-sheet>
 	</v-card>
