@@ -1,5 +1,5 @@
 <template>
-	<v-app-bar color="green" prominent>
+	<v-app-bar color="light-green-accent-4" prominent>
 		<img
 			width="150"
 			aspect-ratio="1/1"
@@ -18,7 +18,7 @@
 	>
 		<v-list-item
 			prepend-avatar="https://avatars.githubusercontent.com/u/81630194?v=4"
-			title="Doutor/Clinica Bernardo Braga"
+			title="Dr.Bernardo Braga"
 			nav
 		>
 			<template v-slot:append>
@@ -118,16 +118,3 @@ export default {
 	},
 };
 </script>
-
-<style scoped>
-.LCD {
-	background-color: #ff0000;
-	display: flex;
-	justify-content: center;
-}
-
-.LCD > div {
-	font-family: "alarm clock";
-	font-size: x-large;
-}
-</style>
