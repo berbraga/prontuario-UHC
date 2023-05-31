@@ -1,6 +1,8 @@
 <template>
 	<v-sheet class="ma-1 bg-transparent">
-		{{ data() }}
+		<h4>
+			{{ data() }}
+		</h4>
 	</v-sheet>
 </template>
 
