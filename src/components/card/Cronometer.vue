@@ -4,7 +4,9 @@
 			class="mx-auto bg-red-lighten-5 d-flex flex-column justify-center"
 			v-if="isRunning"
 		>
-			<v-card-title class="d-flex justify-center"> Parar Atendimento </v-card-title>
+			<v-card-title class="d-flex justify-center">
+				Parar Atendimento
+			</v-card-title>
 			<v-card-actions class="text-center justify-space-between">
 				<v-btn v-if="isRunning" color="red-accent-4" @click="stopTimer">
 					Parar
@@ -17,13 +19,16 @@
 			class="mx-auto bg-green-lighten-5 d-flex flex-column justify-center"
 			v-if="!isRunning"
 		>
-			<v-card-title class="d-flex justify-center"> Iniciar Atendimento </v-card-title>
-				<v-card-actions class="text-center justify-space-between">
-					<v-btn v-if="!isRunning" color="green-accent-4" @click="startTimer">
-						INICIAR
-					</v-btn>
-					{{ formatTime }}
-				</v-card-actions>		</v-card>
+			<v-card-title class="d-flex justify-center">
+				Iniciar Atendimento
+			</v-card-title>
+			<v-card-actions class="text-center justify-space-between">
+				<v-btn v-if="!isRunning" color="green-accent-4" @click="startTimer">
+					INICIAR
+				</v-btn>
+				{{ formatTime }}
+			</v-card-actions>
+		</v-card>
 	</div>
 </template>
 
