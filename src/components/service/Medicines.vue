@@ -1,20 +1,26 @@
 <template>
-	<v-container
-		class="bg-blue-grey-lighten-3 d-flex flex-column justify-center align-center"
+	<v-card
+		elevation="2"
+		color="blue-grey-lighten-5"
+		class=" rounded d-flex flex-column justify-center align-center pa-3"
 	>
 		<h3>Medicamentos</h3>
 		<v-responsive class="mx-auto" width="344">
-			<v-text-field
+			<v-textarea
 				label="Nome do medicamento"
-				hide-details="auto"
-			></v-text-field>
+				no-resize
+				class="ma-2"
+				rows="1"
+				variant="outlined"
+				clearable
+			></v-textarea>
 		</v-responsive>
 
 		<v-list class="bg-transparent">medicamento 1</v-list>
 		<v-divider></v-divider>
 		<v-list class="bg-transparent">medicamento 2</v-list>
 		<v-divider></v-divider>
-	</v-container>
+	</v-card>
 </template>
 
 <script setup></script>
