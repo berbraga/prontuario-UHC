@@ -2,7 +2,11 @@
 	<v-container>
 		<v-sheet class="d-flex justify-space-between">
 			<h1>Imagens dos exames</h1>
-			<v-btn color="red"> Imprimir imagens</v-btn>
+			<div class="d-flex">
+
+				<v-btn color="primary" class="mr-2"> Inserir imagens </v-btn>
+				<v-btn color="red" class="ml-1"> Imprimir imagens </v-btn>
+			</div>
 		</v-sheet>
 		<v-container
 			class="bg-blue-grey-lighten-3 d-flex align-center justify-center"

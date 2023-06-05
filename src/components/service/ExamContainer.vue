@@ -5,8 +5,12 @@
 		class="d-flex flex-column pa-3"
 	>
 		<div class="d-flex pa-1 justify-space-between">
-			<h3>Exame</h3>
-			<DateToday />
+			<h2>Exame</h2>
+			<div class="d-flex align-center">
+
+				<DateToday />
+				<v-btn class="ml-2" color="red">imprimir</v-btn>
+			</div>
 		</div>
 
 		<v-card

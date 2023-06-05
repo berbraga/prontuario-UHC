@@ -1,9 +1,8 @@
 <template>
-	<v-sheet class="ma-1 bg-transparent">
+
 		<h4>
 			{{ data() }}
 		</h4>
-	</v-sheet>
 </template>
 
 <script setup>

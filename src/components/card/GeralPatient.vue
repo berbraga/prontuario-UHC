@@ -12,10 +12,18 @@
 		<v-sheet color="transparent" class="d-flex flex-column align-start">
 			<p class="info">Nome:bernardo Paciente</p>
 			<p class="info">Idade: 21 anos</p>
-			<p class="info">Ultima consulta: 99/99/00</p>
+			<div class="d-flex">
+
+				<p class="info">Ultima consulta:
+				</p>
+					<date-today/>
+			</div>
 			<p class="info"></p>
 		</v-sheet>
 	</v-card>
 </template>
 
-<script setup></script>
+<script setup>
+	import DateToday from './DateToday.vue';
+
+</script>

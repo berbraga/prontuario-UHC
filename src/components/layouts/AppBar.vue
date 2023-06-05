@@ -4,7 +4,7 @@
 			width="150"
 			aspect-ratio="1/1"
 			src="@/assets/logos/Logo-UHC---Preferencial.png"
-			@click="this.$router.push('/')"
+			@click="this.$router.push('/'); rail = true"
 		/>
 
 		<v-spacer></v-spacer>
@@ -31,7 +31,7 @@
 		</v-list-item>
 		<v-divider></v-divider>
 
-		<cronometer v-if="!rail" />
+		<Cronometer v-if="!rail" />
 		<!-- <div class="LCD" v-if="!rail">
 			<div class="hours">{{ hours }}</div>
 			<div class="divider">:</div>
@@ -65,7 +65,7 @@
 
 <script>
 import Cronometer from "../card/Cronometer.vue";
-export default {
+export default  {
 	components: {
 		Cronometer,
 	},
