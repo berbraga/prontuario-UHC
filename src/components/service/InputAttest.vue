@@ -12,18 +12,19 @@
 		v-model="contentHtml">
 
 		</vue-quill-editor> -->
-		<v-textarea
+		<Wysiwyg/>
+		<!-- <v-textarea
 			label="Modelo de Atestado"
 			class="ma-0"
 			variant="outlined"
 			clearable
-		></v-textarea>
+		></v-textarea> -->
 	</v-card>
 </template>
 
 <script setup>
 	import DateToday from '../card/DateToday.vue';
-	import VueQuillEditor from "vue-quill-editor";
+	import Wysiwyg from "../input/Wysiwyg.vue"
 	import { ref } from 'vue';
 	const contentHtml = ref('');
 </script>
