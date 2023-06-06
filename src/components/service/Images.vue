@@ -1,21 +1,23 @@
 <template>
-	<v-container>
-		<v-sheet class="d-flex justify-space-between mb-3">
-			<h2>Documentos dos exames</h2>
+	<v-card color="blue-grey-lighten-3" class="d-flex flex-column">
+		<div class="d-flex justify-space-between ma-3">
+			<h2>Documentos do exame</h2>
 			<div class="d-flex">
 
-				<v-btn color="primary" class="mr-2"> Inserir imagens </v-btn>
-				<v-btn color="red" class="ml-1"> Imprimir imagens </v-btn>
+				<v-btn color="primary" class="mr-1"> Inserir arquivo </v-btn>
+				<v-btn color="red" class="ml-1"> Imprimir  </v-btn>
 			</div>
-		</v-sheet>
-		<v-container
-			class="bg-blue-grey-lighten-3 d-flex align-center justify-center"
+		</div>
+		<div
+			class="bg-blue-grey-lighten-3 d-flex flex-column"
 		>
-			<v-row no-gutters justify="center">
-				<!-- <ImageExam v-for="g in 10" /> -->
-			</v-row>
-		</v-container>
-	</v-container>
+		<v-divider class="border-opacity-25"></v-divider>
+			<div class="d-flex justify-space-between w-100 pa-3 ">
+				<p>Nome do arquivo</p>
+				<v-btn color="blue-lighten-4">visualizar</v-btn>
+			</div>
+		</div>
+	</v-card >
 </template>
 
 <script setup>
