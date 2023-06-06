@@ -79,6 +79,17 @@ const routes = [
 			},
 		],
 	},
+	{
+		path: "/history",
+		component: () => import("@/layouts/default/Default.vue"),
+		children: [
+			{
+				path: "/history",
+				name: "History",
+				component: () => import("@/views/History.vue"),
+			},
+		],
+	},
 ];
 
 const router = createRouter({

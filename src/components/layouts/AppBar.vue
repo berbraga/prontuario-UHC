@@ -76,6 +76,7 @@ export default  {
 				{ title: "Exame", icon: "mdi-medical-cotton-swab", page: "exam" },
 				{ title: "Atestados ", icon: "mdi-note-text", page: "attest" },
 				{ title: "Documentos", icon: "mdi-file-document-multiple", page: "documents" },
+				{ title: "Exames Anteriores", icon: "mdi-medication", page: "history" },
 			],
 			rail: true,
 
