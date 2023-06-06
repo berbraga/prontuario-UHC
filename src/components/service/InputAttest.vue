@@ -8,18 +8,20 @@
 				<v-btn color="primary" class="ml-3">imprimir</v-btn>
 			</div>
 		</div>
-
-		<v-textarea
+<wysiwyg/>
+		<!-- <v-textarea
 			label="Modelo de Atestado"
 			class="ma-0"
 			variant="outlined"
 			clearable
-		></v-textarea>
+		></v-textarea> -->
 	</v-card>
 </template>
 
 <script setup>
 	import DateToday from '../card/DateToday.vue';
+
+	import Wysiwyg from "../service/Wysiwyg.vue"
 </script>
 
 
