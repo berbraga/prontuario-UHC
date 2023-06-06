@@ -7,7 +7,7 @@
 	<div class="d-flex justify-space-between">
 
 		<h3>Medicamentos</h3>
-		<v-btn>Imprimir</v-btn>
+		<v-btn color="red" >Imprimir</v-btn>
 	</div>
 		<v-responsive class="mx-auto" width="344">
 			<v-textarea

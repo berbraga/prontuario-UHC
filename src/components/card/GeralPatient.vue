@@ -1,6 +1,6 @@
 <template>
 	<v-card
-		class="d-flex align-center text-center fill-height h-auto mb-10 pa-1"
+		class="d-flex align-center text-center fill-height h-auto mb-5 pa-1"
 		elevation="5"
 		color="grey-lighten-3"
 	>

@@ -69,13 +69,13 @@ const routes = [
 		],
 	},
 	{
-		path: "/pictures",
+		path: "/documents",
 		component: () => import("@/layouts/default/Default.vue"),
 		children: [
 			{
-				path: "/pictures",
-				name: "Pictures",
-				component: () => import("@/views/Pictures.vue"),
+				path: "/documents",
+				name: "Documents",
+				component: () => import("@/views/Documents.vue"),
 			},
 		],
 	},
