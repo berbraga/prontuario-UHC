@@ -1,13 +1,25 @@
 <template>
+	<div>
 
-	<v-container>
-		bernardo WYSIWYG
-	</v-container>
+		<QuillEditor v-model="content" :options="editorOptions"></QuillEditor>
 
+	</div>
 </template>
 
-<script setup>
+<script>
+import { quillEditor } from 'vue-quill-editor'
 
-
-
+export default {
+  components: {
+    quillEditor
+  },
+  data() {
+    return {
+      content: '',
+      editorOptions: {
+        // Opções do editor, se necessário
+      }
+    }
+  }
+}
 </script>
