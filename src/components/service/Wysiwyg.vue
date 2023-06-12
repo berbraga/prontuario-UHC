@@ -1,25 +1,28 @@
 <template>
 	<div>
-
-		<QuillEditor v-model="content" :options="editorOptions"></QuillEditor>
-
+		<!-- <trumbowyg v-model="content" :config="config" class="form-control" name="content"></trumbowyg> -->
 	</div>
 </template>
 
 <script>
-import { quillEditor } from 'vue-quill-editor'
+  // Import this component
+  // import Trumbowyg from 'vue-trumbowyg';
 
-export default {
-  components: {
-    quillEditor
-  },
-  data() {
-    return {
-      content: '',
-      editorOptions: {
-        // Opções do editor, se necessário
+  // Import editor css
+  // import 'trumbowyg/dist/ui/trumbowyg.css';
+
+  export default {
+    data () {
+      return {
+        content: null,
+        config: {
+          // Get options from
+          // https://alex-d.github.io/Trumbowyg/documentation
+        }
       }
-    }
+    },
+    // components: {
+    //   Trumbowyg
+    // }
   }
-}
 </script>

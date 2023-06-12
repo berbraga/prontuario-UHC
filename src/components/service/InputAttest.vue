@@ -8,7 +8,8 @@
 				<v-btn color="primary" class="ml-3">imprimir</v-btn>
 			</div>
 		</div>
-<wysiwyg/>
+
+			<wysiwyg/>
 		<!-- <v-textarea
 			label="Modelo de Atestado"
 			class="ma-0"
