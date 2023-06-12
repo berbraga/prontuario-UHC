@@ -1,10 +1,13 @@
 <template>
 	<v-card
-		class="pa-2 d-flex flex-column" color="blue-grey-lighten-5" elevation="2">
-		<div class="d-flex  justify-space-between align-center">
+		class="pa-2 d-flex flex-column"
+		color="blue-grey-lighten-5"
+		elevation="2"
+	>
+		<div class="d-flex justify-space-between align-center">
 			<h2>Atestado</h2>
-			<div class="d-flex align-center mb-2 ">
-				<date-today/>
+			<div class="d-flex align-center mb-2">
+				<date-today />
 				<v-btn color="primary" class="ml-3">imprimir</v-btn>
 			</div>
 		</div>
@@ -22,9 +25,8 @@
 </template>
 
 <script setup>
-	import DateToday from '../card/DateToday.vue';
-	import VueQuillEditor from "vue-quill-editor";
-	import { ref } from 'vue';
-	const contentHtml = ref('');
+import DateToday from "../card/DateToday.vue";
+import VueQuillEditor from "vue-quill-editor";
+import { ref } from "vue";
+const contentHtml = ref("");
 </script>
-

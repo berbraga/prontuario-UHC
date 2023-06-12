@@ -13,10 +13,8 @@
 			<p class="info">Nome:bernardo Paciente</p>
 			<p class="info">Idade: 21 anos</p>
 			<div class="d-flex">
-
-				<p class="info">Ultima consulta:
-				</p>
-					<date-today/>
+				<p class="info">Ultima consulta:</p>
+				<date-today />
 			</div>
 			<p class="info"></p>
 		</v-sheet>
@@ -24,6 +22,5 @@
 </template>
 
 <script setup>
-	import DateToday from './DateToday.vue';
-
+import DateToday from "./DateToday.vue";
 </script>

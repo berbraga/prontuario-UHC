@@ -4,7 +4,10 @@
 			width="150"
 			aspect-ratio="1/1"
 			src="@/assets/logos/Logo-UHC---Preferencial.png"
-			@click="this.$router.push('/'); rail = true"
+			@click="
+				this.$router.push('/');
+				rail = true;
+			"
 		/>
 
 		<v-spacer></v-spacer>/
@@ -58,7 +61,7 @@
 
 <script>
 import Cronometer from "../card/Cronometer.vue";
-export default  {
+export default {
 	components: {
 		Cronometer,
 	},
@@ -75,11 +78,14 @@ export default  {
 				},
 				{ title: "Exame", icon: "mdi-medical-cotton-swab", page: "exam" },
 				{ title: "Atestados ", icon: "mdi-note-text", page: "attest" },
-				{ title: "Documentos", icon: "mdi-file-document-multiple", page: "documents" },
+				{
+					title: "Documentos",
+					icon: "mdi-file-document-multiple",
+					page: "documents",
+				},
 				{ title: "Exames Anteriores", icon: "mdi-medication", page: "history" },
 			],
 			rail: true,
-
 		};
 	},
 	watch: {
@@ -89,10 +95,8 @@ export default  {
 	},
 	methods: {
 		changePage: function (next) {
-
 			this.$router.push("/" + next);
 		},
-
 	},
 };
 </script>

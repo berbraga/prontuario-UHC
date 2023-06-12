@@ -1,8 +1,7 @@
 <template>
-
-		<!-- <h4> -->
-			{{ data() }}
-		<!-- </h4> -->
+	<!-- <h4> -->
+	{{ data() }}
+	<!-- </h4> -->
 </template>
 
 <script setup>
