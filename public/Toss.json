@@ -1,24 +1,24 @@
 {
-    "procedimentos": [
-        {
-            "codigo": "10101010",
-            "nome": "Procedimento 1"
-        },
-        {
-            "codigo": "20202020",
-            "nome": "Procedimento 2"
-        },
-        {
-            "codigo": "30303030",
-            "nome": "Procedimento 3"
-        },
-        {
-            "codigo": "40404040",
-            "nome": "Procedimento 4"
-        },
-        {
-            "codigo": "50505050",
-            "nome": "Procedimento 5"
-        }
-    ]
+	"procedimentos": [
+		{
+			"codigo": "10101010",
+			"nome": "Procedimento 1"
+		},
+		{
+			"codigo": "20202020",
+			"nome": "Procedimento 2"
+		},
+		{
+			"codigo": "30303030",
+			"nome": "Procedimento 3"
+		},
+		{
+			"codigo": "40404040",
+			"nome": "Procedimento 4"
+		},
+		{
+			"codigo": "50505050",
+			"nome": "Procedimento 5"
+		}
+	]
 }
