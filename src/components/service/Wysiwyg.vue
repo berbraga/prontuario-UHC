@@ -1,7 +1,5 @@
 <template>
 	<div>
-
-
 		<v-container>
 			<editor
 				api-key="ca9jhc4xbdf49pphczv9e9o0bcy14v9zni5bijgqvawm4yy5"
