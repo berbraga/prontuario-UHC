@@ -8,7 +8,7 @@
 			<h2>Atestado</h2>
 			<div class="d-flex align-center mb-2">
 				<date-today />
-				<v-btn color="primary" class="ml-3">imprimir</v-btn>
+				<!-- <v-btn color="primary" class="ml-3">imprimir</v-btn> -->
 			</div>
 		</div>
 
