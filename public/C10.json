@@ -1,54 +1,54 @@
 [
-	{
-		"code": "A00.0",
-		"description": "Cólera devida a Vibrio 01, biótipo"
-	},
-	{
-		"code": "A00.1",
-		"description": "Cólera devida a Vibrio 01, biótipo El Tor"
-	},
-	{
-		"code": "A00.9",
-		"description": "Cólera não especificada"
-	},
-	{
-		"code": "A01.0",
-		"description": "Febre tifóide"
-	},
-	{
-		"code": "A01.1",
-		"description": "Febre paratifóide A"
-	},
-	{
-		"code": "A01.2",
-		"description": "Febre paratifóide B"
-	},
-	{
-		"code": "A01.3",
-		"description": "Febre paratifóide C"
-	},
-	{
-		"code": "A01.4",
-		"description": "Febre paratifóide não especificada"
-	},
-	{
-		"code": "A02.0",
-		"description": "Enterite por salmonela"
-	},
-	{
-		"code": "A02.1",
-		"description": "Septicemia por salmonela"
-	},
-	{
-		"code": "A02.2",
-		"description": "Infecções localizadas por salmonela"
-	},
-	{
-		"code": "A02.8",
-		"description": "Outras infecções especificadas por salmonela"
-	},
-	{
-		"code": "A02.9",
-		"description": "Infecção não especificada por salmonela"
-	}
+  {
+    "code": "A00.0",
+    "description": "Cólera devida a Vibrio 01, biótipo"
+  },
+  {
+    "code": "A00.1",
+    "description": "Cólera devida a Vibrio 01, biótipo El Tor"
+  },
+  {
+    "code": "A00.9",
+    "description": "Cólera não especificada"
+  },
+  {
+    "code": "A01.0",
+    "description": "Febre tifóide"
+  },
+  {
+    "code": "A01.1",
+    "description": "Febre paratifóide A"
+  },
+  {
+    "code": "A01.2",
+    "description": "Febre paratifóide B"
+  },
+  {
+    "code": "A01.3",
+    "description": "Febre paratifóide C"
+  },
+  {
+    "code": "A01.4",
+    "description": "Febre paratifóide não especificada"
+  },
+  {
+    "code": "A02.0",
+    "description": "Enterite por salmonela"
+  },
+  {
+    "code": "A02.1",
+    "description": "Septicemia por salmonela"
+  },
+  {
+    "code": "A02.2",
+    "description": "Infecções localizadas por salmonela"
+  },
+  {
+    "code": "A02.8",
+    "description": "Outras infecções especificadas por salmonela"
+  },
+  {
+    "code": "A02.9",
+    "description": "Infecção não especificada por salmonela"
+  }
 ]

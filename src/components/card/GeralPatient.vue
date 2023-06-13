@@ -7,7 +7,7 @@
 		<v-avatar
 			image="https://avatars.githubusercontent.com/u/81630194?v=4"
 			size="170"
-			class=" ma-3"
+			class="ma-3"
 		></v-avatar>
 		<v-sheet color="transparent" class="d-flex flex-column align-start">
 			<p class="info">Nome:bernardo Paciente</p>

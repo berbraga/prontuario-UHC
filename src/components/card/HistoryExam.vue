@@ -12,7 +12,6 @@
 
 		<div class="d-flex flex-column" v-for="i in 4">
 			<history-exam />
-			<!-- <v-divider class="border-opacity-2"></v-divider> -->
 		</div>
 	</v-card>
 </template>

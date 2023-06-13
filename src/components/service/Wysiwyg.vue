@@ -1,40 +1,38 @@
 <template>
 	<div>
-
-   <!-- <ckeditor
+		<!-- <ckeditor
         :editor="editor"
         v-model="editorData"
         @ready="onReady"
         @input="onChange"
       ></ckeditor> -->
 
-<v-container>
-
-	<editor
-		api-key="no-api-key"
-		:inline=false
-		:init="{
-			height: 700,
-			menubar: false,
-			menubar: 'file edit view format',
-			 menu: {
-				file: { title: 'Imprimir', items: 'print' }
-			},
-			plugins: [
-				'advlist autolink lists link image charmap print preview anchor',
-				'searchreplace visualblocks code fullscreen',
-				'insertdatetime media table paste code help wordcount'
-			],
-			toolbar:
-				'undo redo | formatselect | bold italic backcolor | \
+		<v-container>
+			<editor
+				api-key="no-api-key"
+				:inline="false"
+				:init="{
+					height: 700,
+					menubar: false,
+					menubar: 'file edit view format',
+					menu: {
+						file: { title: 'Imprimir', items: 'print' },
+					},
+					plugins: [
+						'advlist autolink lists link image charmap print preview anchor',
+						'searchreplace visualblocks code fullscreen',
+						'insertdatetime media table paste code help wordcount',
+					],
+					toolbar:
+						'undo redo | formatselect | bold italic backcolor | \
 				alignleft aligncenter alignright alignjustify | \
-				bullist numlist outdent indent | removeformat | help'
-		}"
-		initial-value="Escreva Aqui"
-	/>
-</v-container>
+				bullist numlist outdent indent | removeformat | help',
+				}"
+				initial-value="Escreva Aqui"
+			/>
+		</v-container>
 
-				<!-- content_style="
+		<!-- content_style="
 	                body {
 	                    background: #fff;
 	                }
@@ -56,9 +54,9 @@
 	                }
 	            " -->
 
-				<!-- O TinyMCE  ACEITA AS SEGUINTES PROPS: -->
+		<!-- O TinyMCE  ACEITA AS SEGUINTES PROPS: -->
 
-				<!--
+		<!--
 					<editor
 						api-key="your-api-key"
 						cloud-channel="5"
@@ -74,22 +72,18 @@
 						value=""
 					/>
 				-->
-
-
-
 	</div>
 </template>
 
 <script>
- import Editor from '@tinymce/tinymce-vue'
+import Editor from "@tinymce/tinymce-vue";
 
- export default {
-
-   components: {
-     'editor': Editor
-   }
- }
- </script>
+export default {
+	components: {
+		editor: Editor,
+	},
+};
+</script>
 <!-- <script>
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   import CKEditor from "@ckeditor/ckeditor5-vue"
