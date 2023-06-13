@@ -16,6 +16,9 @@
 						height: 700,
 						menubar: false,
 						menubar: 'file edit view format',
+						 menu: {
+							file: { title: 'Imprimir', items: 'print' }
+						},
 						plugins: [
 							'advlist autolink lists link image charmap print preview anchor',
 							'searchreplace visualblocks code fullscreen',
