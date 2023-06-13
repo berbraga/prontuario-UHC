@@ -32,14 +32,7 @@
 					clearable
 					chips
 					label="Selecione a indicação do Exame"
-					:items="[
-						'RX - Cabeca',
-						'Ultrasson - completo',
-						'Ultrasson - transvaginal',
-						'colonoscopia',
-						'Endoscopia',
-						'Eletrocardiograma',
-					]"
+					:items="this.toss"
 					class="mr-2 ml-1 width: auto"
 					multiple
 					variant="outlined"
@@ -68,6 +61,7 @@
 <script>
 import DateToday from "../card/DateToday.vue";
 import C10 from "../../../public/C10.json";
+import Toss from "../../../public/Toss.json";
 
 export default {
 	components: {
@@ -76,17 +70,26 @@ export default {
 	data() {
 		return {
 			c10: [],
+			toss: [],
+			medicines: [],
 		};
 	},
 	mounted() {
 		this.getC10();
+		this.getToss();
 	},
 	methods: {
-		getC10() {
-			for (const obj of C10) {
-				this.c10.push(obj.description);
+		getC10: function () {
+			for (let i = 0; i < C10.rows.length; i++) {
+				this.c10.push(C10.rows[i].descricao);
 			}
-			console.log(this.c10);
+			// console.log(this.c10);
+		},
+		getToss: function () {
+			for (let i = 0; i < 100; i++) {
+				this.toss.push(Toss.rows[i].procedimento);
+			}
+			// console.log(this.toss);
 		},
 	},
 };
