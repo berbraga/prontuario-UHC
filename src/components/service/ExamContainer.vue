@@ -80,14 +80,14 @@ export default {
 	},
 	methods: {
 		getC10: function () {
-			for (let i = 0; i < C10.rows.length; i++) {
-				this.c10.push(C10.rows[i].descricao);
+			for (let i = 0; i < 100; i++) {
+				this.c10.push(`${C10.rows[i].codigo} | ${C10.rows[i].descricao}`);
 			}
 			// console.log(this.c10);
 		},
 		getToss: function () {
 			for (let i = 0; i < 100; i++) {
-				this.toss.push(Toss.rows[i].procedimento);
+				this.toss.push(`${Toss.rows[i].codigo} | ${Toss.rows[i].procedimento}`);
 			}
 			// console.log(this.toss);
 		},
