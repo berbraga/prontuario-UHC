@@ -8,22 +8,45 @@
 			<h3>Medicamentos</h3>
 			<v-btn color="red">Imprimir</v-btn>
 		</div>
-		<v-responsive class="mx-auto" width="344">
-			<v-textarea
-				label="Nome do medicamento"
-				no-resize
-				class="ma-2"
-				rows="1"
-				variant="outlined"
+		<div class="mr-1 w-100">
+			<v-autocomplete
 				clearable
-			></v-textarea>
-		</v-responsive>
+				chips
+				label="Selecione o Remédio"
+				:items="medicines"
+				class="ma-2 w-80"
+				multiple
+				variant="outlined"
+			></v-autocomplete>
+		</div>
 
-		<v-list class="bg-transparent">medicamento 1</v-list>
+		<!-- <v-list class="bg-transparent">medicamento 1</v-list>
 		<v-divider></v-divider>
 		<v-list class="bg-transparent">medicamento 2</v-list>
-		<v-divider></v-divider>
+		<v-divider></v-divider> -->
 	</v-card>
 </template>
 
-<script setup></script>
+<script>
+import Medicamentos from "../../../public/Medicamentos.json";
+// import { onMounted } from 'vue';
+export default {
+	data() {
+		return {
+			medicines: [],
+		};
+	},
+	mounted() {
+		this.getMedicines();
+	},
+	methods: {
+		getMedicines: function () {
+			for (let i = 0; i < 100; i++) {
+				this.medicines.push(
+					`${Medicamentos[i].nome} | ${Medicamentos[i].apresentacao} | ${Medicamentos[i].tipo}`
+				);
+			}
+		},
+	},
+};
+</script>

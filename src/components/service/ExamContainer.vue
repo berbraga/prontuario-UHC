@@ -41,15 +41,7 @@
 					clearable
 					chips
 					label="Selecione o Remédio"
-					:items="[
-						'Novalgina',
-						'Diclofenaco',
-						'Paracetamol',
-						'Diazepan',
-						'Ritalina',
-						'Ibuprofeno',
-						'Nimesulina',
-					]"
+					:items="this.medicines"
 					class="ml-1 width: auto"
 					multiple
 					variant="outlined"
@@ -62,6 +54,7 @@
 import DateToday from "../card/DateToday.vue";
 import C10 from "../../../public/C10.json";
 import Toss from "../../../public/Toss.json";
+import Medicamentos from "../../../public/Medicamentos.json";
 
 export default {
 	components: {
@@ -77,19 +70,25 @@ export default {
 	mounted() {
 		this.getC10();
 		this.getToss();
+		this.getMedicines();
 	},
 	methods: {
 		getC10: function () {
 			for (let i = 0; i < 100; i++) {
 				this.c10.push(`${C10.rows[i].codigo} | ${C10.rows[i].descricao}`);
 			}
-			// console.log(this.c10);
 		},
 		getToss: function () {
 			for (let i = 0; i < 100; i++) {
 				this.toss.push(`${Toss.rows[i].codigo} | ${Toss.rows[i].procedimento}`);
 			}
-			// console.log(this.toss);
+		},
+		getMedicines: function () {
+			for (let i = 0; i < 100; i++) {
+				this.medicines.push(
+					`${Medicamentos[i].nome} | ${Medicamentos[i].apresentacao} | ${Medicamentos[i].tipo}`
+				);
+			}
 		},
 	},
 };
