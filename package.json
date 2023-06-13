@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write \"**/*.{js,vue,css,html,md,json}\" --ignore-path .gitignore"
+    "format": "prettier --write \"**/*.{js,vue,css,html,md}\" --ignore-path .gitignore"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^38.0.1",
