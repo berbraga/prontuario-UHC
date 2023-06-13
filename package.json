@@ -12,6 +12,7 @@
     "@ckeditor/ckeditor5-vue": "^5.1.0",
     "@mdi/font": "7.0.96",
     "@peepi/vuetify-tiptap": "^1.2.3",
+    "@tinymce/tinymce-vue": "^4",
     "firebase": "^9.22.0",
     "roboto-fontface": "*",
     "vue": "^3.2.0",
