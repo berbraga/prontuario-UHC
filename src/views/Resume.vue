@@ -1,6 +1,7 @@
 <template>
 	<v-container>
 		<GeralPatient />
+		<!-- <h3>Historico</h3> -->
 		<HistoryPatient />
 		<HistoryPatient />
 		<HistoryPatient />

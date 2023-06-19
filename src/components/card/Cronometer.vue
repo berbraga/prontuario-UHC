@@ -9,7 +9,7 @@
 			</v-card-title>
 			<v-card-actions class="text-center justify-space-between">
 				<v-btn v-if="isRunning" color="red-accent-4" @click="stopTimer">
-					Parar
+					parar
 				</v-btn>
 				{{ formatTime }}
 			</v-card-actions>
@@ -23,8 +23,8 @@
 				Iniciar Atendimento
 			</v-card-title>
 			<v-card-actions class="text-center justify-space-between">
-				<v-btn v-if="!isRunning" color="green-accent-4" @click="startTimer">
-					INICIAR
+				<v-btn v-if="!isRunning"  color="green-accent-4" @click="startTimer()">
+					iniciar
 				</v-btn>
 				{{ formatTime }}
 			</v-card-actions>
@@ -63,11 +63,13 @@ export default {
 				this.startTime = new Date().getTime();
 				this.currentTime = this.startTime;
 				this.updateTimer();
+				this.$router.push("/service");
 			}
 		},
 		stopTimer() {
 			if (this.isRunning) {
 				this.isRunning = false;
+				this.$router.push("/");
 			}
 		},
 		updateTimer() {
@@ -76,6 +78,10 @@ export default {
 				requestAnimationFrame(this.updateTimer);
 			}
 		},
+		// iniciar:function(){
+		// 	console.clear();
+		// 	console.log("clicou no iniciar");
+		// }
 	},
 };
 </script>

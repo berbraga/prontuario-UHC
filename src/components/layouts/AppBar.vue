@@ -6,7 +6,7 @@
 			src="@/assets/logos/Logo-UHC---Preferencial.png"
 			@click="
 				this.$router.push('/');
-				rail = true;
+				// rail = true;
 			"
 		/>
 
@@ -17,24 +17,24 @@
 		v-model="drawer"
 		:rail="rail"
 		permanent
-		@click="rail = false"
-	>
+		>
+		<!-- @click="rail = false" -->
 		<v-list-item
 			prepend-avatar="https://avatars.githubusercontent.com/u/81630194?v=4"
 			title="Dr.Bernardo Braga"
 			nav
 		>
-			<template v-slot:append>
+			<!-- <template v-slot:append>
 				<v-btn
 					variant="text"
 					icon="mdi-chevron-left"
 					@click.stop="rail = !rail"
 				></v-btn>
-			</template>
+			</template> -->
 		</v-list-item>
 		<v-divider></v-divider>
 
-		<Cronometer v-if="!rail" />
+		<Cronometer />
 
 		<v-divider></v-divider>
 
@@ -85,7 +85,7 @@ export default {
 				},
 				{ title: "Exames Anteriores", icon: "mdi-medication", page: "history" },
 			],
-			rail: true,
+			rail: false,
 		};
 	},
 	watch: {

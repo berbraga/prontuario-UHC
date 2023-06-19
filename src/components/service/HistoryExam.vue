@@ -1,5 +1,5 @@
 <template>
-	<v-card color="white" class="d-flex flex-column ma-2 pa-2">
+	<v-card color="grey-lighten-3" class="d-flex flex-column ma-2 pa-2">
 		<div class="d-flex justify-space-between align-center">
 			<p class="d-flex">Data: <DateToday /></p>
 			<v-btn color="primary">imprimir esse exame</v-btn>
