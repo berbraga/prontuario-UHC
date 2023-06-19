@@ -6,27 +6,18 @@
 			src="@/assets/logos/Logo-UHC---Preferencial.png"
 			@click="
 				this.$router.push('/')
-				// rail = true;
 			"
 		/>
 
 		<v-spacer></v-spacer>/
 	</v-app-bar>
 
-	<v-navigation-drawer v-model="drawer" :rail="rail" permanent>
-		<!-- @click="rail = false" -->
+	<v-navigation-drawer  permanent>
 		<v-list-item
 			prepend-avatar="https://avatars.githubusercontent.com/u/81630194?v=4"
 			title="Dr.Bernardo Braga"
 			nav
 		>
-			<!-- <template v-slot:append>
-				<v-btn
-					variant="text"
-					icon="mdi-chevron-left"
-					@click.stop="rail = !rail"
-				></v-btn>
-			</template> -->
 		</v-list-item>
 		<v-divider></v-divider>
 
@@ -35,17 +26,14 @@
 		<v-divider></v-divider>
 
 		<v-list density="compact" nav>
-			<v-list-item
-				v-for="item in this.items"
-				v-if="rail"
-				:prepend-icon="item.icon"
-				:title="item.title"
-				:value="item.title"
-			></v-list-item>
 
-			<v-list-item
+			<v-list-item v-if="this.$route.fullPath === '/' "
+				prepend-icon="mdi-note"
+				title="Resumo"
+				value="Resumo"
+			></v-list-item>
+			<v-list-item v-else
 				v-for="item in this.items"
-				v-else
 				:prepend-icon="item.icon"
 				:title="item.title"
 				:value="item.title"
@@ -91,6 +79,7 @@ export default {
 	},
 	methods: {
 		changePage: function (next) {
+			// console.log(this.$route.fullPath);
 			this.$router.push("/" + next);
 		},
 	},
