@@ -5,7 +5,7 @@
 			aspect-ratio="1/1"
 			src="@/assets/logos/Logo-UHC---Preferencial.png"
 			@click="
-				this.$router.push('/');
+				this.$router.push('/')
 				// rail = true;
 			"
 		/>
@@ -13,11 +13,7 @@
 		<v-spacer></v-spacer>/
 	</v-app-bar>
 
-	<v-navigation-drawer
-		v-model="drawer"
-		:rail="rail"
-		permanent
-		>
+	<v-navigation-drawer v-model="drawer" :rail="rail" permanent>
 		<!-- @click="rail = false" -->
 		<v-list-item
 			prepend-avatar="https://avatars.githubusercontent.com/u/81630194?v=4"

@@ -23,7 +23,7 @@
 				Iniciar Atendimento
 			</v-card-title>
 			<v-card-actions class="text-center justify-space-between">
-				<v-btn v-if="!isRunning"  color="green-accent-4" @click="startTimer()">
+				<v-btn v-if="!isRunning" color="green-accent-4" @click="startTimer()">
 					iniciar
 				</v-btn>
 				{{ formatTime }}

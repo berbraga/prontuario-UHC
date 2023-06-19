@@ -1,5 +1,5 @@
 <template>
-	<v-container class="d-flex flex-column ">
+	<v-container class="d-flex flex-column">
 		<GeralPatient />
 
 		<div class="d-flex justify-center">
@@ -8,7 +8,6 @@
 
 		<HistoryPatient />
 		<HistoryPatient />
-
 	</v-container>
 </template>
 
