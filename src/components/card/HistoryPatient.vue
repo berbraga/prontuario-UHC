@@ -1,4 +1,4 @@
-<!-- DAi a Cesar o que É de Cesar -->
+
 <template>
 	<v-card
 		elevation="3"

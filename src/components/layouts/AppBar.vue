@@ -1,5 +1,5 @@
 <template>
-	<v-app-bar color="light-green-accent-4" prominent>
+	<v-app-bar color="#199995" prominent>
 		<img
 			width="150"
 			aspect-ratio="1/1"
@@ -32,8 +32,7 @@
 				title="Resumo"
 				value="Resumo"
 			></v-list-item>
-			<v-list-item v-else
-				v-for="item in this.items"
+			<v-list-item v-else	v-for="item in this.items"
 				:prepend-icon="item.icon"
 				:title="item.title"
 				:value="item.title"
