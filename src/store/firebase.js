@@ -1,10 +1,11 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
+import { initializeApp } from "firebase/app";
+import 'firebase/auth'
+import 'firebase/firestore'
+import 'firebase/storage'
+import { getFirestore, collection, getDoc, doc } from 'firebase/firestore/lite';
+
+const options = {
   apiKey: "AIzaSyBDpkH1kawQ2wdnsrmZ7oDd0RGoxjRI4Qo",
   authDomain: "ultracarebr.firebaseapp.com",
   databaseURL: "https://ultracarebr.firebaseio.com",
@@ -14,5 +15,18 @@ const firebaseConfig = {
   appId: "1:197582994272:web:526b1daf4360bb66b43c05"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+
+export const core = firebaseApp
+export const db = getFirestore(firebaseApp)
+export  const getDocs = getDoc
+export  const docs = doc
+
+const firebaseApp = initializeApp(options)
+
+export async function testeFirebase() {
+  const docRef = doc(db, 'users', 'Uxo3PLXy6deMZZ4nnOXEUYGEZRw2');
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    console.log('doc snap:', docSnap.data());
+  }
+}

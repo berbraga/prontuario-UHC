@@ -1,6 +1,22 @@
 // Composables
 import { createRouter, createWebHistory } from "vue-router";
 
+
+// function route (path, name, ) {
+// 	return {
+// 		path: "/",
+// 		component: () => import("@/layouts/default/Default.vue"),
+// 		children: [
+// 			{
+// 				path: "",
+// 				name: "Home",
+// 				component: () => import("@/views/Home.vue"),
+// 			},
+// 		],
+// 	},
+// }
+
+
 const routes = [
 	{
 		path: "/",
@@ -8,6 +24,17 @@ const routes = [
 		children: [
 			{
 				path: "",
+				name: "Start",
+				component: () => import("@/views/Start.vue"),
+			},
+		],
+	},
+	{
+		path: "/home",
+		component: () => import("@/layouts/default/Default.vue"),
+		children: [
+			{
+				path: "home",
 				name: "Home",
 				component: () => import("@/views/Home.vue"),
 			},
@@ -95,6 +122,11 @@ const routes = [
 const router = createRouter({
 	history: createWebHistory(process.env.BASE_URL),
 	routes,
+});
+
+router.beforeEach(async (to, from) => {
+	console.clear ();
+	console.log(from, to );
 });
 
 export default router;

@@ -69,7 +69,7 @@ export default {
 		stopTimer() {
 			if (this.isRunning) {
 				this.isRunning = false;
-				this.$router.push("/");
+				this.$router.push("/home");
 			}
 		},
 		updateTimer() {

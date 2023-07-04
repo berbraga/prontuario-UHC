@@ -9,10 +9,11 @@
 			"
 		/>
 
+
 		<v-spacer></v-spacer>/
 	</v-app-bar>
 
-	<v-navigation-drawer  permanent>
+	<v-navigation-drawer permanent v-if="this.$route.fullPath != '/'">
 		<v-list-item
 			prepend-avatar="https://avatars.githubusercontent.com/u/81630194?v=4"
 			title="Dr.Bernardo Braga"
@@ -27,7 +28,7 @@
 
 		<v-list density="compact" nav>
 
-			<v-list-item v-if="this.$route.fullPath === '/' "
+			<v-list-item v-if="this.$route.fullPath === '/home' "
 				prepend-icon="mdi-note"
 				title="Resumo"
 				value="Resumo"
@@ -52,7 +53,7 @@ export default {
 		return {
 			drawer: true,
 			items: [
-				{ title: "Resumo", icon: "mdi-note", page: "" },
+				{ title: "Resumo", icon: "mdi-note", page: "home" },
 				{ title: "Atendimento", icon: "mdi-account-group", page: "service" },
 				{
 					title: "Prescrições",
