@@ -1,6 +1,6 @@
 // Composables
 import { createRouter, createWebHistory } from "vue-router";
-import {auth} from '@/store/firebase'
+import {auth, db} from '@/store/firebase'
 
 const routes = [
 	{
@@ -70,7 +70,7 @@ router.beforeEach(async (to, from) => {
     return auth.onAuthStateChanged((currentUser) => {
 			console.log(currentUser)
       if (currentUser) {
-        window.errorHandler.setUser(`${currentUser.uid} (${currentUser.email})`)
+        // window.errorHandler.setUser(`${currentUser.uid} (${currentUser.email})`)
         db.collection('users').doc(currentUser.uid).get().then(doc => {
           const configs = doc.data()
           const user = {

@@ -31,7 +31,10 @@ setPersistence(auth, browserSessionPersistence)
     // if a user forgets to sign out.
     // ...
     // New sign-in will be persisted with session persistence.
-    return signInWithEmailAndPassword(auth, 'bernardo.sbraga@rafsoft.com.br', 'bernardo');
+		const email = 'bernardo.sbraga@rafsoft.com.br';
+		const password = 'bernardo';
+
+    return signInWithEmailAndPassword(auth, email, password);
   })
   .catch((error) => {
     // Handle Errors here.
