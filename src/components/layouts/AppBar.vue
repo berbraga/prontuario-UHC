@@ -4,13 +4,11 @@
 			width="150"
 			aspect-ratio="1/1"
 			src="@/assets/logos/Logo-UHC---Preferencial.png"
-			@click="
-				this.$router.push('/')
-			"
+			@click="this.$router.push('/home')"
 		/>
 
 
-		<v-spacer></v-spacer>/
+		<v-spacer></v-spacer>
 	</v-app-bar>
 
 	<v-navigation-drawer permanent v-if="this.$route.fullPath != '/'">
@@ -53,7 +51,7 @@ export default {
 		return {
 			drawer: true,
 			items: [
-				{ title: "Resumo", icon: "mdi-note", page: "home" },
+				// { title: "Resumo", icon: "mdi-note", page: "home" },
 				{ title: "Atendimento", icon: "mdi-account-group", page: "service" },
 				{
 					title: "Prescrições",

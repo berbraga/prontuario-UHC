@@ -1,33 +1,27 @@
 <template>
 	<div>
-		<v-card
-			class="mx-auto bg-red-lighten-5 d-flex flex-column justify-center"
-			v-if="isRunning"
-		>
+		<v-card class="mx-auto bg-red-lighten-5 d-flex flex-column justify-center" v-if="isRunning">
 			<v-card-title class="d-flex justify-center">
 				Parar Atendimento
 			</v-card-title>
-			<v-card-actions class="text-center justify-space-between">
-				<v-btn v-if="isRunning" color="red-accent-4" @click="stopTimer">
+			<div class="pa-2 d-flex justify-space-between">
+				<v-btn color="red" @click="stopTimer">
 					parar
 				</v-btn>
 				{{ formatTime }}
-			</v-card-actions>
+			</div>
 		</v-card>
 
-		<v-card
-			class="mx-auto bg-green-lighten-5 d-flex flex-column justify-center"
-			v-if="!isRunning"
-		>
+		<v-card class="mx-auto bg-green-lighten-5 d-flex flex-column justify-center" v-if="!isRunning">
 			<v-card-title class="d-flex justify-center">
 				Iniciar Atendimento
 			</v-card-title>
-			<v-card-actions class="text-center justify-space-between">
-				<v-btn v-if="!isRunning" color="green-accent-4" @click="startTimer()">
+			<div class="pa-2 d-flex justify-space-between">
+				<v-btn  color="primary" @click="startTimer()">
 					iniciar
 				</v-btn>
 				{{ formatTime }}
-			</v-card-actions>
+			</div>
 		</v-card>
 	</div>
 </template>

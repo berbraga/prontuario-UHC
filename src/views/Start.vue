@@ -4,10 +4,8 @@ v-container(class='pa-10')
 
 </template>
 
-<script>
-export default {
+<script setup>
 
-}
 </script>
 
 <style scoped>

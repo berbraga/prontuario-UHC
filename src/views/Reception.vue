@@ -1,8 +1,8 @@
-<template>
-	<v-container>
-		<GeralPatient />
-		<Inputs />
-	</v-container>
+<template lang="pug">
+v-container
+	GeralPatient
+	Inputs
+
 </template>
 
 <script setup>
