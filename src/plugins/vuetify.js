@@ -11,9 +11,9 @@ const myCustomLightTheme = {
   dark: false,
   colors: {
     primary: '#199995',
-		red: '#991919'
-
-
+		red: '#991919',
+		grey: '#eeeeee',
+		yellow: '#ff9800'
   },
 }
 

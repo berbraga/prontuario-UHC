@@ -1,7 +1,7 @@
 <template>
 	<v-card
 		elevation="2"
-		color="blue-grey-lighten-5"
+		color="grey"
 		class="rounded d-flex flex-column justify-center pa-3"
 	>
 		<div class="d-flex justify-space-between">
@@ -20,10 +20,6 @@
 			></v-autocomplete>
 		</div>
 
-		<!-- <v-list class="bg-transparent">medicamento 1</v-list>
-		<v-divider></v-divider>
-		<v-list class="bg-transparent">medicamento 2</v-list>
-		<v-divider></v-divider> -->
 	</v-card>
 </template>
 

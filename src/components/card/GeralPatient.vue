@@ -2,7 +2,7 @@
 	<v-card
 		class="d-flex align-center text-center fill-height h-auto mb-5 pa-1"
 		elevation="5"
-		color="grey-lighten-3"
+		color="grey"
 	>
 		<v-avatar
 			image="https://avatars.githubusercontent.com/u/81630194?v=4"

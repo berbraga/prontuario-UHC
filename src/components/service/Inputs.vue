@@ -1,5 +1,5 @@
 <template>
-	<v-container class="bg-blue-grey-lighten-4 mt-5">
+	<v-card color="grey" class="pa-4 mt-5">
 		<h4>Paciente ... apresenta:</h4>
 		<v-textarea label="Queixas do paciente" variant="outlined"></v-textarea>
 		<h4>e os Exames que foram feitos são:</h4>
@@ -9,7 +9,7 @@
 		<div class="d-flex justify-end">
 			<v-btn color="primary">enviar</v-btn>
 		</div>
-	</v-container>
+	</v-card>
 </template>
 
 <script setup></script>

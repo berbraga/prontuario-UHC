@@ -2,7 +2,7 @@
 <template>
 	<v-card
 		elevation="3"
-		color="grey-lighten-3"
+		color="grey"
 		class="mt-4 pa-4 d-flex flex-column align-center justify-center"
 	>
 		<!-- <h1>historico</h1> -->

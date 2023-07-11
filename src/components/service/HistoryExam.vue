@@ -1,5 +1,5 @@
 <template>
-	<v-card color="grey-lighten-3" class="d-flex flex-column ma-2 pa-2">
+	<v-card color="grey" class="d-flex flex-column ma-2 pa-2">
 		<div class="d-flex justify-space-between align-center">
 			<p class="d-flex">Data: <DateToday /></p>
 			<v-btn color="primary">imprimir esse exame</v-btn>
@@ -8,8 +8,8 @@
 		<p>Exame Realizado: RX - Cabeça</p>
 		<p>Medicamento Prescrito: Dipirona</p>
 		<div class="d-flex justify-space-between mt-2">
-			<v-btn color="light-green">mostrar laudo</v-btn>
-			<v-btn color="orange">mostrar exame</v-btn>
+			<v-btn color="primary">mostrar laudo</v-btn>
+			<v-btn color="yellow">mostrar exame</v-btn>
 		</div>
 	</v-card>
 </template>

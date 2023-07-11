@@ -13,6 +13,7 @@
     "@mdi/font": "7.2.96",
     "@peepi/vuetify-tiptap": "^1.2.3",
     "@tinymce/tinymce-vue": "^5.1.0",
+    "eslint-plugin-vue": "^9.15.1",
     "firebase": "^9.23.0",
     "roboto-fontface": "0.10.0",
     "vue": "^3.3.4",

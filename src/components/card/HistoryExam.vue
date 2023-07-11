@@ -2,7 +2,7 @@
 	<v-card
 		class="d-flex flex-column justify-center"
 		elevation="5"
-		color="grey-lighten-3"
+		color="grey"
 	>
 		<div class="d-flex justify-space-between ma-2 align-center">
 			<h2>Exames Anteriores</h2>

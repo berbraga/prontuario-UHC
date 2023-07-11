@@ -1,5 +1,5 @@
 <template>
-	<v-app-bar color="#199995" prominent>
+	<v-app-bar color="primary" prominent>
 		<img
 			width="150"
 			aspect-ratio="1/1"
@@ -10,8 +10,7 @@
 
 		<v-spacer></v-spacer>
 	</v-app-bar>
-
-	<v-navigation-drawer permanent v-if="this.$route.fullPath != '/' ">
+	<v-navigation-drawer permanent v-show="this.$route.fullPath != '/'">
 		<v-list-item
 			prepend-avatar="https://avatars.githubusercontent.com/u/81630194?v=4"
 			title="Dr.Bernardo Braga"
