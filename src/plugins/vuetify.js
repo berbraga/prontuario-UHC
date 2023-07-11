@@ -11,6 +11,8 @@ const myCustomLightTheme = {
   dark: false,
   colors: {
     primary: '#199995',
+		red: '#991919'
+
 
   },
 }
