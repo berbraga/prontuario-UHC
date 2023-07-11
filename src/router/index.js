@@ -220,8 +220,8 @@ router.beforeEach(async (to, from) => {
         //     photoURL: currentUser.photoURL,
         //     email: currentUser.email,
         //     ...configs
-        //   }
-        //   store.dispatch('setUser', user)
+          // }
+          // store.dispatch('setUser', user)
         //   return
         // })
       } else if (!to.meta.requiresAuth) {
