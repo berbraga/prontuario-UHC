@@ -16,11 +16,36 @@
 				<p class="info">Ultima consulta:</p>
 				<date-today />
 			</div>
-			<p class="info"></p>
+
+			<!-- <p class="info">{{ this.patient }}</p> -->
 		</v-sheet>
 	</v-card>
 </template>
 
-<script setup>
+<script >
+import { mapState } from 'vuex';
 import DateToday from "./DateToday.vue";
+
+export default {
+	components:{
+		DateToday
+	},
+	data () {
+    return {
+      patientId: this.$route.params.patientId
+    }
+  },
+	  computed: {
+    ...mapState({
+      patient: (state) => state.patient,
+    })
+
+  },
+	mounted () {
+    this.$store.dispatch('patient')
+		console.log(this.patient)
+  }
+
+
+}
 </script>

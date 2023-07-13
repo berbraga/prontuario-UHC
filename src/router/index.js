@@ -71,20 +71,20 @@ router.beforeEach(async (to, from) => {
 			console.log(currentUser)
       if (currentUser) {
         // window.errorHandler.setUser(`${currentUser.uid} (${currentUser.email})`)
-        db.collection('users').doc(currentUser.uid).get().then(doc => {
-          const configs = doc.data()
-          const user = {
-            uid: currentUser.uid,
-            displayName: currentUser.displayName,
-            isAnonymous: currentUser.isAnonymous,
-            phoneNumber: currentUser.phoneNumber,
-            photoURL: currentUser.photoURL,
-            email: currentUser.email,
-            ...configs
-          }
-          store.dispatch('setUser', user)
-          return
-        })
+        // db.collection('users').doc(currentUser.uid).get().then(doc => {
+        //   const configs = doc.data()
+        //   const user = {
+        //     uid: currentUser.uid,
+        //     displayName: currentUser.displayName,
+        //     isAnonymous: currentUser.isAnonymous,
+        //     phoneNumber: currentUser.phoneNumber,
+        //     photoURL: currentUser.photoURL,
+        //     email: currentUser.email,
+        //     ...configs
+        //   }
+        //   store.dispatch('setUser', user)
+        //   return
+        // })
       } else if (!to.meta.requiresAuth) {
 				console.log(' else 1')
         return

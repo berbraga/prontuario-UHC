@@ -1,80 +1,78 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import { createStore } from 'vuex';
+import { getFirestore, doc, setDoc } from 'firebase/firestore/lite';
+import {db, getDocs} from './firebase'
 
-
-Vue.use(Vuex)
-
-
-export const store = new Vuex.Store({
-
-// patient : rLO9SBEpN0btAvvnCpI9
-
+const store = createStore({
   state: {
-		patient: {}
+    patient: {}
   },
 
   getters: {
-		async getPatient() {
-			return this.$store.state.patinet
-		}
+    getPatient: state => state.patient
   },
 
   actions: {
-    patient ({ commit, state }, payload) {
-			console.clear()
+    async patient() {
+      // console.clear();
       console.log('=-=-=-=-=-=- CHEGOU NO VUEX =-=-=-=-=-=-=-=-')
-    //   if (!payload.iuid) {
-    //     const authIuid = await authSecond.createUserWithEmailAndPassword(
-    //       payload.email,
-    //       payload.password
-    //     )
-    //     payload.password = null
-    //     payload.iuid = authIuid.user.uid
-    //   }
 
-    //   return db
-    //     .collection('users')
-    //     .doc(payload.iuid)
-    //     .set(payload, { merge: true })
+      const docRef =  doc(db, 'patients', 'rLO9SBEpN0btAvvnCpI9');
+			const docSnap = await getDocs(docRef);
+			if (docSnap.exists()) {
+				// console.log('patient:', docSnap.data());
+
+				this.commit('setPatient', docSnap.data())
+
+
+			}
     },
-		  loadCompanies ({ commit, state }) {
-      return db
+
+    async loadCompanies({ commit, state }, { db }) {
+      const query = await db
         .collection('companies')
         .where('identity', 'in', state.user.companies)
-        .get()
-        .then(query => {
-          const companies = query.docs.map(item => firestoreUtil.docToObject(item))
-          commit('setCompanies', companies)
-          return companies
-        })
+        .get();
+
+      const companies = query.docs.map(item => firestoreUtil.docToObject(item));
+      commit('setCompanies', companies);
+      return companies;
     },
-		  setUser ({ commit, state, dispatch }, payload) {
-      commit('setUser', payload)
-      if (state.user && state.user === payload.uid && state.company && payload.companies.includes(state.company)) return
-      let localCompany = JSON.parse(localStorage.getItem('company'))
-      if (!localCompany || !payload.companies.includes(localCompany)) localCompany = payload.company
-      commit('setCompany', localCompany)
-      dispatch('loadCompanies')
+
+    async setUser({ commit, state, dispatch }, payload) {
+      commit('setUser', payload);
+      if (state.user && state.user === payload.uid && state.company && payload.companies.includes(state.company)) return;
+
+      let localCompany = JSON.parse(localStorage.getItem('company'));
+      if (!localCompany || !payload.companies.includes(localCompany)) localCompany = payload.company;
+      commit('setCompany', localCompany);
+
+      await dispatch('loadCompanies');
     },
-		  setCompany ({ commit, state }, payload) {
-      commit('setCompany', payload)
+
+    setCompany({ commit }, payload) {
+      commit('setCompany', payload);
     }
-	},
+  },
 
   mutations: {
-    setUsers (state, payload) {
-      state.users = payload
+    setUsers(state, payload) {
+      state.users = payload;
     },
-		setCompanies (state, payload) {
-      state.companies = payload
+		setPatient(state, payload){
+			state.patient = payload;
+		},
+    setCompanies(state, payload) {
+      state.companies = payload;
     },
-		setCompany (state, payload) {
-      state.company = payload
-      localStorage.setItem(`company`, JSON.stringify(payload))
-    },
-	},
 
-})
+    setCompany(state, payload) {
+      state.company = payload;
+      localStorage.setItem(`company`, JSON.stringify(payload));
+    }
+  }
+});
+
+export default store;
 
 
-
+// patient : rLO9SBEpN0btAvvnCpI9
