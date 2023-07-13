@@ -4,6 +4,18 @@ v-container(class='pa-10')
 
 </template>
 
-<script setup></script>
+<script>
 
-<style scoped></style>
+export default {
+
+	data(){
+		return{
+			bernardo:1
+		}
+	}
+}
+
+
+</script>
+
+

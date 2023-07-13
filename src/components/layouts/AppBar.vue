@@ -1,9 +1,9 @@
 <template lang="pug">
-v-app-bar(color="primary", prominent)
-	img(width="150", aspect-ratio="1/1", src="@/assets/logos/Logo-UHC---Preferencial.png", @click="this.$router.push('/home')" )
+v-app-bar(color="primary", prominent, height="50")
+	img(width="110", aspect-ratio="1/1", src="@/assets/logos/Logo-UHC---Preferencial.png", @click="this.$router.push('/home')" )
 	v-spacer
 
-v-navigation-drawer(permanent, v-show="this.$route.fullPath != '/'" )
+v-navigation-drawer(permanent, v-if="this.drawer" )
 	v-list-item.ma-1( prepend-avatar="https://avatars.githubusercontent.com/u/81630194?v=4", title="Dr.Bernardo Braga", nav)
 	v-divider
 	Cronometer
@@ -23,7 +23,7 @@ export default {
 	},
 	data() {
 		return {
-			drawer: true,
+			drawer: false ,
 			items: [
 				// { title: "Resumo", icon: "mdi-note", page: "home" },
 				{ title: "Atendimento", icon: "mdi-account-group", page: "service" },
@@ -45,9 +45,16 @@ export default {
 		};
 	},
 	watch: {
-		group() {
-			this.drawer = false;
+		$route(to, from) {
+			console.clear()
+			console.log(to.fullPath , from.fullPath)
+			if(to.fullPath !== '/'){
+				this.drawer = true
+			}
 		},
+		// lang(lang) {
+		// 	this.$i18n.locale = lang;
+		// },
 	},
 	methods: {
 		changePage: function (next) {
