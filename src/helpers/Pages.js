@@ -1,13 +1,4 @@
-
-
-
-
 const pages = {
-	initial: '/',
-	start: '/home',
-
-
-}
-
-
-
+	initial: "/",
+	start: "/home",
+};

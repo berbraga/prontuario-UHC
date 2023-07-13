@@ -19,7 +19,6 @@
 				variant="outlined"
 			></v-autocomplete>
 		</div>
-
 	</v-card>
 </template>
 

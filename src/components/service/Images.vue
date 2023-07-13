@@ -7,7 +7,7 @@
 				<v-btn color="red" class="ml-1"> Imprimir </v-btn>
 			</div>
 		</div>
-		<div class=" d-flex flex-column">
+		<div class="d-flex flex-column">
 			<v-divider class="border-opacity-25"></v-divider>
 			<div class="d-flex justify-space-between w-100 pa-3">
 				<p>Nome do arquivo</p>

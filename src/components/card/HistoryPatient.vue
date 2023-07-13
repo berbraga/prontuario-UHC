@@ -1,4 +1,3 @@
-
 <template>
 	<v-card
 		elevation="3"
@@ -16,5 +15,4 @@
 
 <script setup>
 import DateToday from "./DateToday.vue";
-
 </script>

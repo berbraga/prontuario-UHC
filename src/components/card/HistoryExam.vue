@@ -1,9 +1,5 @@
 <template>
-	<v-card
-		class="d-flex flex-column justify-center"
-		elevation="5"
-		color="grey"
-	>
+	<v-card class="d-flex flex-column justify-center" elevation="5" color="grey">
 		<div class="d-flex justify-space-between ma-2 align-center">
 			<h2>Exames Anteriores</h2>
 			<v-btn color="red">imprimir todos</v-btn>

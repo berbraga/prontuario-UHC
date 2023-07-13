@@ -7,7 +7,6 @@
 			@click="this.$router.push('/home')"
 		/>
 
-
 		<v-spacer></v-spacer>
 	</v-app-bar>
 	<v-navigation-drawer permanent v-show="this.$route.fullPath != '/'">
@@ -24,13 +23,15 @@
 		<v-divider></v-divider>
 
 		<v-list density="compact" nav>
-
-			<v-list-item v-if="this.$route.fullPath === '/home' "
+			<v-list-item
+				v-if="this.$route.fullPath === '/home'"
 				prepend-icon="mdi-note"
 				title="Resumo"
 				value="Resumo"
 			></v-list-item>
-			<v-list-item v-else	v-for="item in this.items"
+			<v-list-item
+				v-else
+				v-for="item in this.items"
 				:prepend-icon="item.icon"
 				:title="item.title"
 				:value="item.title"
