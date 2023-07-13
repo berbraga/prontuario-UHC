@@ -12,7 +12,7 @@ v-card(class="d-flex align-center text-center fill-height h-auto mb-5 pa-1" elev
 <script>
 import { mapState } from "vuex";
 import DateToday from "./DateToday.vue";
-import Global from "@/service/Functions.js";
+// import firestoreUtil from '@/utils/firestore'
 
 export default {
 	components: {
@@ -23,7 +23,6 @@ export default {
 			patientId: this.$route.params.patientId,
 			aniver: 0,
 			weight: 0,
-			global: new Global(),
 		};
 	},
 	computed: {
@@ -32,10 +31,14 @@ export default {
 		}),
 	},
 	async created() {
+
 		await this.$store.dispatch("patient");
+
 		console.log(this.patient);
-		console.log(this.global.Years(this.patient.birthdate.seconds));
+		// console.log(this.global.Years(this.patient.birthdate.seconds));
 		this.weight = this.patient.weight.substr(-20, 2);
+		// const birth = firestoreUtil.docToObject(this.patient.birthdate)
+
 	},
 	mounted() {},
 };
