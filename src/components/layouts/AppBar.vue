@@ -1,44 +1,18 @@
-<template>
-	<v-app-bar color="primary" prominent>
-		<img
-			width="150"
-			aspect-ratio="1/1"
-			src="@/assets/logos/Logo-UHC---Preferencial.png"
-			@click="this.$router.push('/home')"
-		/>
+<template lang="pug">
+v-app-bar(color="primary", prominent)
+	img(width="150", aspect-ratio="1/1", src="@/assets/logos/Logo-UHC---Preferencial.png", @click="this.$router.push('/home')" )
+	v-spacer
 
-		<v-spacer></v-spacer>
-	</v-app-bar>
-	<v-navigation-drawer permanent v-show="this.$route.fullPath != '/'">
-		<v-list-item
-			prepend-avatar="https://avatars.githubusercontent.com/u/81630194?v=4"
-			title="Dr.Bernardo Braga"
-			nav
-		>
-		</v-list-item>
-		<v-divider></v-divider>
+v-navigation-drawer(permanent, v-show="this.$route.fullPath != '/'" )
+	v-list-item.ma-1( prepend-avatar="https://avatars.githubusercontent.com/u/81630194?v=4", title="Dr.Bernardo Braga", nav)
+	v-divider
+	Cronometer
 
-		<Cronometer />
+	v-divider
 
-		<v-divider></v-divider>
-
-		<v-list density="compact" nav>
-			<v-list-item
-				v-if="this.$route.fullPath === '/home'"
-				prepend-icon="mdi-note"
-				title="Resumo"
-				value="Resumo"
-			></v-list-item>
-			<v-list-item
-				v-else
-				v-for="item in this.items"
-				:prepend-icon="item.icon"
-				:title="item.title"
-				:value="item.title"
-				@click="this.changePage(item.page)"
-			></v-list-item>
-		</v-list>
-	</v-navigation-drawer>
+	v-list( density="compact",  nav )
+		v-list-item( v-if="this.$route.fullPath === '/home'", prepend-icon="mdi-note", title="Resumo", value="Resumo")
+		v-list-item( v-else, v-for="item in this.items",	:prepend-icon="item.icon", :title="item.title", :value="item.title", @click="this.changePage(item.page)"	)
 </template>
 
 <script>

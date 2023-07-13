@@ -1,17 +1,21 @@
-<template>
-	<v-card class="d-flex flex-column justify-center" elevation="5" color="grey">
-		<div class="d-flex justify-space-between ma-2 align-center">
-			<h2>Exames Anteriores</h2>
-			<v-btn color="red">imprimir todos</v-btn>
-		</div>
-		<v-divider class="border-opacity-25"></v-divider>
+<template lang="pug">
+v-card.d-flex.flex-column.justify-center( elevation="5", color="grey")
+	div.d-flex.justify-space-between.ma-2.align-center
+		h2 Exames Anteriores
 
-		<div class="d-flex flex-column" v-for="i in 4">
-			<history-exam />
-		</div>
-	</v-card>
+		v-btn(color="red") imprimir todos
+
+	v-divider(class="border-opacity-25")
+	div(class="d-flex flex-column" v-for="i in 4")
+		history-exam
 </template>
 
-<script setup>
+<script>
 import HistoryExam from "../service/HistoryExam.vue";
+
+export default {
+	components: {
+		HistoryExam,
+	},
+};
 </script>

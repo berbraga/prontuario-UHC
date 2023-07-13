@@ -1,11 +1,11 @@
-<template>
-	<v-container>
-		<GeralPatient />
-		<h3>Historico</h3>
-		<HistoryPatient />
-		<HistoryPatient />
-		<HistoryPatient />
-	</v-container>
+<template lang="pug">
+v-container
+	GeralPatient
+	h3 Historico
+	HistoryPatient
+	HistoryPatient
+	HistoryPatient
+
 </template>
 
 <script setup>

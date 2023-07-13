@@ -1,7 +1,7 @@
-<template>
-	<v-main>
-		<router-view />
-	</v-main>
+<template lang="pug">
+v-main
+	router-view
+
 </template>
 
 <script setup>

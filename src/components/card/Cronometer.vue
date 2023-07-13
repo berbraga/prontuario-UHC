@@ -1,31 +1,15 @@
-<template>
-	<div>
-		<v-card
-			class="mx-auto bg-red-lighten-5 d-flex flex-column justify-center"
-			v-if="isRunning"
-		>
-			<v-card-title class="d-flex justify-center">
-				Parar Atendimento
-			</v-card-title>
-			<div class="pa-2 d-flex justify-space-between">
-				<v-btn color="red" @click="stopTimer"> parar </v-btn>
-				{{ formatTime }}
-			</div>
-		</v-card>
-
-		<v-card
-			class="mx-auto bg-green-lighten-5 d-flex flex-column justify-center"
-			v-if="!isRunning"
-		>
-			<v-card-title class="d-flex justify-center">
-				Iniciar Atendimento
-			</v-card-title>
-			<div class="pa-2 d-flex justify-space-between">
-				<v-btn color="primary" @click="startTimer()"> iniciar </v-btn>
-				{{ formatTime }}
-			</div>
-		</v-card>
-	</div>
+<template lang="pug">
+div
+	v-card(class="mx-auto bg-red-lighten-5 d-flex flex-column justify-center", v-if="isRunning")
+		v-card-title(class="d-flex justify-center") Parar Atendimento
+		div.pa-2.d-flex.justify-space-between
+			v-btn(color="red" @click="stopTimer") parar
+			| {{ formatTime }}
+	v-card(class="mx-auto bg-green-lighten-5 d-flex flex-column justify-center", v-if="!isRunning")
+		v-card-title(class="d-flex justify-center") Iniciar Atendimento
+		div.pa-2.d-flex.justify-space-between
+			v-btn(color="primary" @click="startTimer()") iniciar
+			| {{ formatTime }}
 </template>
 
 <script>

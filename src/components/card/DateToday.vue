@@ -1,7 +1,6 @@
-<template>
-	<!-- <h4> -->
-	{{ data() }}
-	<!-- </h4> -->
+<template lang="pug">
+div
+	| {{ data() }}
 </template>
 
 <script setup>
