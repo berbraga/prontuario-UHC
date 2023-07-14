@@ -23,7 +23,7 @@ export default {
 	},
 	data() {
 		return {
-			drawer: false ,
+			drawer: this.$route.fullPath == '/' ? false : true  ,
 			items: [
 				// { title: "Resumo", icon: "mdi-note", page: "home" },
 				{ title: "Atendimento", icon: "mdi-account-group", page: "service" },
@@ -40,8 +40,7 @@ export default {
 					page: "documents",
 				},
 				{ title: "Exames Anteriores", icon: "mdi-medication", page: "history" },
-			],
-			rail: false,
+			]
 		};
 	},
 	watch: {
@@ -51,10 +50,7 @@ export default {
 			if(to.fullPath !== '/'){
 				this.drawer = true
 			}
-		},
-		// lang(lang) {
-		// 	this.$i18n.locale = lang;
-		// },
+		}
 	},
 	methods: {
 		changePage: function (next) {

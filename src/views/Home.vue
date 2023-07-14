@@ -10,7 +10,32 @@ v-container(class="d-flex flex-column")
 
 </template>
 
-<script setup>
+<script>
 import GeralPatient from "@/components/card/GeralPatient.vue";
 import HistoryPatient from "@/components/card/HistoryPatient.vue";
+import { mapState } from "vuex";
+
+export default {
+	components:{
+		GeralPatient,
+		HistoryPatient
+	},
+	data () {
+		return {
+			bernardo: 0
+		}
+	},
+	computed:{
+		...mapState({
+			patient: (state) => state.patient,
+		}),
+	},
+	async created() {
+
+		await this.$store.dispatch("gestationInteraction");
+	}
+}
+
+
+
 </script>

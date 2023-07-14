@@ -1,10 +1,12 @@
 import { createStore } from "vuex";
-import { getFirestore, doc, setDoc } from "firebase/firestore/lite";
-import { db, getDocs } from "./firebase";
+import { db, docs, getDocs } from "./firebase";
+import {collection, query, where} from "firebase/firestore"
+import firestore from "@/utils/firestore"
 
 const store = createStore({
 	state: {
 		patient: {},
+		gestations: {}
 	},
 
 	getters: {
@@ -14,9 +16,9 @@ const store = createStore({
 	actions: {
 		async patient() {
 			// console.clear();
-			console.log("=-=-=-=-=-=- CHEGOU NO VUEX =-=-=-=-=-=-=-=-");
+			console.log('patient bernardo')
 
-			const docRef = doc(db, "patients", "rLO9SBEpN0btAvvnCpI9");
+			const docRef = docs(db, "patients", "rLO9SBEpN0btAvvnCpI9");
 			const docSnap = await getDocs(docRef);
 			if (docSnap.exists()) {
 				// console.log('patient:', docSnap.data());
@@ -24,58 +26,78 @@ const store = createStore({
 				this.commit("setPatient", docSnap.data());
 			}
 		},
+		async gestationInteraction() {
+			try {
+				console.log('teste gestation');
 
-		async loadCompanies({ commit, state }, { db }) {
-			const query = await db
-				.collection("companies")
-				.where("identity", "in", state.user.companies)
-				.get();
+			const docRef = docs(db, "gestationInteraction", "077wBVJLUlBt7pXlIO0v");
+			const docSnap = await getDocs(docRef);
+			if (docSnap.exists()) {
+				console.log('patiesfdsdsfsddfsfsfdfsdfsfdsdfsdfnt:', docSnap.data());
+				this.commit("setGestations", docSnap.data());
 
-			const companies = query.docs.map((item) =>
-				firestoreUtil.docToObject(item)
-			);
-			commit("setCompanies", companies);
-			return companies;
+				// this.commit("setPatient", docSnap.data());
+			}
+				// const collectionRef = collection(db, 'gestationInteraction');
+				// const q = query(collectionRef, where('status', '==', 'ANDAMENTO'));
+				// const querySnapshot = await getDocs(q);
+
+				// if (!querySnapshot.empty) {
+				// 	const firstDoc = querySnapshot.docs[0];
+				// 	const data = firstDoc.data();
+				// 	console.log('First document:', firstDoc.id, '=>', data);
+				// } else {
+				// 	console.log('No documents found with status "ANDAMENTO"');
+				// }
+			} catch (error) {
+				console.log( error);
+			}
 		},
 
-		async setUser({ commit, state, dispatch }, payload) {
-			commit("setUser", payload);
-			if (
-				state.user &&
-				state.user === payload.uid &&
-				state.company &&
-				payload.companies.includes(state.company)
-			)
-				return;
+		// async loadCompanies({ commit, state }, { db }) {
+		// 	const query = await db
+		// 		.collection("companies")
+		// 		.where("identity", "in", state.user.companies)
+		// 		.get();
 
-			let localCompany = JSON.parse(localStorage.getItem("company"));
-			if (!localCompany || !payload.companies.includes(localCompany))
-				localCompany = payload.company;
-			commit("setCompany", localCompany);
+		// 	const companies = query.docs.map((item) =>
+		// 		firestoreUtil.docToObject(item)
+		// 	);
+		// 	commit("setCompanies", companies);
+		// 	return companies;
+		// },
 
-			await dispatch("loadCompanies");
-		},
+		// async setUser({ commit, state, dispatch }, payload) {
+		// 	commit("setUser", payload);
+		// 	if (
+		// 		state.user &&
+		// 		state.user === payload.uid &&
+		// 		state.company &&
+		// 		payload.companies.includes(state.company)
+		// 	)
+		// 		return;
 
-		setCompany({ commit }, payload) {
-			commit("setCompany", payload);
-		},
+		// 	let localCompany = JSON.parse(localStorage.getItem("company"));
+		// 	if (!localCompany || !payload.companies.includes(localCompany))
+		// 		localCompany = payload.company;
+		// 	commit("setCompany", localCompany);
+
+		// 	await dispatch("loadCompanies");
+		// },
+
+		// setCompany({ commit }, payload) {
+		// 	commit("setCompany", payload);
+		// },
 	},
 
 	mutations: {
-		setUsers(state, payload) {
-			state.users = payload;
-		},
+
 		setPatient(state, payload) {
 			state.patient = payload;
 		},
-		setCompanies(state, payload) {
-			state.companies = payload;
-		},
-
-		setCompany(state, payload) {
-			state.company = payload;
-			localStorage.setItem(`company`, JSON.stringify(payload));
-		},
+		setGestations(state, payload){
+			state.gestations= payload
+		}
 	},
 });
 

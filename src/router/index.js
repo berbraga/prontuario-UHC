@@ -66,7 +66,7 @@ router.beforeEach(async (to, from) => {
 	// console.log(from, to );
 
 	return auth.onAuthStateChanged((currentUser) => {
-		console.log(currentUser);
+		// console.log(currentUser);
 		if (currentUser) {
 			// window.errorHandler.setUser(`${currentUser.uid} (${currentUser.email})`)
 			// db.collection('users').doc(currentUser.uid).get().then(doc => {

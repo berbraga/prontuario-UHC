@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
-import { getFirestore, collection, getDoc, doc } from "firebase/firestore/lite";
+import { getFirestore, getDoc, doc } from "firebase/firestore";
 
 const options = {
 	apiKey: "AIzaSyBDpkH1kawQ2wdnsrmZ7oDd0RGoxjRI4Qo",
@@ -25,6 +25,7 @@ export const core = firebaseApp;
 export const db = getFirestore(firebaseApp);
 export const getDocs = getDoc;
 export const docs = doc;
+// export const coll =
 
 export const auth = getAuth(firebaseApp);
 
