@@ -1,12 +1,12 @@
 import { createStore } from "vuex";
-import { db, docs, getDocs } from "./firebase";
-import {collection, query, where} from "firebase/firestore"
-import firestore from "@/utils/firestore"
+import { collections, db, docs, gd, gds, querys, wheres } from "./firebase";
+// import { collection, getDoc, query, where } from "firebase/firestore";
+// import firestore from "@/utils/firestore";
 
 const store = createStore({
 	state: {
 		patient: {},
-		gestations: {}
+		gestations: {},
 	},
 
 	getters: {
@@ -16,88 +16,51 @@ const store = createStore({
 	actions: {
 		async patient() {
 			// console.clear();
-			console.log('patient bernardo')
+			console.log("patient bernardo");
 
 			const docRef = docs(db, "patients", "rLO9SBEpN0btAvvnCpI9");
-			const docSnap = await getDocs(docRef);
+			const docSnap = await gd(docRef);
 			if (docSnap.exists()) {
-				// console.log('patient:', docSnap.data());
-
 				this.commit("setPatient", docSnap.data());
 			}
 		},
 		async gestationInteraction() {
 			try {
-				console.log('teste gestation');
+				console.log("teste gestation");
 
-			const docRef = docs(db, "gestationInteraction", "077wBVJLUlBt7pXlIO0v");
-			const docSnap = await getDocs(docRef);
-			if (docSnap.exists()) {
-				console.log('patiesfdsdsfsddfsfsfdfsdfsfdsdfsdfnt:', docSnap.data());
-				this.commit("setGestations", docSnap.data());
+				// const docRef = docs(db, "gestationInteraction", "077wBVJLUlBt7pXlIO0v");
 
-				// this.commit("setPatient", docSnap.data());
-			}
-				// const collectionRef = collection(db, 'gestationInteraction');
-				// const q = query(collectionRef, where('status', '==', 'ANDAMENTO'));
-				// const querySnapshot = await getDocs(q);
+				const q = querys(
+					collections(db, "gestationInteraction"),
+					wheres("patient.id", "==", "rLO9SBEpN0btAvvnCpI9")
+				); //'sJHSKXzjM1pMUcKtn2mx'
 
-				// if (!querySnapshot.empty) {
-				// 	const firstDoc = querySnapshot.docs[0];
-				// 	const data = firstDoc.data();
-				// 	console.log('First document:', firstDoc.id, '=>', data);
-				// } else {
-				// 	console.log('No documents found with status "ANDAMENTO"');
-				// }
+				console.log(q);
+
+				const querySnapshot = await gds(q);
+				let obj = [];
+				console.log("bernardo", querySnapshot);
+				querySnapshot.forEach((doc) => {
+					// doc.data() is never undefined for query doc snapshots
+					obj.push(doc.data());
+					console.log(doc.data());
+				});
+				console.log(obj);
+
+				this.commit("setGestations", obj);
 			} catch (error) {
-				console.log( error);
+				console.log(error);
 			}
 		},
-
-		// async loadCompanies({ commit, state }, { db }) {
-		// 	const query = await db
-		// 		.collection("companies")
-		// 		.where("identity", "in", state.user.companies)
-		// 		.get();
-
-		// 	const companies = query.docs.map((item) =>
-		// 		firestoreUtil.docToObject(item)
-		// 	);
-		// 	commit("setCompanies", companies);
-		// 	return companies;
-		// },
-
-		// async setUser({ commit, state, dispatch }, payload) {
-		// 	commit("setUser", payload);
-		// 	if (
-		// 		state.user &&
-		// 		state.user === payload.uid &&
-		// 		state.company &&
-		// 		payload.companies.includes(state.company)
-		// 	)
-		// 		return;
-
-		// 	let localCompany = JSON.parse(localStorage.getItem("company"));
-		// 	if (!localCompany || !payload.companies.includes(localCompany))
-		// 		localCompany = payload.company;
-		// 	commit("setCompany", localCompany);
-
-		// 	await dispatch("loadCompanies");
-		// },
-
-		// setCompany({ commit }, payload) {
-		// 	commit("setCompany", payload);
-		// },
 	},
 
 	mutations: {
-
 		setPatient(state, payload) {
 			state.patient = payload;
 		},
-		setGestations(state, payload){
-			state.gestations= payload
-		}
+		setGestations(state, payload) {
+			state.gestations = payload;
+		},
 	},
 });
 

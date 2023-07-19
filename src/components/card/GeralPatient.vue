@@ -31,14 +31,9 @@ export default {
 		}),
 	},
 	async created() {
-
 		await this.$store.dispatch("patient");
 
-		console.log(this.patient);
-		// console.log(this.global.Years(this.patient.birthdate.seconds));
 		this.weight = this.patient.weight.substr(-20, 2);
-		// const birth = firestoreUtil.docToObject(this.patient.birthdate)
-
 	},
 	mounted() {},
 };

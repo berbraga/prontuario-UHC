@@ -16,26 +16,22 @@ import HistoryPatient from "@/components/card/HistoryPatient.vue";
 import { mapState } from "vuex";
 
 export default {
-	components:{
+	components: {
 		GeralPatient,
-		HistoryPatient
+		HistoryPatient,
 	},
-	data () {
+	data() {
 		return {
-			bernardo: 0
-		}
+			bernardo: 0,
+		};
 	},
-	computed:{
+	computed: {
 		...mapState({
 			patient: (state) => state.patient,
 		}),
 	},
 	async created() {
-
 		await this.$store.dispatch("gestationInteraction");
-	}
-}
-
-
-
+	},
+};
 </script>

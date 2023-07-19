@@ -5,17 +5,11 @@ v-container(class='pa-10')
 </template>
 
 <script>
-
 export default {
-
-	data(){
-		return{
-			bernardo:1
-		}
-	}
-}
-
-
+	data() {
+		return {
+			bernardo: 1,
+		};
+	},
+};
 </script>
-
-
