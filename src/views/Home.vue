@@ -6,6 +6,7 @@ v-container(class="d-flex flex-column")
 	HistoryPatient
 	HistoryPatient
 	HistoryPatient
+	|{{ this.gestations }}
 
 
 </template>
@@ -28,6 +29,7 @@ export default {
 	computed: {
 		...mapState({
 			patient: (state) => state.patient,
+			gestations:(state) => state.gestations
 		}),
 	},
 	async created() {
