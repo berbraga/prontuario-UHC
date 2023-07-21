@@ -1,7 +1,6 @@
 import { createStore } from "vuex";
 import { collections, db, docs, gd, gds, querys, wheres } from "./firebase";
 import firestoreUtil from "@/utils/firestore"
-import keycodeToKey from "eslint-plugin-vue/lib/utils/keycode-to-key"
 
 const store = createStore({
 	state: {
