@@ -11,5 +11,6 @@ export default {
 			bernardo: 1,
 		};
 	},
+
 };
 </script>

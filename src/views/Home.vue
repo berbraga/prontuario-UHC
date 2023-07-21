@@ -3,10 +3,8 @@ v-container(class="d-flex flex-column")
 	GeralPatient
 	div( class="d-flex justify-center")
 		h1 Historico
-	HistoryPatient
-	HistoryPatient
-	HistoryPatient
-	|{{ this.gestations }}
+	|{{ this.gestations	 }}
+	HistoryPatient(v-for="gestation in this.gestations" :gestation="gestation")
 
 
 </template>
@@ -32,7 +30,7 @@ export default {
 			gestations:(state) => state.gestations
 		}),
 	},
-	async created() {
+	async mounted() {
 		await this.$store.dispatch("gestationInteraction");
 	},
 };

@@ -1,10 +1,11 @@
 export default {
 	docToObject(val) {
-console.log(val.data())
 		let obj = val.data();
-		// obj.iuid = val.id;
-		Object.entries(obj)
-		// return obj;
+		const seconds = obj.date.seconds
+		const date = new Date(seconds)
+		obj.date = date
+		return obj;
+
 	},
 	parseTimestampToDateInObj(val) {
 		let obj = val;
