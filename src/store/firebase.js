@@ -37,7 +37,6 @@ export const docs = doc;
 export const collections = collection;
 export const querys = query;
 export const wheres = where;
-// export const coll =
 
 export const auth = getAuth(firebaseApp);
 

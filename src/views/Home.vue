@@ -26,8 +26,7 @@ export default {
 	},
 	computed: {
 		...mapState({
-			patient: (state) => state.patient,
-			gestations:(state) => state.gestations
+			gestations: (state) => state.gestations,
 		}),
 	},
 	async mounted() {

@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 import { collections, db, docs, gd, gds, querys, wheres } from "./firebase";
-import firestoreUtil from "@/utils/firestore"
+import firestoreUtil from "@/utils/firestore";
 
 const store = createStore({
 	state: {
@@ -26,25 +26,21 @@ const store = createStore({
 		},
 		async gestationInteraction() {
 			try {
-				// console.log("teste gestation");
 				const q = querys(
 					collections(db, "gestationInteraction"),
 					// wheres("patient.id", "==", "rLO9SBEpN0btAvvnCpI9")
-					wheres("patient.id", "==", 'EbtxxOBRN26C8eJwcKjo')
+					wheres("patient.id", "==", "EbtxxOBRN26C8eJwcKjo")
 				); //'sJHSKXzjM1pMUcKtn2mx'
 
-				console.clear()
+				console.clear();
 				const querySnapshot = await gds(q);
 				let obj = [];
-				// console.log(querySnapshot)
-				// console.log("bernardo", querySnapshot);
 				querySnapshot.forEach((doc) => {
-					obj.push(doc.data(doc));
-					// console.log(doc.data());
+					// obj.push(doc.data(doc));
+					this.commit("setGestations", doc.data(doc));
 				});
 				console.log(obj);
-
-				this.commit("setGestations", obj);
+				// this.commit("setGestations", obj);
 			} catch (error) {
 				console.log(error);
 			}
@@ -57,8 +53,8 @@ const store = createStore({
 		},
 		setGestations(state, payload) {
 			// console.clear()
-			console.log(state)
-			state.gestations.push(payload)
+			console.log(state.gestations);
+			state.gestations = payload;
 		},
 	},
 });
