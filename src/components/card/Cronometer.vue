@@ -9,6 +9,7 @@ div
 		v-card-title(class="d-flex justify-center") Iniciar Atendimento
 		div.pa-2.d-flex.justify-space-between
 			v-btn(color="primary" @click="startTimer()") iniciar
+			//- | 00:00:00
 			| {{ formatTime }}
 </template>
 
@@ -23,7 +24,7 @@ export default {
 		};
 	},
 	computed: {
-		formatTime() {
+		formatTime: function () {
 			if (this.currentTime) {
 				const seconds = Math.floor((this.currentTime - this.startTime) / 1000);
 				const hours = Math.floor(seconds / 3600);
@@ -37,7 +38,7 @@ export default {
 		},
 	},
 	methods: {
-		startTimer() {
+		startTimer: function () {
 			if (!this.isRunning) {
 				this.isRunning = true;
 				this.startTime = new Date().getTime();
@@ -46,22 +47,19 @@ export default {
 				this.$router.push("/service");
 			}
 		},
-		stopTimer() {
+		stopTimer: function () {
 			if (this.isRunning) {
+				this.currentTime = false;
 				this.isRunning = false;
 				this.$router.push("/home");
 			}
 		},
-		updateTimer() {
+		updateTimer: function () {
 			if (this.isRunning) {
 				this.currentTime = new Date().getTime();
 				requestAnimationFrame(this.updateTimer);
 			}
 		},
-		// iniciar:function(){
-		// 	console.clear();
-		// 	console.log("clicou no iniciar");
-		// }
 	},
 };
 </script>

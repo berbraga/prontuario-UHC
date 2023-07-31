@@ -7,6 +7,7 @@ v-card(class="d-flex align-center text-center fill-height h-auto mb-5 pa-1" elev
 		p.info Altura: {{ this.patient.height }} cm
 		p.info Sexo: {{ this.patient.sex == 'F' ? 'Feminino' : 'Masculino' }}
 		p.info Peso: {{ this.weight }} kg
+		p.info {{ this.gestations }}
 </template>
 
 <script>

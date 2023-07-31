@@ -8,7 +8,7 @@ v-navigation-drawer(permanent, v-if="this.drawer" )
 	v-divider
 	Cronometer
 
-	v-divider
+	//- v-divider
 
 	v-list( density="compact",  nav )
 		v-list-item( v-if="this.$route.fullPath === '/home'", prepend-icon="mdi-note", title="Resumo", value="Resumo")
@@ -45,7 +45,7 @@ export default {
 	},
 	watch: {
 		$route(to, from) {
-			console.clear();
+			// console.clear();
 			console.log(to.fullPath, from.fullPath);
 			if (to.fullPath !== "/") {
 				this.drawer = true;
