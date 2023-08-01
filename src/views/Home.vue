@@ -35,11 +35,11 @@ export default {
 		await this.$store.dispatch("gestationInteraction");
 	},
 	methods: {
-		after: async function () {
-			const gestation = await this.$store.getters.getGestations;
-			console.log(gestation);
-			return gestation;
-		},
+		// after: async function () {
+		// 	const gestation = await this.$store.getters.getGestations;
+		// 	console.log(gestation);
+		// 	return gestation;
+		// },
 	},
 };
 </script>

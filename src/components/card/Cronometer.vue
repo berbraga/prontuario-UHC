@@ -41,6 +41,8 @@ export default {
 		startTimer: function () {
 			if (!this.isRunning) {
 				this.isRunning = true;
+				// alert(this.isRunning)
+				localStorage.setItem('isRunning', this.isRunning)
 				this.startTime = new Date().getTime();
 				this.currentTime = this.startTime;
 				this.updateTimer();
@@ -51,6 +53,8 @@ export default {
 			if (this.isRunning) {
 				this.currentTime = false;
 				this.isRunning = false;
+				localStorage.setItem('isRunning', '')
+
 				this.$router.push("/home");
 			}
 		},
