@@ -2,19 +2,18 @@
 v-card(color="grey", class="d-flex flex-column ma-2 pa-2")
 	div.d-flex.justify-space-between.align-center
 		p.d-flex Data: {{ this.day }}
-		v-btn(color="primary") imprimir esse exame
+		v-btn(color="primary", @click="generatePDF(gestation.forms['conclusion.info.text'])", v-if="gestation.forms['conclusion.info.text']" )  Imprimir esse Laudo
+		//- v-btn(color="primary") imprimir esse exame
 	div.w-auto
 		h3 formularios
 		li(v-for="(form, formIndex) in getFormsList(this.gestation.forms)" :key="`form${formIndex}`") {{ form  }}
 
 	div.d-flex.justify-space-between.mt-2
 
-		v-btn(color="primary", @click="generatePDF(gestation.forms['conclusion.info.text'])", v-if="gestation.forms['conclusion.info.text']" )  mostrar laudo
 		//- v-btn(color="yellow") mostrar exame
 </template>
 
-
-<script >
+<script>
 // import DateToday from "../card/DateToday.vue";
 
 export default {
@@ -38,16 +37,15 @@ export default {
 				if (result.indexOf(formatKey) < 0) result.push(formatKey);
 			});
 
-			result = result.map(
-				(item) => {
-					return item;
-				});
+			result = result.map((item) => {
+				return item;
+			});
 
 			return result;
 		},
 
-		generatePDF:function (text) {
-			alert(text)
+		generatePDF: function (text) {
+			alert(text);
 		},
 
 		formatDateExtend: function (value) {
@@ -65,7 +63,5 @@ export default {
 			return formattedDate;
 		},
 	},
-
-
-}
+};
 </script>

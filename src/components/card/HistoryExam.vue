@@ -11,7 +11,7 @@ v-card.d-flex.flex-column.justify-center( elevation="5", color="grey")
 </template>
 
 <script>
-import {mapState} from "vuex"
+import { mapState } from "vuex";
 import HistoryExam from "../service/HistoryExam.vue";
 
 export default {
@@ -25,7 +25,7 @@ export default {
 		}),
 	},
 	mounted() {
-		console.log(this.gestations)
-	}
+		console.log(this.gestations);
+	},
 };
 </script>

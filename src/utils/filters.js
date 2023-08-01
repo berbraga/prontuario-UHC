@@ -32,18 +32,17 @@ const formatDateMonth = (value, mask) => {
 };
 
 const ageFriendly = (timestamp) => {
+	if (timestamp && timestamp.seconds) {
+		const birthDate = new Date(timestamp.seconds * 1000); // Convert seconds to milliseconds
+		const currentDate = new Date();
+		const ageInMilliseconds = currentDate - birthDate;
+		const millisecondsPerYear = 1000 * 60 * 60 * 24 * 365.25;
+		const age = ageInMilliseconds / millisecondsPerYear;
 
-  if (timestamp && timestamp.seconds) {
-    const birthDate = new Date(timestamp.seconds * 1000); // Convert seconds to milliseconds
-    const currentDate = new Date();
-    const ageInMilliseconds = currentDate - birthDate;
-    const millisecondsPerYear = 1000 * 60 * 60 * 24 * 365.25;
-    const age = ageInMilliseconds / millisecondsPerYear;
-
-    return Math.floor(age) + ' years';
-  } else {
-    return '---';
-  }
+		return Math.floor(age) + " years";
+	} else {
+		return "---";
+	}
 };
 
 // Adicione outros filtros personalizados aqui...
@@ -54,8 +53,6 @@ export const customFilters = {
 	formatDateDay,
 	formatDateMonth,
 	ageFriendly,
-
-
 
 	// Adicione outros filtros aqui...
 };

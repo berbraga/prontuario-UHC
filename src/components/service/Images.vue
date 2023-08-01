@@ -15,25 +15,23 @@ v-card(color="grey", class="d-flex flex-column")
 			v-btn(color="primary", @click="generatePDF(gestation.forms['conclusion.info.text'])", v-if="gestation.forms['conclusion.info.text']" ) visualizar
 </template>
 
-
 <script>
-import {mapState} from 'vuex'
-
+import { mapState } from "vuex";
 
 export default {
-	data(){
+	data() {
 		return {
-			bernardo:1
-		}
+			bernardo: 1,
+		};
 	},
 	computed: {
 		...mapState({
 			gestations: (state) => state.gestations,
 		}),
 	},
-	methods:{
-		generatePDF:function (text) {
-			alert(text)
+	methods: {
+		generatePDF: function (text) {
+			alert(text);
 		},
 
 		getFormsList: function (forms) {
@@ -45,15 +43,12 @@ export default {
 				if (result.indexOf(formatKey) < 0) result.push(formatKey);
 			});
 
-			result = result.map(
-				(item) => {
-					return item;
-				},
-			);
+			result = result.map((item) => {
+				return item;
+			});
 
 			return result;
 		},
-	}
-}
-
+	},
+};
 </script>

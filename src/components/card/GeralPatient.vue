@@ -38,7 +38,7 @@ export default {
 
 		this.weight = this.patient.weight.substr(-20, 2);
 	},
-	methods:{
+	methods: {
 		ageFriendly: function (timestamp) {
 			// console.log(timestamp)
 			if (timestamp && timestamp.seconds) {
@@ -48,12 +48,11 @@ export default {
 				const millisecondsPerYear = 1000 * 60 * 60 * 24 * 365.25;
 				const age = ageInMilliseconds / millisecondsPerYear;
 
-				return Math.floor(age) + ' years';
+				return Math.floor(age) + " years";
 			} else {
-				return '---';
+				return "---";
 			}
-
-		}
-	}
+		},
+	},
 };
 </script>

@@ -10,11 +10,9 @@ import Images from "@/components/service/Images.vue";
 // import {mapState} from "vuex"
 
 export default {
-  components: {
-    GeralPatient,
-    Images,
-  },
-
-
+	components: {
+		GeralPatient,
+		Images,
+	},
 };
 </script>
