@@ -2,26 +2,28 @@
 v-card.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="grey", style="width:70%; min-width:600px")
 	div.d-flex.flex-row.justify-space-between.align-center
 
-		p Consulta: {{ this.day }}
+		strong Consulta: {{ this.day }}
 
 		div.bg-yellow.pa-2.rounded(v-if='this.gestation.status == "ANDAMENTO"')
 			p {{ this.gestation.status }}
 		div.bg-primary.pa-2.rounded(v-else)
 			p {{ this.gestation.status }}
+	div.d-flex.flex-row
+		div.w-50
+			h3 formularios
+			li(v-for="(form, formIndex) in getFormsList(this.gestation.forms)" :key="`form${formIndex}`") {{ form  }}
 
+		div.w-50(v-if="this.gestation.observations")
+			h1 Observacoes
+			div(v-html="this.gestation.observations")
 
-	p formularios
-	//- p(v-for="(form, formIndex) in getFormsList(this.gestation.forms)" :key="`form${formIndex}`") {{ form  }}
-	h1 observacoes
-	div(v-html="this.gestation.observations")
-	h1 Laudo
-	div(v-html="this.gestation.forms['conclusion.info.text']")
+	div(v-if="this.gestation.forms['conclusion.info.text']")
+		h1.text-center.mt-4.mb-4 Laudo
+		div(v-html="this.gestation.forms['conclusion.info.text']")
 
 </template>
 
 <script>
-import moment from "moment";
-
 import DateToday from "./DateToday.vue";
 // import {formatDateExtend} from '@/utils/functions.js'
 
@@ -50,10 +52,12 @@ export default {
 				if (result.indexOf(formatKey) < 0) result.push(formatKey);
 			});
 
-			result = result.map((item) =>
-				["morphological", "conclusion"].indexOf(item) > -1
-					? this.$i18n.t(`words.${item}`)
-					: this.$i18n.t(`messages.${item}`),
+			result = result.map((item) => {return item}
+				// console.log(item)
+
+			// 	["morphological", "conclusion"].indexOf(item) > -1
+			// 		? this.$i18n.t(`words.${item}`)
+			// 		: this.$i18n.t(`messages.${item}`),
 			);
 
 			return result;
@@ -76,3 +80,4 @@ export default {
 	},
 };
 </script>
+
