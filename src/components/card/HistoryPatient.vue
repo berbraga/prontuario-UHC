@@ -52,12 +52,15 @@ export default {
 				if (result.indexOf(formatKey) < 0) result.push(formatKey);
 			});
 
-			result = result.map((item) => {return item}
+			result = result.map(
+				(item) => {
+					return item;
+				},
 				// console.log(item)
 
-			// 	["morphological", "conclusion"].indexOf(item) > -1
-			// 		? this.$i18n.t(`words.${item}`)
-			// 		: this.$i18n.t(`messages.${item}`),
+				// 	["morphological", "conclusion"].indexOf(item) > -1
+				// 		? this.$i18n.t(`words.${item}`)
+				// 		: this.$i18n.t(`messages.${item}`),
 			);
 
 			return result;
@@ -80,4 +83,3 @@ export default {
 	},
 };
 </script>
-

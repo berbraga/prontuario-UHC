@@ -15,7 +15,6 @@
 				label="Selecione o Remédio"
 				:items="medicines"
 				class="ma-2 w-80"
-
 				multiple
 				variant="outlined"
 			></v-autocomplete>
@@ -39,10 +38,10 @@ export default {
 		getMedicines: function () {
 			for (let i = 0; i < 100; i++) {
 				this.medicines.push(
-					`${Medicamentos[i].nome} | ${Medicamentos[i].apresentacao} | ${Medicamentos[i].tipo}`
+					`${Medicamentos[i].nome} | ${Medicamentos[i].apresentacao} | ${Medicamentos[i].tipo}`,
 				);
 			}
-			console.log(this.medicines)
+			console.log(this.medicines);
 		},
 	},
 };
