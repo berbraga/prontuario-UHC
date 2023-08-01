@@ -19,6 +19,7 @@
     "moment": "^2.29.4",
     "roboto-fontface": "0.10.0",
     "vue": "^3.3.4",
+    "vue-filter": "^0.2.5",
     "vue-pug-plugin": "^2.0.3",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^4.2.4",

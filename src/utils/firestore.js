@@ -18,10 +18,6 @@ export default {
 		return obj;
 	},
 
-  formatDateExtend (value) {
-		const data = moment(value).format('DD/MM/YYYY')
-    return  data
-	}
 
 
 };

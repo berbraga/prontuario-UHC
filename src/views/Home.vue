@@ -1,11 +1,12 @@
 <template lang="pug">
-v-container(class="d-flex flex-column")
+v-container(class="d-flex flex-column ")
 	GeralPatient
 	div( class="d-flex justify-center")
-		h1 Historico
 	//- | {{ this.gestations	 }}
-	HistoryPatient(v-for="gestation in this.gestations" :gestation="gestation")
-	v-btn(@click="after") tseste
+	div.align-center(style=" display: flex; flex-direction: column;")
+		h1 Historico
+		HistoryPatient(v-for="gestation in this.gestations" :gestation="gestation")
+	//- v-btn(@click="after") tseste
 
 
 </template>
