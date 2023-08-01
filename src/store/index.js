@@ -29,7 +29,7 @@ const store = createStore({
 				const q = querys(
 					collections(db, "gestationInteraction"),
 					// wheres("patient.id", "==", "rLO9SBEpN0btAvvnCpI9")
-					wheres("patient.id", "==", "RxnbZ9MrFpb668JifO0v")
+					wheres("patient.id", "==", "RxnbZ9MrFpb668JifO0v"),
 				); //'sJHSKXzjM1pMUcKtn2mx'
 
 				// console.clear();

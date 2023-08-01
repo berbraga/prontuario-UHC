@@ -20,7 +20,7 @@ v-card.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="gr
 </template>
 
 <script>
-import moment from 'moment'
+import moment from "moment";
 
 import DateToday from "./DateToday.vue";
 // import {formatDateExtend} from '@/utils/functions.js'
@@ -35,13 +35,13 @@ export default {
 			type: Object,
 		},
 	},
-	data(){
+	data() {
 		return {
-			day: this.formatDateExtend(this.gestation.date)
-		}
+			day: this.formatDateExtend(this.gestation.date),
+		};
 	},
 	methods: {
-		getFormsList:function(forms) {
+		getFormsList: function (forms) {
 			if (!forms) return;
 			let result = [];
 
@@ -53,7 +53,7 @@ export default {
 			result = result.map((item) =>
 				["morphological", "conclusion"].indexOf(item) > -1
 					? this.$i18n.t(`words.${item}`)
-					: this.$i18n.t(`messages.${item}`)
+					: this.$i18n.t(`messages.${item}`),
 			);
 
 			return result;
@@ -64,15 +64,15 @@ export default {
 			const timestampInMilliseconds = timestampInSeconds * 1000;
 			const date = new Date(timestampInMilliseconds);
 
-			const day = date.getDate().toString().padStart(2, '0');
-			const month = (date.getMonth() + 1).toString().padStart(2, '0');
+			const day = date.getDate().toString().padStart(2, "0");
+			const month = (date.getMonth() + 1).toString().padStart(2, "0");
 			const year = date.getFullYear().toString();
 
 			const formattedDate = `${day}/${month}/${year}`;
 			// console.log(formattedDate)
-			this.day = formattedDate
+			this.day = formattedDate;
 			return formattedDate;
-		}
+		},
 	},
 };
 </script>

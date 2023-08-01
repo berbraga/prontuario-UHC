@@ -38,7 +38,7 @@ export default {
 		getMedicines: function () {
 			for (let i = 0; i < 100; i++) {
 				this.medicines.push(
-					`${Medicamentos[i].nome} | ${Medicamentos[i].apresentacao} | ${Medicamentos[i].tipo}`
+					`${Medicamentos[i].nome} | ${Medicamentos[i].apresentacao} | ${Medicamentos[i].tipo}`,
 				);
 			}
 		},
