@@ -1,13 +1,16 @@
 <template lang="pug">
-v-card.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="grey", style="width:70%; min-width:600px")
+v-card.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="grey", style=" width:80%; min-width:630px")
 	div.d-flex.flex-row.justify-space-between.align-center
 
 		strong Consulta: {{ this.day }}
 
-		div.bg-yellow.pa-2.rounded(v-if='this.gestation.status == "ANDAMENTO"')
-			p {{ this.gestation.status }}
-		div.bg-primary.pa-2.rounded(v-else)
-			p {{ this.gestation.status }}
+		div.d-flex.flex-row.align-center
+			v-icon.mr-3(icon="mdi-eye",v-if='this.gestation.status !== "ANDAMENTO"', @click="viewExam()")
+			div.bg-yellow.pa-2.rounded(v-if='this.gestation.status == "ANDAMENTO"')
+				p {{ this.gestation.status }}
+			div.bg-primary.pa-2.rounded(v-else)
+				p {{ this.gestation.status }}
+
 	div.d-flex.flex-row
 		div.w-50
 			h3 formularios
@@ -43,6 +46,15 @@ export default {
 		};
 	},
 	methods: {
+		viewExam: function () {
+			const url =
+				"https://report-server-dot-ultracarebr.appspot.com/report/" +
+				this.gestation.id;
+			console.log(url);
+			var win = window.open(url, "_blank");
+			win.focus();
+		},
+
 		getFormsList: function (forms) {
 			if (!forms) return;
 			let result = [];
@@ -52,16 +64,9 @@ export default {
 				if (result.indexOf(formatKey) < 0) result.push(formatKey);
 			});
 
-			result = result.map(
-				(item) => {
-					return item;
-				},
-				// console.log(item)
-
-				// 	["morphological", "conclusion"].indexOf(item) > -1
-				// 		? this.$i18n.t(`words.${item}`)
-				// 		: this.$i18n.t(`messages.${item}`),
-			);
+			result = result.map((item) => {
+				return item;
+			});
 
 			return result;
 		},

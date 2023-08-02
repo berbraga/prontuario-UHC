@@ -33,6 +33,7 @@ export default {
 	},
 	async mounted() {
 		await this.$store.dispatch("gestationInteraction");
+		await this.$store.dispatch("pep");
 	},
 	methods: {
 		// after: async function () {

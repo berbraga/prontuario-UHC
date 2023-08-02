@@ -5,6 +5,7 @@ const store = createStore({
 	state: {
 		patient: {},
 		gestations: [],
+		pep: {},
 	},
 
 	getters: {
@@ -14,10 +15,6 @@ const store = createStore({
 
 	actions: {
 		async patient() {
-			// console.clear();
-			console.log("patient bernardo");
-
-			// const docRef = docs(db, "patients", "rLO9SBEpN0btAvvnCpI9");
 			const docRef = docs(db, "patients", "EbtxxOBRN26C8eJwcKjo");
 			const docSnap = await gd(docRef);
 			if (docSnap.exists()) {
@@ -32,17 +29,29 @@ const store = createStore({
 					wheres("patient.id", "==", "RxnbZ9MrFpb668JifO0v"),
 				); //'sJHSKXzjM1pMUcKtn2mx'
 
-				// console.clear();
 				const querySnapshot = await gds(q);
 				let obj = [];
 				querySnapshot.forEach((doc) => {
-					obj.push(doc.data());
+					const job = { ...doc.data() };
+					const nomeDoc = doc._key.path.segments[6];
+					job.id = nomeDoc;
+					obj.push(job);
 				});
-				console.log(obj);
-				// this.state.gestations = obj
 				this.commit("setGestations", obj);
 			} catch (error) {
 				console.log(error);
+			}
+		},
+		async pep() {
+			try {
+				const docRef = docs(db, "pep", "XxOj3LNjGg5K6GNqSc9S");
+
+				const docSnap = await gd(docRef);
+				if (docSnap.exists()) {
+					console.log(docSnap.data());
+				}
+			} catch (error) {
+				alert(error);
 			}
 		},
 	},
@@ -52,13 +61,7 @@ const store = createStore({
 			state.patient = payload;
 		},
 		setGestations(state, payload) {
-			// console.clear()
-			console.log(payload.length);
 			state.gestations = payload;
-
-			// for( const obj of payload ) {
-			// 	console.log(obj)
-			// }
 		},
 	},
 });

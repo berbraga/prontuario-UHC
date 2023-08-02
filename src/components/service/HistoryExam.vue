@@ -2,7 +2,7 @@
 v-card(color="grey", class="d-flex flex-column ma-2 pa-2")
 	div.d-flex.justify-space-between.align-center
 		p.d-flex Data: {{ this.day }}
-		v-btn(color="primary", @click="generatePDF(gestation.forms['conclusion.info.text'])", v-if="gestation.forms['conclusion.info.text']" )  Imprimir esse Laudo
+		v-btn(color="red", @click="generatePDF(gestation.forms['conclusion.info.text'])", v-if="gestation.forms['conclusion.info.text']" )  Imprimir
 		//- v-btn(color="primary") imprimir esse exame
 	div.w-auto
 		h3 formularios

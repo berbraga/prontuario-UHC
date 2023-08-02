@@ -6,17 +6,20 @@ v-card.d-flex.flex-column.justify-center( elevation="5", color="grey")
 		//- v-btn(color="red") imprimir todos
 	v-divider(class="border-opacity-25")
 
-	div(class="d-flex flex-column" v-for="gestation in this.gestations")
-		history-exam(:gestation='gestation')
+	div(class="d-flex flex-column align-center" v-for="gestation in this.gestations")
+		HistoryPatient(:gestation="gestation")
 </template>
 
 <script>
 import { mapState } from "vuex";
 import HistoryExam from "../service/HistoryExam.vue";
 
+import HistoryPatient from "./HistoryPatient.vue";
+
 export default {
 	components: {
 		HistoryExam,
+		HistoryPatient,
 	},
 	computed: {
 		...mapState({
