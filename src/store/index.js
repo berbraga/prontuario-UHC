@@ -26,7 +26,7 @@ const store = createStore({
 			const companiesRef = collections(firestore, "companies");
 			const queryCompanies = querys(
 				companiesRef,
-				wheres("identity","in",this.state.user.companies)
+				wheres("identity", "in", this.state.user.companies),
 			);
 			const companiesSnapshot = await gds(queryCompanies);
 			if (companiesSnapshot && companiesSnapshot.docs[0]) {
@@ -38,7 +38,7 @@ const store = createStore({
 			const companiesRef = collections(firestore, "companies");
 			const queryCompany = querys(
 				companiesRef,
-				wheres("identity","==",this.state.user.company)
+				wheres("identity", "==", this.state.user.company),
 			);
 			const companySnapshot = await gds(queryCompany);
 			if (companySnapshot && companySnapshot.docs[0]) {
