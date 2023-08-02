@@ -6,6 +6,7 @@ const store = createStore({
 		patient: {},
 		gestations: [],
 		pep: {},
+		company: null,
 	},
 
 	getters: {
@@ -15,10 +16,35 @@ const store = createStore({
 
 	actions: {
 		async patient() {
-			const docRef = docs(db, "patients", "EbtxxOBRN26C8eJwcKjo");
+			const docRef = docs(db, "patients", "RxnbZ9MrFpb668JifO0v");
 			const docSnap = await gd(docRef);
 			if (docSnap.exists()) {
 				this.commit("setPatient", docSnap.data());
+			}
+		},
+		async loadCompanies(context) {
+			const companiesRef = collections(firestore, "companies");
+			const queryCompanies = querys(
+				companiesRef,
+				wheres("identity","in",this.state.user.companies)
+			);
+			const companiesSnapshot = await gds(queryCompanies);
+			if (companiesSnapshot && companiesSnapshot.docs[0]) {
+				let companies = companiesSnapshot.docs.map((item) => item.data());
+				context.commit("setCompanies", companies);
+			}
+		},
+		async setCompany(context) {
+			const companiesRef = collections(firestore, "companies");
+			const queryCompany = querys(
+				companiesRef,
+				wheres("identity","==",this.state.user.company)
+			);
+			const companySnapshot = await gds(queryCompany);
+			if (companySnapshot && companySnapshot.docs[0]) {
+				let company = companySnapshot.docs[0].data();
+				company.iuid = companySnapshot.docs[0].id;
+				context.commit("setCompany", company);
 			}
 		},
 		async gestationInteraction() {
@@ -62,6 +88,9 @@ const store = createStore({
 		},
 		setGestations(state, payload) {
 			state.gestations = payload;
+		},
+		setCompanies(state, companies) {
+			state.companies = companies;
 		},
 	},
 });

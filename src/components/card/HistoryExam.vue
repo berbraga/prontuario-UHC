@@ -1,5 +1,5 @@
 <template lang="pug">
-v-card.d-flex.flex-column.justify-center( elevation="5", color="grey")
+div.d-flex.flex-column.justify-center( elevation="5", color="")
 	div.d-flex.justify-space-between.ma-2.align-center
 		h2 Exames Anteriores
 

@@ -1,5 +1,5 @@
 <template lang="pug">
-v-card.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="grey", style=" width:80%; min-width:630px")
+v-card.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="grey", style="width:100%")
 	div.d-flex.flex-row.justify-space-between.align-center
 
 		strong Consulta: {{ this.day }}

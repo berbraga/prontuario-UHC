@@ -15,6 +15,7 @@ import {
 	query,
 	where,
 	getDocs,
+	addDoc,
 } from "firebase/firestore";
 
 const options = {
@@ -37,6 +38,7 @@ export const docs = doc;
 export const collections = collection;
 export const querys = query;
 export const wheres = where;
+export const add = addDoc;
 
 export const auth = getAuth(firebaseApp);
 
