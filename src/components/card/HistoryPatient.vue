@@ -44,7 +44,7 @@ export default {
 		},
 	},
 	data() {
-		console.log(this.gestation.doctor.name)
+		console.log(this.gestation.doctor.name);
 		return {
 			doctor: this.gestation.doctor.name,
 			day: this.formatDateExtend(this.gestation.date),

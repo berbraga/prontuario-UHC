@@ -1,9 +1,9 @@
 <template lang="pug">
 v-card.pa-4.mt-5(color="grey")
 	h4 {{ this.patient.name }} apresenta:
-	v-textarea.mt-2(label="Queixas do paciente",variant="outlined")
+	v-textarea.mt-2(label="Queixas do paciente", @change="save($event, 'complaint')", variant="outlined")
 	h4 Exames que foram feitos são:
-	v-textarea.mt-2(label="Exames feitos",variant="outlined")
+	v-textarea.mt-2(label="Exames feitos", @change="save($event, 'exam')", variant="outlined")
 	h4 e as prescricões sao:
 	v-textarea.mt-2(label="Prescricoes",variant="outlined")
 	div.d-flex.justify-end
@@ -13,14 +13,25 @@ v-card.pa-4.mt-5(color="grey")
 
 <script>
 import { mapState } from "vuex";
+import _ from "lodash";
+
 export default {
 	data() {
-		return {};
+		return {
+			i: 0,
+		};
 	},
 	computed: {
 		...mapState({
 			patient: (state) => state.patient,
 		}),
+	},
+	methods: {
+		save: function (event, name) {
+			const nameUpper = name.toUpperCase();
+			const value = event.target.value;
+			console.log(nameUpper, value);
+		},
 	},
 };
 </script>

@@ -19,7 +19,7 @@ v-navigation-drawer(permanent, v-if="this.drawer" )
 </template>
 
 <script>
-import {mapState} from "vuex"
+import { mapState } from "vuex";
 import Cronometer from "../card/Cronometer.vue";
 export default {
 	components: {
@@ -47,7 +47,6 @@ export default {
 			],
 		};
 	},
-
 
 	computed: {
 		...mapState({

@@ -16,6 +16,7 @@ import {
 	where,
 	getDocs,
 	addDoc,
+	setDoc,
 } from "firebase/firestore";
 
 const options = {
@@ -39,6 +40,7 @@ export const collections = collection;
 export const querys = query;
 export const wheres = where;
 export const add = addDoc;
+export const set = setDoc;
 
 export const auth = getAuth(firebaseApp);
 
@@ -54,7 +56,7 @@ setPersistence(auth, browserSessionPersistence)
 		// localStorage.setItem('email', email)
 		// alert(' ta no firestore ')
 		await this.$store.dispatch("user");
-		return  (auth, email, password);
+		return auth, email, password;
 	})
 	.catch((error) => {
 		// Handle Errors here.
