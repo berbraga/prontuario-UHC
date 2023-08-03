@@ -4,7 +4,10 @@ v-app-bar(color="primary", prominent, height="50")
 	v-spacer
 
 v-navigation-drawer(permanent, v-if="this.drawer" )
-	v-list-item.ma-1( prepend-avatar="https://avatars.githubusercontent.com/u/81630194?v=4", title="Dr.Bernardo Braga", nav)
+	div.d-flex.flex.row.align-center
+		v-list-item.ma-0.pa-0.my-2.ml-2( prepend-avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWc9kZq9EbswA20E-IX3nFwJuQeeCogLqUFyamUuw_DMtVUtmD&quot",  nav)
+		strong Dr.{{ this.user.displayName }}
+
 	v-divider
 	Cronometer
 
@@ -16,6 +19,7 @@ v-navigation-drawer(permanent, v-if="this.drawer" )
 </template>
 
 <script>
+import {mapState} from "vuex"
 import Cronometer from "../card/Cronometer.vue";
 export default {
 	components: {
@@ -43,6 +47,17 @@ export default {
 			],
 		};
 	},
+
+
+	computed: {
+		...mapState({
+			user: (state) => state.user,
+		}),
+	},
+	async mounted() {
+		await this.$store.dispatch("user");
+	},
+
 	watch: {
 		$route(to, from) {
 			// console.clear();

@@ -3,6 +3,7 @@ import { collections, db, docs, gd, gds, querys, wheres } from "./firebase";
 
 const store = createStore({
 	state: {
+		user:{},
 		patient: {},
 		gestations: [],
 		pep: {},
@@ -15,6 +16,22 @@ const store = createStore({
 	},
 
 	actions: {
+		async user () {
+			try {
+
+				const docRef = docs(db, "users", 'PeeBxWWbXxTu1YbY3NicMWjQGOj2'); //"Uxo3PLXy6deMZZ4nnOXEUYGEZRw2"
+				const docSnap = await gd(docRef);
+				if (docSnap.exists()) {
+					const user = docSnap.data()
+					console.log(user)
+					this.commit("setUser", user);
+
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		},
+
 		async patient() {
 			const docRef = docs(db, "patients", "RxnbZ9MrFpb668JifO0v");
 			const docSnap = await gd(docRef);
@@ -85,6 +102,9 @@ const store = createStore({
 	mutations: {
 		setPatient(state, payload) {
 			state.patient = payload;
+		},
+		setUser (state,payload){
+			state.user = payload
 		},
 		setGestations(state, payload) {
 			state.gestations = payload;

@@ -23,6 +23,9 @@ v-card.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="gr
 	div(v-if="this.gestation.forms['conclusion.info.text']")
 		h1.text-center.mt-4.mb-4 Laudo
 		div(v-html="this.gestation.forms['conclusion.info.text']")
+	div.mt-3.w-100.d-flex.flex.row.align-center()
+		v-list-item.pa-0( prepend-avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWc9kZq9EbswA20E-IX3nFwJuQeeCogLqUFyamUuw_DMtVUtmD&quot")
+		|Dr.{{this.doctor}}
 
 </template>
 
@@ -41,7 +44,9 @@ export default {
 		},
 	},
 	data() {
+		console.log(this.gestation.doctor.name)
 		return {
+			doctor: this.gestation.doctor.name,
 			day: this.formatDateExtend(this.gestation.date),
 		};
 	},
