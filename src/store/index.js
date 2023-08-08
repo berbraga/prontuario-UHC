@@ -7,7 +7,7 @@ const store = createStore({
 		patient: {},
 		gestations: [],
 		pep: {},
-		company: null,
+		company: {},
 	},
 
 	getters: {
@@ -18,11 +18,11 @@ const store = createStore({
 	actions: {
 		async user() {
 			try {
-				const docRef = docs(db, "users", "PeeBxWWbXxTu1YbY3NicMWjQGOj2"); //"Uxo3PLXy6deMZZ4nnOXEUYGEZRw2"
+				const docRef = docs(db, "users", "3lmgPQI5I4c760x3fe2IoCb0AhO2"); //"Uxo3PLXy6deMZZ4nnOXEUYGEZRw2"
 				const docSnap = await gd(docRef);
 				if (docSnap.exists()) {
 					const user = docSnap.data();
-					console.log(user);
+					// console.log(user);
 					this.commit("setUser", user);
 				}
 			} catch (error) {
@@ -46,9 +46,8 @@ const store = createStore({
 			try {
 				const q = querys(
 					collections(db, "gestationInteraction"),
-					// wheres("patient.id", "==", "rLO9SBEpN0btAvvnCpI9")
 					wheres("patient.id", "==", "RxnbZ9MrFpb668JifO0v"),
-				); //'sJHSKXzjM1pMUcKtn2mx'
+				);
 
 				const querySnapshot = await gds(q);
 				let obj = [];
@@ -66,36 +65,38 @@ const store = createStore({
 
 		async company () {
 			try {
+				this.state.user.companies
+				const q = querys(
+					collections(db, "companies"),
+					wheres("identity", "in",this.state.user.companies ),
+				);
 
+				const querySnapshot = await gds(q);
+
+				let obj = [];
+				querySnapshot.forEach((doc) => {
+					// console.log(doc.data())
+					const job = { ...doc.data() };
+					const nomeDoc = doc._key.path.segments[6];
+					job.id = nomeDoc;
+					obj.push(job);
+				});
+
+				this.commit("setCompanies", obj[0]);
 			}catch (err) {
-
+				console.log(err);
 			}
 		},
 		async pep() {
 			try {
-				// const docRef = docs(db, "pep", "XxOj3LNjGg5K6GNqSc9S");
+				const docRef = docs(db, "pep", "XxOj3LNjGg5K6GNqSc9S");
 
-				// const docSnap = await gd(docRef);
-				// if (docSnap.exists()) {
-				// 	console.log(docSnap.data());
-				// }
+				const docSnap = await gd(docRef);
+				if (docSnap.exists()) {
+					console.log(docSnap.data());
+				}
 
-				payload.company = {
-          id: this.state.company.iuid? this.state.company.iuid : null,
-          name: this.state.company.name? this.state.company.name : null,
-          nameFull: this.state.company.nameFull? this.state.company.nameFull : null,
-          identity: this.state.company.identity? this.state.company.identity : null
-        }
-        payload.patId = new Date().toISOString().replace(/[-:TZ.]/g, '').substring(0, 14)
-        payload.timestamp = serverTime()
-        console.log('payload : ', payload)
-        let doc = await addDocs(collections(firestore, 'patients'), payload)
-        if (doc) {
-            payload.iuid = doc.id
-            let docRef = docs(firestore,'patients', doc.id)
-            await update(docRef, payload)
-        }
-        context.commit('setPatient', payload)
+
 
 			} catch (error) {
 				alert(error);
@@ -108,14 +109,14 @@ const store = createStore({
 			state.patient = payload;
 		},
 		setUser(state, payload) {
-			console.log(payload)
 			state.user = payload;
 		},
 		setGestations(state, payload) {
 			state.gestations = payload;
 		},
-		setCompanies(state, companies) {
-			state.companies = companies;
+		setCompanies(state, payload) {
+			// console.log(payload)
+			state.companies = payload;
 		},
 	},
 });

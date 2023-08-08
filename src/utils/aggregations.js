@@ -19,12 +19,14 @@ const ENTITIES = {
 }
 
 function aggregate (entity, payload) {
-  if (!payload) return null
+	if (!payload) return null
   let obj = {}
   obj.id = payload.iuid || payload.uid || payload.id
   const fields = ENTITIES[entity]
   Object.entries(fields).forEach(([fieldKey, fieldValue]) => {
+		// console.log(fieldKey, fieldValue)
     const value = payload[fieldValue]
+console.log(payload)
     if (value) {
       obj[fieldKey] = value
     }

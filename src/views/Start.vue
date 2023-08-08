@@ -11,5 +11,11 @@ export default {
 			bernardo: 1,
 		};
 	},
+	async mounted() {
+		await this.$store.dispatch("user");
+		await this.$store.dispatch("gestationInteraction");
+		await this.$store.dispatch("pep");
+		await this.$store.dispatch("company");
+	},
 };
 </script>

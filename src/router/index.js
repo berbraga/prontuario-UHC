@@ -61,35 +61,34 @@ const router = createRouter({
 	routes,
 });
 
-router.beforeEach(async (to, from) => {
-	// console.clear ();
-	// console.log(from, to );
+// router.beforeEach(async (to, from) => {
 
-	return auth.onAuthStateChanged((currentUser) => {
-		console.log(currentUser);
-		if (currentUser) {
-			window.errorHandler.setUser(`${currentUser.uid} (${currentUser.email})`)
-			db.collection('users').doc(currentUser.uid).get().then(doc => {
-			  const configs = doc.data()
-			  const user = {
-			    uid: currentUser.uid,
-			    displayName: currentUser.displayName,
-			    isAnonymous: currentUser.isAnonymous,
-			    phoneNumber: currentUser.phoneNumber,
-			    photoURL: currentUser.photoURL,
-			    email: currentUser.email,
-			    ...configs
-			  }
-			  store.dispatch('setUser', user)
-			  return
-			})
-		} else if (!to.meta.requiresAuth) {
-			console.log(" else 1");
-			return;
-		} else {
-			return { name: "login" };
-		}
-	});
-});
+// 	return auth.onAuthStateChanged((currentUser) => {
+// 		console.log(to.query);
+// 		if (currentUser) {
+// 			console.log('first if')
+// 			window.errorHandler.setUser(`${currentUser.uid} (${currentUser.email})`)
+// 			db.collection('users').doc(currentUser.uid).get().then(doc => {
+// 			  const configs = doc.data()
+// 			  const user = {
+// 			    uid: currentUser.uid,
+// 			    displayName: currentUser.displayName,
+// 			    isAnonymous: currentUser.isAnonymous,
+// 			    phoneNumber: currentUser.phoneNumber,
+// 			    photoURL: currentUser.photoURL,
+// 			    email: currentUser.email,
+// 			    ...configs
+// 			  }
+// 			  store.dispatch('setUser', user)
+// 			  return
+// 			})
+// 		} else if (!to.meta.requiresAuth) {
+// 			console.log(" else 1");
+// 			return;
+// 		} else {
+// 			return { name: "login" };
+// 		}
+// 	});
+// });
 
 export default router;
