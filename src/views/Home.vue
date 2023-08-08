@@ -1,5 +1,5 @@
 <template lang="pug">
-v-container(class="d-flex flex-column ")
+v-container.pa-10(class="d-flex flex-column")
 	GeralPatient
 	div( class="d-flex justify-center")
 	//- | {{ this.gestations	 }}

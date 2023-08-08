@@ -1,5 +1,5 @@
 <template lang="pug">
-v-container
+v-container.pa-10
 	GeralPatient
 	HistoryExam
 </template>

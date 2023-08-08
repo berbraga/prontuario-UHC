@@ -11,8 +11,6 @@ v-navigation-drawer(permanent, v-if="this.drawer" )
 	v-divider
 	Cronometer
 
-	//- v-divider
-
 	v-list( density="compact",  nav )
 		v-list-item( v-if="this.$route.fullPath === '/home'", prepend-icon="mdi-note", title="Resumo", value="Resumo")
 		v-list-item( v-else, v-for="item in this.items",	:prepend-icon="item.icon", :title="item.title", :value="item.title", @click="this.changePage(item.page)"	)
