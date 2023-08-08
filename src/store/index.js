@@ -63,14 +63,40 @@ const store = createStore({
 				console.log(error);
 			}
 		},
+
+		async company () {
+			try {
+
+			}catch (err) {
+
+			}
+		},
 		async pep() {
 			try {
-				const docRef = docs(db, "pep", "XxOj3LNjGg5K6GNqSc9S");
+				// const docRef = docs(db, "pep", "XxOj3LNjGg5K6GNqSc9S");
 
-				const docSnap = await gd(docRef);
-				if (docSnap.exists()) {
-					console.log(docSnap.data());
-				}
+				// const docSnap = await gd(docRef);
+				// if (docSnap.exists()) {
+				// 	console.log(docSnap.data());
+				// }
+
+				payload.company = {
+          id: this.state.company.iuid? this.state.company.iuid : null,
+          name: this.state.company.name? this.state.company.name : null,
+          nameFull: this.state.company.nameFull? this.state.company.nameFull : null,
+          identity: this.state.company.identity? this.state.company.identity : null
+        }
+        payload.patId = new Date().toISOString().replace(/[-:TZ.]/g, '').substring(0, 14)
+        payload.timestamp = serverTime()
+        console.log('payload : ', payload)
+        let doc = await addDocs(collections(firestore, 'patients'), payload)
+        if (doc) {
+            payload.iuid = doc.id
+            let docRef = docs(firestore,'patients', doc.id)
+            await update(docRef, payload)
+        }
+        context.commit('setPatient', payload)
+
 			} catch (error) {
 				alert(error);
 			}

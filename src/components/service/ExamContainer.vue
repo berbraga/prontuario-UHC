@@ -4,7 +4,7 @@ v-card(elevation="2" color="" class="d-flex flex-column pa-3")
     h2 Exame
     div.d-flex.align-center
       DateToday
-      v-btn.mx-3.mb-2(color="red") imprimir
+      v-btn.mx-3.mb-2x(color="red") imprimir
   v-divider
   v-card(color="" elevation="0" class="rounded pa-2 mt-3 d-flex flex-column")
     v-autocomplete(clearable chips label="Selecione a indicação do Exame" :items="c10" class="mr-2 ml-1 width: auto" multiple variant="outlined")
