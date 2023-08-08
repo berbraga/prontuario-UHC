@@ -1,5 +1,5 @@
 <template lang="pug">
-v-card(class="d-flex align-center text-center fill-height h-auto ma-3 mb-5 pa-1" elevation="5" color="grey")
+v-card(class="d-flex align-center text-center fill-height h-auto ma-3 mb-5 pa-1" elevation="5" color="")
 
 	v-avatar(v-if="this.patient.sex == 'F'" image="https://img2.gratispng.com/20180410/oie/kisspng-silhouette-female-photography-clip-art-women-hair-5acd060a6a24e3.8094955215233858664348.jpg" size="170" class="ma-3")
 	v-avatar(v-else image="https://w7.pngwing.com/pngs/826/161/png-transparent-male-silhouette-men-shoes-animals-men-shoes-female-thumbnail.png" size="170" class="ma-3")
@@ -36,7 +36,7 @@ export default {
 	async created() {
 		await this.$store.dispatch("patient");
 
-		this.weight = this.patient.weight.substr(-20, 2);
+		// this.weight = this.patient.weight.substr(-20, 2);
 	},
 	methods: {
 		ageFriendly: function (timestamp) {

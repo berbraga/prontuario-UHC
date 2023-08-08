@@ -1,5 +1,5 @@
 <template lang="pug">
-v-card(color="grey", class="d-flex flex-column ma-2 pa-2")
+v-card(color="", class="d-flex flex-column ma-2 pa-2")
 	div.d-flex.justify-space-between.align-center
 		p.d-flex Data: {{ this.day }}
 		v-btn(color="red", @click="generatePDF(gestation.forms['conclusion.info.text'])", v-if="gestation.forms['conclusion.info.text']" )  Imprimir

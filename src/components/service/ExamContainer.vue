@@ -1,5 +1,5 @@
 <template>
-	<v-card elevation="2" color="grey" class="d-flex flex-column pa-3">
+	<v-card elevation="2" color="" class="d-flex flex-column pa-3">
 		<div class="d-flex pa-1 justify-space-between">
 			<h2>Exame</h2>
 			<div class="d-flex align-center">

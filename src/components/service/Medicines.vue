@@ -1,7 +1,7 @@
 <template>
 	<v-card
 		elevation="2"
-		color="grey"
+		color=""
 		class="rounded d-flex flex-column justify-center pa-3"
 	>
 		<div class="d-flex justify-space-between">

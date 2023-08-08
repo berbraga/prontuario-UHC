@@ -55,8 +55,10 @@ setPersistence(auth, browserSessionPersistence)
 		const password = "bernardo";
 		// localStorage.setItem('email', email)
 		// alert(' ta no firestore ')
+
 		await this.$store.dispatch("user");
-		return auth, email, password;
+		return signInWithEmailAndPassword(auth, email, password);
+		// return auth, email, password;
 	})
 	.catch((error) => {
 		// Handle Errors here.

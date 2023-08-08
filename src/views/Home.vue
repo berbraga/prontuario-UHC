@@ -34,7 +34,7 @@ export default {
 	async mounted() {
 		await this.$store.dispatch("user");
 		await this.$store.dispatch("gestationInteraction");
-		await this.$store.dispatch("pep");
+		// await this.$store.dispatch("pep");
 	},
 	methods: {
 		// after: async function () {

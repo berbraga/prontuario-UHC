@@ -1,5 +1,5 @@
 <template lang="pug">
-v-main
+v-main.bg-grey
 	router-view
 
 </template>

@@ -1,5 +1,5 @@
 <template lang="pug">
-v-card(color="grey", class="d-flex flex-column")
+v-card(color="", class="d-flex flex-column")
 	div.d-flex.justify-space-between.ma-3
 		h2 Documentos dos Exames
 		div.d-flex

@@ -1,5 +1,5 @@
 <template lang="pug">
-v-card.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="grey", style="width:100%")
+v-card.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="", style="width:100%")
 	div.d-flex.flex-row.justify-space-between.align-center
 
 		strong Consulta: {{ this.day }}
@@ -44,7 +44,6 @@ export default {
 		},
 	},
 	data() {
-		console.log(this.gestation.doctor.name);
 		return {
 			doctor: this.gestation.doctor.name,
 			day: this.formatDateExtend(this.gestation.date),
