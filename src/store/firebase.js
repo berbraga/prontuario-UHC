@@ -19,7 +19,7 @@ import {
 	setDoc,
 	updateDoc,
 } from "firebase/firestore";
-import {serverTimestamp } from 'firebase/firestore/lite';
+import { serverTimestamp } from "firebase/firestore/lite";
 
 const options = {
 	apiKey: "AIzaSyBDpkH1kawQ2wdnsrmZ7oDd0RGoxjRI4Qo",
@@ -43,8 +43,8 @@ export const querys = query;
 export const wheres = where;
 export const add = addDoc;
 export const set = setDoc;
-export const serverTime = serverTimestamp
-export const update = updateDoc
+export const serverTime = serverTimestamp;
+export const update = updateDoc;
 
 export const auth = getAuth(firebaseApp);
 
@@ -55,9 +55,9 @@ setPersistence(auth, browserSessionPersistence)
 		// if a user forgets to sign out.
 		// ...
 		// New sign-in will be persisted with session persistence.
-		const email = 'lucas.iohan@rafsoft.com.br' //"bernardo.sbraga@rafsoft.com.br";
-		const password = 'lucas123'// "bernardo";
-		localStorage.setItem('email', email)
+		const email = "lucas.iohan@rafsoft.com.br"; //"bernardo.sbraga@rafsoft.com.br";
+		const password = "lucas123"; // "bernardo";
+		localStorage.setItem("email", email);
 
 		// alert(' ta no firestore ')
 

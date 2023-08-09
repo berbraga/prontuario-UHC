@@ -31,15 +31,14 @@ const store = createStore({
 		},
 
 		async patient() {
-			try{
-
+			try {
 				const docRef = docs(db, "patients", "EbtxxOBRN26C8eJwcKjo");
 				const docSnap = await gd(docRef);
 				if (docSnap.exists()) {
 					this.commit("setPatient", docSnap.data());
 				}
-			}catch (err) {
-				console.log( err )
+			} catch (err) {
+				console.log(err);
 			}
 		},
 		async gestationInteraction() {
@@ -63,12 +62,12 @@ const store = createStore({
 			}
 		},
 
-		async company () {
+		async company() {
 			try {
-				this.state.user.companies
+				this.state.user.companies;
 				const q = querys(
 					collections(db, "companies"),
-					wheres("identity", "in",this.state.user.companies ),
+					wheres("identity", "in", this.state.user.companies),
 				);
 
 				const querySnapshot = await gds(q);
@@ -83,7 +82,7 @@ const store = createStore({
 				});
 
 				this.commit("setCompanies", obj[0]);
-			}catch (err) {
+			} catch (err) {
 				console.log(err);
 			}
 		},
@@ -95,9 +94,6 @@ const store = createStore({
 				if (docSnap.exists()) {
 					console.log(docSnap.data());
 				}
-
-
-
 			} catch (error) {
 				alert(error);
 			}
@@ -125,28 +121,28 @@ export default store;
 
 // patient : 'rLO9SBEpN0btAvvnCpI9'  // 'EbtxxOBRN26C8eJwcKjo'
 
-		// async loadCompanies(context) {
-		// 	const companiesRef = collections(firestore, "companies");
-		// 	const queryCompanies = querys(
-		// 		companiesRef,
-		// 		wheres("identity", "in", this.state.user.companies),
-		// 	);
-		// 	const companiesSnapshot = await gds(queryCompanies);
-		// 	if (companiesSnapshot && companiesSnapshot.docs[0]) {
-		// 		let companies = companiesSnapshot.docs.map((item) => item.data());
-		// 		context.commit("setCompanies", companies);
-		// 	}
-		// },
-		// async setCompany(context) {
-		// 	const companiesRef = collections(firestore, "companies");
-		// 	const queryCompany = querys(
-		// 		companiesRef,
-		// 		wheres("identity", "==", this.state.user.company),
-		// 	);
-		// 	const companySnapshot = await gds(queryCompany);
-		// 	if (companySnapshot && companySnapshot.docs[0]) {
-		// 		let company = companySnapshot.docs[0].data();
-		// 		company.iuid = companySnapshot.docs[0].id;
-		// 		context.commit("setCompany", company);
-		// 	}
-		// },
+// async loadCompanies(context) {
+// 	const companiesRef = collections(firestore, "companies");
+// 	const queryCompanies = querys(
+// 		companiesRef,
+// 		wheres("identity", "in", this.state.user.companies),
+// 	);
+// 	const companiesSnapshot = await gds(queryCompanies);
+// 	if (companiesSnapshot && companiesSnapshot.docs[0]) {
+// 		let companies = companiesSnapshot.docs.map((item) => item.data());
+// 		context.commit("setCompanies", companies);
+// 	}
+// },
+// async setCompany(context) {
+// 	const companiesRef = collections(firestore, "companies");
+// 	const queryCompany = querys(
+// 		companiesRef,
+// 		wheres("identity", "==", this.state.user.company),
+// 	);
+// 	const companySnapshot = await gds(queryCompany);
+// 	if (companySnapshot && companySnapshot.docs[0]) {
+// 		let company = companySnapshot.docs[0].data();
+// 		company.iuid = companySnapshot.docs[0].id;
+// 		context.commit("setCompany", company);
+// 	}
+// },

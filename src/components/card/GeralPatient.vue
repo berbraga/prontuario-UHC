@@ -31,8 +31,8 @@ export default {
 	computed: {
 		...mapState({
 			patient: (state) => state.patient,
-			user: (state) =>  state.user,
-			company: (state) => state.company
+			user: (state) => state.user,
+			company: (state) => state.company,
 		}),
 	},
 	async created() {

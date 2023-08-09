@@ -14,7 +14,6 @@ v-card(elevation="2" color="" class="d-flex flex-column pa-3")
 
 </template>
 
-
 <script>
 import DateToday from "../card/DateToday.vue";
 import C10 from "../../../public/C10.json";

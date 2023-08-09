@@ -1,12 +1,11 @@
 <template lang="pug">
 v-container.pa-10(class="d-flex flex-column")
 	GeralPatient
-	div( class="d-flex justify-center")
-	//- | {{ this.gestations	 }}
+
 	div.align-center(style=" display: flex; flex-direction: column;")
 		h1 Historico
 		HistoryPatient(v-for="gestation in this.gestations" :gestation="gestation")
-	//- v-btn(@click="after") tseste
+
 
 
 </template>
@@ -37,12 +36,6 @@ export default {
 		await this.$store.dispatch("pep");
 		await this.$store.dispatch("company");
 	},
-	methods: {
-		// after: async function () {
-		// 	const gestation = await this.$store.getters.getGestations;
-		// 	console.log(gestation);
-		// 	return gestation;
-		// },
-	},
+	methods: {},
 };
 </script>
