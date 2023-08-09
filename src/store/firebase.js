@@ -8,18 +8,12 @@ import {
 import "firebase/firestore";
 import "firebase/storage";
 import {
-	getFirestore,
-	getDoc,
-	doc,
-	collection,
-	query,
-	where,
-	getDocs,
-	addDoc,
-	setDoc,
-	updateDoc,
+	getFirestore,	getDoc,doc,
+	collection,query,where,
+	getDocs,addDoc,setDoc,
+	updateDoc,serverTimestamp,
 } from "firebase/firestore";
-import { serverTimestamp } from "firebase/firestore/lite";
+import {  } from "firebase/firestore/lite";
 
 const options = {
 	apiKey: "AIzaSyBDpkH1kawQ2wdnsrmZ7oDd0RGoxjRI4Qo",
@@ -55,13 +49,13 @@ setPersistence(auth, browserSessionPersistence)
 		// if a user forgets to sign out.
 		// ...
 		// New sign-in will be persisted with session persistence.
-		const email = "lucas.iohan@rafsoft.com.br"; //"bernardo.sbraga@rafsoft.com.br";
-		const password = "lucas123"; // "bernardo";
+		const email = "bernardo.sbraga@rafsoft.com.br"//;"lucas.iohan@rafsoft.com.br";
+		const password = "bernardo"; //"lucas123" ;
 		localStorage.setItem("email", email);
 
 		// alert(' ta no firestore ')
 
-		// await this.$store.dispatch("user");
+		await this.$store.dispatch("user");
 		return signInWithEmailAndPassword(auth, email, password);
 		// return auth, email, password;
 	})

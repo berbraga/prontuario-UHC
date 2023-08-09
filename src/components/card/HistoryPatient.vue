@@ -2,7 +2,7 @@
 v-card.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="", style="width:100%")
 	div.d-flex.flex-row.justify-space-between.align-center
 
-		strong Consulta: {{ this.day }}
+		strong  {{ this.day }}
 
 		div.d-flex.flex-row.align-center
 			v-icon.mr-3(icon="mdi-eye",v-if='this.gestation.status !== "ANDAMENTO"', @click="viewExam()")

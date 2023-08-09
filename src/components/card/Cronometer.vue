@@ -35,6 +35,7 @@ export default {
 			patient: (state) => state.patient,
 			company: (state) => state.company,
 			user: (state) => state.user,
+			companyPut: (state)=> state.companyPut
 		}),
 		formatTime: function () {
 			if (this.currentTime) {
@@ -53,37 +54,32 @@ export default {
 		startTimer: async function () {
 			if (!this.isRunning) {
 				const objImportant = {
-					// company: aggregate('company', this.company),
+					company: this.companyPut,
 					patient: aggregate("patient", this.patient),
 					doctor: aggregate("doctor", this.user),
 				};
-				// console.log(this.company)
-				// this.isRunning = true;
-				// localStorage.setItem("isRunning", this.isRunning);
-				// this.startTime = new Date().getTime();
-				// this.currentTime = this.startTime;
-				// this.updateTimer();
-				// this.$router.push("/service");
+				console.log(this.companyPut)
+				this.isRunning = true;
+				localStorage.setItem("isRunning", this.isRunning);
+				this.startTime = new Date().getTime();
+				this.currentTime = this.startTime;
+				this.updateTimer();
+				this.$router.push("/service");
 
-				// payload.company = {
-				//     id: this.state.company.iuid? this.state.company.iuid : null,
-				//     name: this.state.company.name? this.state.company.name : null,
-				//     nameFull: this.state.company.nameFull? this.state.company.nameFull : null,
-				//     identity: this.state.company.identity? this.state.company.identity : null
-				//   }
 				objImportant.patId = new Date()
 					.toISOString()
 					.replace(/[-:TZ.]/g, "")
 					.substring(0, 14);
 				// objImportant.timestamp = serverTime()
-				console.log(objImportant);
-				let doc = await add(collections(db, "pep"), objImportant);
-				if (doc) {
-					objImportant.iuid = doc.id;
-					const docRef = docs(db, "pep", doc.id);
-					await update(docRef, objImportant);
-				}
-				// context.commit('setPatient', payload)
+
+				// let doc = await add(collections(db, "pep"), objImportant);
+				// if (doc) {
+				// 	objImportant.iuid = doc.id;
+
+				// 	const docRef = docs(db, "pep", doc.id);
+				// 	await update(docRef, objImportant);
+				// }
+
 				console.log(objImportant);
 			}
 		},

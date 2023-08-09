@@ -8,6 +8,7 @@ const store = createStore({
 		gestations: [],
 		pep: {},
 		company: {},
+		companyPut:{},
 	},
 
 	getters: {
@@ -64,7 +65,9 @@ const store = createStore({
 
 		async company() {
 			try {
-				this.state.user.companies;
+				// console.log('===========================company======================')
+				console.log(this.state.user.companies);
+
 				const q = querys(
 					collections(db, "companies"),
 					wheres("identity", "in", this.state.user.companies),
@@ -74,14 +77,13 @@ const store = createStore({
 
 				let obj = [];
 				querySnapshot.forEach((doc) => {
-					// console.log(doc.data())
 					const job = { ...doc.data() };
 					const nomeDoc = doc._key.path.segments[6];
 					job.id = nomeDoc;
 					obj.push(job);
 				});
 
-				this.commit("setCompanies", obj[0]);
+				this.commit("setCompany", obj[0]);
 			} catch (err) {
 				console.log(err);
 			}
@@ -110,8 +112,14 @@ const store = createStore({
 		setGestations(state, payload) {
 			state.gestations = payload;
 		},
-		setCompanies(state, payload) {
-			// console.log(payload)
+		setCompany(state, payload) {
+			const obj = {
+				identity: payload.identity,
+				name:payload.name,
+				nameFull:payload.nameFull
+			}
+			console.log(obj)
+			state.companyPut = obj
 			state.companies = payload;
 		},
 	},
@@ -120,29 +128,3 @@ const store = createStore({
 export default store;
 
 // patient : 'rLO9SBEpN0btAvvnCpI9'  // 'EbtxxOBRN26C8eJwcKjo'
-
-// async loadCompanies(context) {
-// 	const companiesRef = collections(firestore, "companies");
-// 	const queryCompanies = querys(
-// 		companiesRef,
-// 		wheres("identity", "in", this.state.user.companies),
-// 	);
-// 	const companiesSnapshot = await gds(queryCompanies);
-// 	if (companiesSnapshot && companiesSnapshot.docs[0]) {
-// 		let companies = companiesSnapshot.docs.map((item) => item.data());
-// 		context.commit("setCompanies", companies);
-// 	}
-// },
-// async setCompany(context) {
-// 	const companiesRef = collections(firestore, "companies");
-// 	const queryCompany = querys(
-// 		companiesRef,
-// 		wheres("identity", "==", this.state.user.company),
-// 	);
-// 	const companySnapshot = await gds(queryCompany);
-// 	if (companySnapshot && companySnapshot.docs[0]) {
-// 		let company = companySnapshot.docs[0].data();
-// 		company.iuid = companySnapshot.docs[0].id;
-// 		context.commit("setCompany", company);
-// 	}
-// },
