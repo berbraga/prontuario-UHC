@@ -17,6 +17,7 @@ div
 import { mapState } from "vuex";
 import { aggregate } from "@/utils/aggregations";
 import { collections, serverTime } from "@/store/firebase";
+import { start, stop } from '@/utils/Status'
 import { add } from "@/store/firebase";
 import { db } from "@/store/firebase";
 import { docs } from "@/store/firebase";
@@ -73,6 +74,7 @@ export default {
 					.replace(/[-:TZ.]/g, "")
 					.substring(0, 14);
 				objImportant.timestamp = serverTime()
+				objImportant.status = start()
 
 				let doc = await add(collections(db, "pep"), objImportant);
 				if (doc) {
@@ -86,11 +88,14 @@ export default {
 				console.log(objImportant);
 			}
 		},
-		stopTimer: function () {
+		stopTimer: async function () {
 			if (this.isRunning) {
 				this.currentTime = false;
 				this.isRunning = false;
-				localStorage.setItem("isRunning", "");
+
+				const docRef = docs(db, "pep", this.pepId)
+				this.pep.status = stop();
+				await update(docRef, );
 
 
 			}

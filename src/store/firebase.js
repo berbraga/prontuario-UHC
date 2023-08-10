@@ -55,7 +55,7 @@ setPersistence(auth, browserSessionPersistence)
 
 		// alert(' ta no firestore ')
 
-		await this.$store.dispatch("user");
+		// await this.$store.dispatch("user");
 		return signInWithEmailAndPassword(auth, email, password);
 		// return auth, email, password;
 	})
