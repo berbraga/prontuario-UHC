@@ -1,48 +1,59 @@
-<template>
-	<v-card
-		elevation="2"
-		color=""
-		class="rounded d-flex flex-column justify-center pa-3"
-	>
-		<div class="d-flex justify-space-between">
-			<h3>Medicamentos</h3>
-			<v-btn color="red">Imprimir</v-btn>
-		</div>
-		<div class="mr-1 w-100">
-			<v-autocomplete
-				clearable
-				chips
-				label="Selecione o Remédio"
-				:items="medicines"
-				class="ma-2 w-80"
-				multiple
-				variant="outlined"
-			></v-autocomplete>
-		</div>
-	</v-card>
+<template lang="pug">
+v-card(elevation="2" color="" class="rounded d-flex flex-column justify-center pa-3")
+	div.d-flex.justify-space-between
+		h3 Medicamentos
+		v-btn(color="red") Imprimir
+	div.mr-1.w-100
+		v-autocomplete.ma-2.w-80(clearable chips label="Selecione o Remédio" v-model="selectedMedicines" :items="medicines"  multiple variant="outlined")
+		| {{ selectedMedicines }}
 </template>
 
 <script>
+import _ from 'lodash'
+
 import Medicamentos from "../../../public/Medicamentos.json";
-// import { onMounted } from 'vue';
+import {mapState} from 'vuex'
+import {db, docs, update} from '@/store/firebase'
+
 export default {
-	data() {
-		return {
-			medicines: [],
-		};
+  data() {
+    return {
+      medicines: [],
+      selectedMedicines: [],
+    };
+  },
+	computed: {
+		...mapState({
+			patient: (state) => state.patient,
+			pep: (state) => state.pep,
+			pepId: (state) => state.pepId
+		}),
 	},
-	mounted() {
-		this.getMedicines();
-	},
-	methods: {
-		getMedicines: function () {
-			for (let i = 0; i < 100; i++) {
-				this.medicines.push(
-					`${Medicamentos[i].nome} | ${Medicamentos[i].apresentacao} | ${Medicamentos[i].tipo}`,
-				);
-			}
-			console.log(this.medicines);
-		},
-	},
+  mounted() {
+    this.getMedicines();
+		console.log(this.pepId)
+  },
+  watch: {
+    selectedMedicines: {
+      handler: "handleMedicineSelection",
+      deep: true,
+    },
+  },
+  methods: {
+    getMedicines: function () {
+      for (let i = 0; i < 100; i++) {
+        this.medicines.push(
+          `${Medicamentos[i].nome} | ${Medicamentos[i].apresentacao} | ${Medicamentos[i].tipo}`,
+        );
+      }
+    },
+    handleMedicineSelection:_.debounce(async function () {
+      console.log("Medicamentos selecionados:", this.selectedMedicines);
+			console.log(this.pep.iuid)
+			const docRef = docs(db, "pep", this.pep.iuid)
+			this.pep.medicines = this.selectedMedicines;
+			await update(docRef, this.pep );
+    }, 1000),
+  },
 };
 </script>

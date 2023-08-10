@@ -4,11 +4,11 @@ v-card.pa-3.my-3.w-100(elevation="3" :rounded="true" :border="true")
 	div.pb-2.d-flex.flex-row.justify-space-between.align-center
 		strong {{ this.day}}
 		//- h2 {{ this.pep.doctor.name }}
-		div.d-flex.flex-row.align-center
+		div.d-flex.flex-row.align-center(@click="delet()")
 			//- v-icon.mr-3(icon="mdi-eye",v-if='this.gestation.status !== "ANDAMENTO"', @click="viewExam()")
-			div.bg-yellow.pa-2.rounded(v-if='this.pep.status == "ANDAMENTO"', @click="delet()")
+			div.bg-yellow.pa-2.rounded(v-if='this.pep.status == "ANDAMENTO"' )
 				p {{ this.pep.status }}
-			div.bg-primary.pa-2.rounded(v-else, @click="delet()")
+			div.bg-primary.pa-2.rounded(v-else)
 				p {{ this.pep.status }}
 	v-divider
 
@@ -25,6 +25,7 @@ v-card.pa-3.my-3.w-100(elevation="3" :rounded="true" :border="true")
 	v-divider
 
 	div.pa-3(v-if="this.pep.attest")
+
 		div(v-html="this.pep.attest")
 	v-divider
 

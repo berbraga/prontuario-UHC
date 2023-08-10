@@ -7,7 +7,14 @@ v-card(elevation="2" color="" class="d-flex flex-column pa-3")
       v-btn.mx-3.mb-2x(color="red") imprimir
   v-divider
   v-card(color="" elevation="0" class="rounded pa-2 mt-3 d-flex flex-column")
-    v-autocomplete(clearable chips label="Selecione a indicação do Exame" :items="c10" class="mr-2 ml-1 width: auto" multiple variant="outlined")
+    v-autocomplete(clearable chips
+			v-model="selectedItems"
+			label="Selecione a indicação do Exame"
+			:items="c10"
+			class="mr-2 ml-1 width: auto"
+			multiple variant="outlined"
+			@change="handleSelectionChange"
+		)
     div.d-flex.w-100.bg-transparent
       v-autocomplete(clearable chips label="Selecione a indicação do Exame" :items="toss" class="mr-2 ml-1 width: auto" multiple variant="outlined")
       v-autocomplete(clearable chips label="Selecione o Remédio" :items="medicines" class="ml-1 width: auto" multiple variant="outlined")
@@ -27,6 +34,7 @@ export default {
 	data() {
 		return {
 			c10: [],
+			 selectedItems: [], // Armazenará os itens selecionados
 			toss: [],
 			medicines: [],
 		};
@@ -54,6 +62,10 @@ export default {
 				);
 			}
 		},
+		 handleSelectionChange(newValues) {
+      // Aqui você tem acesso aos novos valores selecionados
+      console.log('Valores selecionados:', newValues);
+    },
 	},
 };
 </script>
