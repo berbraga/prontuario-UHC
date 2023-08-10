@@ -11,7 +11,7 @@ import {
 	getFirestore,	getDoc,doc,
 	collection,query,where,
 	getDocs,addDoc,setDoc,
-	updateDoc,serverTimestamp,
+	updateDoc,serverTimestamp, deleteDoc,
 } from "firebase/firestore";
 import {  } from "firebase/firestore/lite";
 
@@ -39,6 +39,7 @@ export const add = addDoc;
 export const set = setDoc;
 export const serverTime = serverTimestamp;
 export const update = updateDoc;
+export const del = deleteDoc;
 
 export const auth = getAuth(firebaseApp);
 
@@ -51,13 +52,9 @@ setPersistence(auth, browserSessionPersistence)
 		// New sign-in will be persisted with session persistence.
 		const email = "bernardo.sbraga@rafsoft.com.br"//;"lucas.iohan@rafsoft.com.br";
 		const password = "bernardo"; //"lucas123" ;
-		localStorage.setItem("email", email);
 
-		// alert(' ta no firestore ')
-
-		// await this.$store.dispatch("user");
 		return signInWithEmailAndPassword(auth, email, password);
-		// return auth, email, password;
+
 	})
 	.catch((error) => {
 		// Handle Errors here.

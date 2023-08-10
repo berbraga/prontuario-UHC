@@ -8,6 +8,7 @@ const store = createStore({
 		gestations: [],
 		pep: {},
 		company: {},
+		peps:[],
 
 		pepId:''
 	},
@@ -43,11 +44,12 @@ const store = createStore({
 				console.log(err);
 			}
 		},
-		async gestationInteraction() {
+		async gestationInteraction(context, payload) {
 			try {
+
 				const q = querys(
 					collections(db, "gestationInteraction"),
-					wheres("patient.id", "==", "RxnbZ9MrFpb668JifO0v"),
+					wheres("patient.id", "==", context.state.patient.iuid ),
 				);
 
 				const querySnapshot = await gds(q);
@@ -91,6 +93,7 @@ const store = createStore({
 			context.dispatch('pep',{id:payload.id})
 			context.commit("pepId", payload.id);
 		},
+
 		async pep (context, payload) {
 			try {
 				console.log('=========================== pep ======================')
@@ -108,7 +111,32 @@ const store = createStore({
 				alert(error);
 			}
 		},
+
+		async pepByPatient (context, payload) {
+			try {
+				console.log(context.state.patient.iuid)
+				const q = querys(
+					collections(db, "pep"),
+					wheres("patient.id", "==", context.state.patient.iuid),
+				);
+
+				const querySnapshot = await gds(q);
+				let obj = [];
+				querySnapshot.forEach((doc) => {
+					const job = { ...doc.data() };
+
+					obj.push(job);
+				});
+				this.commit("setPeps", obj);
+			} catch (err) {
+				console.log(err)
+				alert(err)
+
+			}
+
+		}
 	},
+
 
 	mutations: {
 		setPatient(state, payload) {
@@ -127,6 +155,9 @@ const store = createStore({
 
 			state.pep = payload;
 			console.log(state)
+		},
+		setPeps(state,payload){
+			state.peps = payload;
 		},
 		setCompany(state, payload) {
 			state.company = payload;

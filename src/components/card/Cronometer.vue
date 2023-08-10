@@ -38,7 +38,8 @@ export default {
 			patient: (state) => state.patient,
 			company: (state) => state.company,
 			user: (state) => state.user,
-			pep: (state) => state.pep
+			pep: (state) => state.pep,
+			pepId: (state) => state.pepId,
 		}),
 		formatTime: function () {
 			if (this.currentTime) {
@@ -92,10 +93,10 @@ export default {
 			if (this.isRunning) {
 				this.currentTime = false;
 				this.isRunning = false;
-
+				console.log( this.pepId )
 				const docRef = docs(db, "pep", this.pepId)
 				this.pep.status = stop();
-				await update(docRef, );
+				await update(docRef, this.pep );
 
 
 			}
