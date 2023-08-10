@@ -22,7 +22,9 @@ import { db } from "@/store/firebase";
 import { docs } from "@/store/firebase";
 import { update } from "@/store/firebase";
 export default {
+
 	data() {
+		this.$router.push("/home");
 		return {
 			isRunning: false,
 			startTime: null,
@@ -35,7 +37,7 @@ export default {
 			patient: (state) => state.patient,
 			company: (state) => state.company,
 			user: (state) => state.user,
-			companyPut: (state)=> state.companyPut
+			pep: (state) => state.pep
 		}),
 		formatTime: function () {
 			if (this.currentTime) {
@@ -54,13 +56,13 @@ export default {
 		startTimer: async function () {
 			if (!this.isRunning) {
 				const objImportant = {
-					company: this.companyPut,
+					company: aggregate('company',this.company),
 					patient: aggregate("patient", this.patient),
 					doctor: aggregate("doctor", this.user),
 				};
-				console.log(this.companyPut)
+				console.log(this.company)
+
 				this.isRunning = true;
-				localStorage.setItem("isRunning", this.isRunning);
 				this.startTime = new Date().getTime();
 				this.currentTime = this.startTime;
 				this.updateTimer();
@@ -70,15 +72,16 @@ export default {
 					.toISOString()
 					.replace(/[-:TZ.]/g, "")
 					.substring(0, 14);
-				// objImportant.timestamp = serverTime()
+				objImportant.timestamp = serverTime()
 
-				// let doc = await add(collections(db, "pep"), objImportant);
-				// if (doc) {
-				// 	objImportant.iuid = doc.id;
+				let doc = await add(collections(db, "pep"), objImportant);
+				if (doc) {
+					objImportant.iuid = doc.id;
+					this.$store.dispatch('pepId',{id:doc.id})
+					const docRef = docs(db, "pep", doc.id);
+					await update(docRef, objImportant);
+				}
 
-				// 	const docRef = docs(db, "pep", doc.id);
-				// 	await update(docRef, objImportant);
-				// }
 
 				console.log(objImportant);
 			}
@@ -89,7 +92,7 @@ export default {
 				this.isRunning = false;
 				localStorage.setItem("isRunning", "");
 
-				this.$router.push("/home");
+
 			}
 		},
 		updateTimer: function () {
@@ -99,5 +102,15 @@ export default {
 			}
 		},
 	},
+	  watch: {
+    isRunning: function (newValue, oldValue) {
+      // Executar ações com base nas mudanças em isRunning
+      if (newValue) { // isRunning está agora true
+
+      } else { // isRunning está agora false
+				this.$router.push("/home");
+			}
+    },
+  },
 };
 </script>

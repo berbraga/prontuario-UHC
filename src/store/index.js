@@ -8,7 +8,8 @@ const store = createStore({
 		gestations: [],
 		pep: {},
 		company: {},
-		companyPut:{},
+
+		pepId:''
 	},
 
 	getters: {
@@ -19,7 +20,7 @@ const store = createStore({
 	actions: {
 		async user() {
 			try {
-				const docRef = docs(db, "users", "3lmgPQI5I4c760x3fe2IoCb0AhO2"); //"Uxo3PLXy6deMZZ4nnOXEUYGEZRw2"
+				const docRef = docs(db, "users", "PeeBxWWbXxTu1YbY3NicMWjQGOj2" ); // "3lmgPQI5I4c760x3fe2IoCb0AhO2" "Uxo3PLXy6deMZZ4nnOXEUYGEZRw2"
 				const docSnap = await gd(docRef);
 				if (docSnap.exists()) {
 					const user = docSnap.data();
@@ -65,9 +66,6 @@ const store = createStore({
 
 		async company() {
 			try {
-				// console.log('===========================company======================')
-				console.log(this.state.user.companies);
-
 				const q = querys(
 					collections(db, "companies"),
 					wheres("identity", "in", this.state.user.companies),
@@ -88,13 +86,23 @@ const store = createStore({
 				console.log(err);
 			}
 		},
-		async pep() {
+		pepId ( context, payload) {
+			console.log(payload.id)
+			context.dispatch('pep',{id:payload.id})
+			context.commit("pepId", payload.id);
+		},
+		async pep (context, payload) {
 			try {
-				const docRef = docs(db, "pep", "XxOj3LNjGg5K6GNqSc9S");
+				console.log('=========================== pep ======================')
+				console.log(payload)
+				const docRef = docs(db, "pep", payload.id);
 
 				const docSnap = await gd(docRef);
 				if (docSnap.exists()) {
-					console.log(docSnap.data());
+					// console.log(this.state, docSnap.data());
+					// console.log(docSnap.data());
+					this.commit("setPep", docSnap.data() );
+
 				}
 			} catch (error) {
 				alert(error);
@@ -112,15 +120,16 @@ const store = createStore({
 		setGestations(state, payload) {
 			state.gestations = payload;
 		},
+		pepId (state,payload){
+			state.pepId = payload
+		},
+		setPep (state,payload){
+
+			state.pep = payload;
+			console.log(state)
+		},
 		setCompany(state, payload) {
-			const obj = {
-				identity: payload.identity,
-				name:payload.name,
-				nameFull:payload.nameFull
-			}
-			console.log(obj)
-			state.companyPut = obj
-			state.companies = payload;
+			state.company = payload;
 		},
 	},
 });

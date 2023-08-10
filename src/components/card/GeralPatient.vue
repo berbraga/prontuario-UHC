@@ -37,6 +37,7 @@ export default {
 	},
 	async created() {
 		await this.$store.dispatch("patient");
+		// await this.$store.dispatch("company");
 
 		this.weight = this.patient.weight.substr(-20, 2);
 	},

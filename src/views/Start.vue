@@ -1,6 +1,6 @@
 <template lang="pug">
-v-container(class='pa-10')
-	v-img(src="@/assets/logos/Logo-UHC---Preferencial.png")
+v-container(class='pa-10'   )
+	v-img(src="@/assets/logos/Logo-UHC---Preferencial.png" )
 
 </template>
 
@@ -14,8 +14,7 @@ export default {
 	async mounted() {
 		await this.$store.dispatch("user");
 		await this.$store.dispatch("gestationInteraction");
-		// await this.$store.dispatch("pep");
-		// await this.$store.dispatch("company");
+
 	},
 };
 </script>

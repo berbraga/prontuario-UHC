@@ -58,7 +58,7 @@ export default {
 	watch: {
 		$route(to, from) {
 			// console.clear();
-			console.log(to.fullPath, from.fullPath);
+			// console.log(to.fullPath, from.fullPath);
 			if (to.fullPath !== "/") {
 				this.drawer = true;
 			}
