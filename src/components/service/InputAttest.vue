@@ -1,19 +1,17 @@
-<template>
-	<v-card class="pa-2 d-flex flex-column" color="" elevation="2">
-		<div class="d-flex justify-space-between align-center">
-			<h2>Atestado</h2>
-			<div class="d-flex align-center mb-2">
-				<date-today />
-				<!-- <v-btn color="primary" class="ml-3">imprimir</v-btn> -->
-			</div>
-		</div>
+<template lang="pug">
+v-card.pa-2.d-flex.flex-column( elevation="2")
+	div.d-flex.justify-space-between.align-center
+		h2 Atestado
+		div.d-flex.align-center.mb-2
+			DateToday
+	wysiwyg
 
-		<wysiwyg />
-	</v-card>
+
 </template>
 
 <script setup>
-import DateToday from "../card/DateToday.vue";
 
+import DateToday from "../card/DateToday.vue";
 import Wysiwyg from "../service/Wysiwyg.vue";
+
 </script>
