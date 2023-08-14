@@ -76,6 +76,7 @@ export default {
 		},
 
 		formatDateExtend: function (value) {
+			// console.log(value)
 			const timestampInSeconds = value.seconds;
 			const timestampInMilliseconds = timestampInSeconds * 1000;
 			const date = new Date(timestampInMilliseconds);

@@ -5,7 +5,7 @@ v-card(elevation="2" color="" class="rounded d-flex flex-column justify-center p
 		v-btn(color="red") Imprimir
 	div.mr-1.w-100
 		v-autocomplete.ma-2.w-80(clearable chips label="Selecione o Remédio" v-model="selectedMedicines" :items="medicines"  multiple variant="outlined")
-		| {{ selectedMedicines }}
+		//- | {{ selectedMedicines }}
 </template>
 
 <script>

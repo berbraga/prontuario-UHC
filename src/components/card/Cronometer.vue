@@ -22,6 +22,7 @@ import { add } from "@/store/firebase";
 import { db } from "@/store/firebase";
 import { docs } from "@/store/firebase";
 import { update } from "@/store/firebase";
+import {serverTimestamp} from "firebase/firestore/lite"
 export default {
 
 	data() {
@@ -74,7 +75,20 @@ export default {
 					.toISOString()
 					.replace(/[-:TZ.]/g, "")
 					.substring(0, 14);
-				objImportant.timestamp = serverTime()
+				// console.log(serverTime())
+				const hoje = new Date();
+				const ano = hoje.getFullYear();
+				const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+				const dia = String(hoje.getDate()).padStart(2, '0');
+
+				const dataFormatada = `${ano}-${mes}-${dia}`;
+
+				const date = new Date(dataFormatada);
+				const timestamp = date.getTime() / 1000;
+				console.log({seconds:timestamp, nanoseconds:0});
+
+				objImportant.inPep = "PEP"
+				objImportant.date = {seconds:timestamp, nanoseconds:0}
 				objImportant.status = start()
 
 				let doc = await add(collections(db, "pep"), objImportant);

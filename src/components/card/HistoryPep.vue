@@ -13,13 +13,13 @@ v-card.pa-3.my-3.w-100(elevation="3" :rounded="true" :border="true")
 	v-divider
 
 	div.px-2.d-flex.flex-row.justify-space-between
-		div.w-30(v-if="this.pep.complaint")
+		div.w-25(v-if="this.pep.complaint")
 			h4.my-3 Queixa de {{ this.pep.patient.name }}
 			p {{ this.pep.complaint }}
-		div.w-30(v-if="this.pep.familyHistory")
+		div.w-25(v-if="this.pep.familyHistory")
 			h4.my-3 Histórico familiar de {{ this.pep.patient.name }}
 			p {{ this.pep.familyHistory }}
-		div.w-30(v-if="this.pep.history")
+		div.w-25(v-if="this.pep.history")
 			h4.my-3 Histórico de {{ this.pep.patient.name }}
 			p {{ this.pep.history }}
 	v-divider
@@ -46,10 +46,10 @@ export default {
 		},
 	},
 	data(){
-		console.log(this.pep)
+		// console.log(this.pep)
 		let date = null
-		if (this.pep.timestamp){
-			date = this.pep.timestamp;
+		if (this.pep.date){
+			date = this.pep.date;
 		} else{
 			date =  serverTime()
 		}

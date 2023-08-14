@@ -50,7 +50,7 @@ const routes = [
 			{
 				path: "/history",
 				name: "History",
-				component: () => import("@/views/History.vue"),
+				component: () => import("@/views/Home.vue"),
 			},
 		],
 	},
