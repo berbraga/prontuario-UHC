@@ -8,12 +8,20 @@ import {
 import "firebase/firestore";
 import "firebase/storage";
 import {
-	getFirestore,	getDoc,doc,
-	collection,query,where,
-	getDocs,addDoc,setDoc,
-	updateDoc,serverTimestamp, deleteDoc,
+	getFirestore,
+	getDoc,
+	doc,
+	collection,
+	query,
+	where,
+	getDocs,
+	addDoc,
+	setDoc,
+	updateDoc,
+	serverTimestamp,
+	deleteDoc,
 } from "firebase/firestore";
-import {  } from "firebase/firestore/lite";
+import {} from "firebase/firestore/lite";
 
 const options = {
 	apiKey: "AIzaSyBDpkH1kawQ2wdnsrmZ7oDd0RGoxjRI4Qo",
@@ -50,11 +58,10 @@ setPersistence(auth, browserSessionPersistence)
 		// if a user forgets to sign out.
 		// ...
 		// New sign-in will be persisted with session persistence.
-		const email = "bernardo.sbraga@rafsoft.com.br"//;"lucas.iohan@rafsoft.com.br";
+		const email = "bernardo.sbraga@rafsoft.com.br"; //;"lucas.iohan@rafsoft.com.br";
 		const password = "bernardo"; //"lucas123" ;
 
 		return signInWithEmailAndPassword(auth, email, password);
-
 	})
 	.catch((error) => {
 		// Handle Errors here.

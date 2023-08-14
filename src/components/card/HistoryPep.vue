@@ -39,25 +39,24 @@ v-card.pa-3.my-3.w-100(elevation="3" :rounded="true" :border="true")
 import { collections, db, del, docs, serverTime } from "@/store/firebase";
 
 export default {
-
 	props: {
 		pep: {
 			type: Object,
 		},
 	},
-	data(){
+	data() {
 		// console.log(this.pep)
-		let date = null
-		if (this.pep.date){
+		let date = null;
+		if (this.pep.date) {
 			date = this.pep.date;
-		} else{
-			date =  serverTime()
+		} else {
+			date = serverTime();
 		}
 		return {
 			day: this.formatDateExtend(date),
-		}
+		};
 	},
-	methods:{
+	methods: {
 		formatDateExtend: function (value) {
 			const timestampInSeconds = value.seconds;
 			const timestampInMilliseconds = timestampInSeconds * 1000;
@@ -74,10 +73,9 @@ export default {
 		},
 		delet: async function () {
 			// alert(this.pep.iuid)
-			del(docs(db, "pep", this.pep.iuid))
+			del(docs(db, "pep", this.pep.iuid));
 			await this.$store.dispatch("pepByPatient");
-		}
-	}
-
-}
+		},
+	},
+};
 </script>

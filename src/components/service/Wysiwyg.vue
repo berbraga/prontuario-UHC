@@ -30,10 +30,10 @@
 </template>
 
 <script>
-import {db, docs, update} from "@/store/firebase"
+import { db, docs, update } from "@/store/firebase";
 import Editor from "@tinymce/tinymce-vue";
-import _ from 'lodash'
-import {mapState} from "vuex"
+import _ from "lodash";
+import { mapState } from "vuex";
 
 export default {
 	components: {
@@ -43,20 +43,19 @@ export default {
 		...mapState({
 			patient: (state) => state.patient,
 			pep: (state) => state.pep,
-			pepId: (state) => state.pepId
+			pepId: (state) => state.pepId,
 		}),
 	},
 	methods: {
-		save: async function (event,name ) {
-			const value = event.level.content
+		save: async function (event, name) {
+			const value = event.level.content;
 			// _.debounce(function () {
 			// 	console.log(value);
 			// }, 1000);
-			console.log(event.level.content)
+			console.log(event.level.content);
 			const docRef = docs(db, "pep", this.pepId);
-			this.pep[name] = value
+			this.pep[name] = value;
 			await update(docRef, this.pep);
-
 
 			// console.log(name, value);
 		},

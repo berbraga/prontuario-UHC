@@ -26,18 +26,18 @@ export default {
 	components: {
 		GeralPatient,
 		HistoryPatient,
-		HistoryPep
+		HistoryPep,
 	},
 	data() {
 		return {
 			bernardo: 0,
-			gestationsPep: []
+			gestationsPep: [],
 		};
 	},
 	computed: {
 		...mapState({
 			gestations: (state) => state.gestations,
-			peps: (state) =>state.peps
+			peps: (state) => state.peps,
 		}),
 	},
 	async created() {
@@ -48,20 +48,18 @@ export default {
 		await this.$store.dispatch("pepByPatient");
 		// console.log(this.gestations)
 	},
-	beforeMount(){
-		console.log('====================================')
+	beforeMount() {
+		console.log("====================================");
 		// console.log(this.peps)
-		console.log(typeof(this.gestations))
-		console.log(this.gestations[1])
+		console.log(typeof this.gestations);
+		console.log(this.gestations[1]);
 		// console.log(this.gestations.length)
-		const all = []
+		const all = [];
 		for (const gestation of this.gestations) {
-			if (gestation.date != null )
-
-			all.push(gestation);
+			if (gestation.date != null) all.push(gestation);
 		}
 		console.log(all.length);
-		let i=0
+		let i = 0;
 		// console.log('=================================')
 		console.log(this.peps);
 		for (const pep of this.peps) {
@@ -69,21 +67,17 @@ export default {
 			// console.log(i)
 			i++;
 			if (all.date != null) {
-				all.push(pep)
-
+				all.push(pep);
 			}
 		}
 
-    // Sorting the combined array by date in ascending order
-    all.sort((a, b) => a.date.seconds - b.date.seconds);
+		// Sorting the combined array by date in ascending order
+		all.sort((a, b) => a.date.seconds - b.date.seconds);
 
 		this.gestationsPep = all;
-
-
 	},
-	mounted () {
-		console.log(this.gestationsPep)
-
+	mounted() {
+		console.log(this.gestationsPep);
 	},
 	methods: {},
 };

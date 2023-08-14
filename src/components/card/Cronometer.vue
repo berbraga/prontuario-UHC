@@ -17,14 +17,13 @@ div
 import { mapState } from "vuex";
 import { aggregate } from "@/utils/aggregations";
 import { collections, serverTime } from "@/store/firebase";
-import { start, stop } from '@/utils/Status'
+import { start, stop } from "@/utils/Status";
 import { add } from "@/store/firebase";
 import { db } from "@/store/firebase";
 import { docs } from "@/store/firebase";
 import { update } from "@/store/firebase";
-import {serverTimestamp} from "firebase/firestore/lite"
+import { serverTimestamp } from "firebase/firestore/lite";
 export default {
-
 	data() {
 		this.$router.push("/home");
 		return {
@@ -59,11 +58,11 @@ export default {
 		startTimer: async function () {
 			if (!this.isRunning) {
 				const objImportant = {
-					company: aggregate('company',this.company),
+					company: aggregate("company", this.company),
 					patient: aggregate("patient", this.patient),
 					doctor: aggregate("doctor", this.user),
 				};
-				console.log(this.company)
+				console.log(this.company);
 
 				this.isRunning = true;
 				this.startTime = new Date().getTime();
@@ -78,27 +77,26 @@ export default {
 				// console.log(serverTime())
 				const hoje = new Date();
 				const ano = hoje.getFullYear();
-				const mes = String(hoje.getMonth() + 1).padStart(2, '0');
-				const dia = String(hoje.getDate()).padStart(2, '0');
+				const mes = String(hoje.getMonth() + 1).padStart(2, "0");
+				const dia = String(hoje.getDate()).padStart(2, "0");
 
 				const dataFormatada = `${ano}-${mes}-${dia}`;
 
 				const date = new Date(dataFormatada);
 				const timestamp = date.getTime() / 1000;
-				console.log({seconds:timestamp, nanoseconds:0});
+				console.log({ seconds: timestamp, nanoseconds: 0 });
 
-				objImportant.inPep = "PEP"
-				objImportant.date = {seconds:timestamp, nanoseconds:0}
-				objImportant.status = start()
+				objImportant.inPep = "PEP";
+				objImportant.date = { seconds: timestamp, nanoseconds: 0 };
+				objImportant.status = start();
 
 				let doc = await add(collections(db, "pep"), objImportant);
 				if (doc) {
 					objImportant.iuid = doc.id;
-					this.$store.dispatch('pepId',{id:doc.id})
+					this.$store.dispatch("pepId", { id: doc.id });
 					const docRef = docs(db, "pep", doc.id);
 					await update(docRef, objImportant);
 				}
-
 
 				console.log(objImportant);
 			}
@@ -107,12 +105,10 @@ export default {
 			if (this.isRunning) {
 				this.currentTime = false;
 				this.isRunning = false;
-				console.log( this.pepId )
-				const docRef = docs(db, "pep", this.pepId)
+				console.log(this.pepId);
+				const docRef = docs(db, "pep", this.pepId);
 				this.pep.status = stop();
-				await update(docRef, this.pep );
-
-
+				await update(docRef, this.pep);
 			}
 		},
 		updateTimer: function () {
@@ -122,15 +118,16 @@ export default {
 			}
 		},
 	},
-	  watch: {
-    isRunning: function (newValue, oldValue) {
-      // Executar ações com base nas mudanças em isRunning
-      if (newValue) { // isRunning está agora true
-
-      } else { // isRunning está agora false
+	watch: {
+		isRunning: function (newValue, oldValue) {
+			// Executar ações com base nas mudanças em isRunning
+			if (newValue) {
+				// isRunning está agora true
+			} else {
+				// isRunning está agora false
 				this.$router.push("/home");
 			}
-    },
-  },
+		},
+	},
 };
 </script>

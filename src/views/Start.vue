@@ -14,7 +14,6 @@ export default {
 	async mounted() {
 		await this.$store.dispatch("user");
 		await this.$store.dispatch("gestationInteraction");
-
 	},
 };
 </script>

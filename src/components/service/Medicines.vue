@@ -9,51 +9,51 @@ v-card(elevation="2" color="" class="rounded d-flex flex-column justify-center p
 </template>
 
 <script>
-import _ from 'lodash'
+import _ from "lodash";
 
 import Medicamentos from "../../../public/Medicamentos.json";
-import {mapState} from 'vuex'
-import {db, docs, update} from '@/store/firebase'
+import { mapState } from "vuex";
+import { db, docs, update } from "@/store/firebase";
 
 export default {
-  data() {
-    return {
-      medicines: [],
-      selectedMedicines: [],
-    };
-  },
+	data() {
+		return {
+			medicines: [],
+			selectedMedicines: [],
+		};
+	},
 	computed: {
 		...mapState({
 			patient: (state) => state.patient,
 			pep: (state) => state.pep,
-			pepId: (state) => state.pepId
+			pepId: (state) => state.pepId,
 		}),
 	},
-  mounted() {
-    this.getMedicines();
-		console.log(this.pepId)
-  },
-  watch: {
-    selectedMedicines: {
-      handler: "handleMedicineSelection",
-      deep: true,
-    },
-  },
-  methods: {
-    getMedicines: function () {
-      for (let i = 0; i < 100; i++) {
-        this.medicines.push(
-          `${Medicamentos[i].nome} | ${Medicamentos[i].apresentacao} | ${Medicamentos[i].tipo}`,
-        );
-      }
-    },
-    handleMedicineSelection:_.debounce(async function () {
-      console.log("Medicamentos selecionados:", this.selectedMedicines);
-			console.log(this.pep.iuid)
-			const docRef = docs(db, "pep", this.pep.iuid)
+	mounted() {
+		this.getMedicines();
+		console.log(this.pepId);
+	},
+	watch: {
+		selectedMedicines: {
+			handler: "handleMedicineSelection",
+			deep: true,
+		},
+	},
+	methods: {
+		getMedicines: function () {
+			for (let i = 0; i < 100; i++) {
+				this.medicines.push(
+					`${Medicamentos[i].nome} | ${Medicamentos[i].apresentacao} | ${Medicamentos[i].tipo}`,
+				);
+			}
+		},
+		handleMedicineSelection: _.debounce(async function () {
+			console.log("Medicamentos selecionados:", this.selectedMedicines);
+			console.log(this.pep.iuid);
+			const docRef = docs(db, "pep", this.pep.iuid);
 			this.pep.medicines = this.selectedMedicines;
-			await update(docRef, this.pep );
-    }, 1000),
-  },
+			await update(docRef, this.pep);
+		}, 1000),
+	},
 };
 </script>

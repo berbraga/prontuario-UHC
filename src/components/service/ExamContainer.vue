@@ -21,13 +21,13 @@ v-card(elevation="2" color="" class="d-flex flex-column pa-3")
 </template>
 
 <script>
-import _ from 'lodash'
+import _ from "lodash";
 import DateToday from "../card/DateToday.vue";
 import C10 from "../../../public/C10.json";
 import Toss from "../../../public/Toss.json";
 import Medicamentos from "../../../public/Medicamentos.json";
-import {mapState} from 'vuex'
-import {db, docs, update} from '@/store/firebase'
+import { mapState } from "vuex";
+import { db, docs, update } from "@/store/firebase";
 
 export default {
 	components: {
@@ -40,7 +40,7 @@ export default {
 			medicines: [],
 			selectedPills: [],
 			selectedProcedure: [],
-			selectedIllness:[],
+			selectedIllness: [],
 		};
 	},
 	mounted() {
@@ -52,7 +52,7 @@ export default {
 		...mapState({
 			patient: (state) => state.patient,
 			pep: (state) => state.pep,
-			pepId: (state) => state.pepId
+			pepId: (state) => state.pepId,
 		}),
 	},
 	methods: {
@@ -73,44 +73,43 @@ export default {
 				);
 			}
 		},
-		handlePills:_.debounce(async function () {
-      console.log("Medicamentos selecionados:", this.selectedPills);
-			console.log(this.pep.iuid)
-			const docRef = docs(db, "pep", this.pep.iuid)
+		handlePills: _.debounce(async function () {
+			console.log("Medicamentos selecionados:", this.selectedPills);
+			console.log(this.pep.iuid);
+			const docRef = docs(db, "pep", this.pep.iuid);
 			this.pep.medicines = this.selectedPills;
-			await update(docRef, this.pep );
-    }, 1000),
+			await update(docRef, this.pep);
+		}, 1000),
 
-		handleProcedure:_.debounce(async function () {
-      console.log("Medicamentos selecionados:", this.selectedProcedure);
-			console.log(this.pep.iuid)
-			const docRef = docs(db, "pep", this.pep.iuid)
+		handleProcedure: _.debounce(async function () {
+			console.log("Medicamentos selecionados:", this.selectedProcedure);
+			console.log(this.pep.iuid);
+			const docRef = docs(db, "pep", this.pep.iuid);
 			this.pep.procedure = this.selectedProcedure;
-			await update(docRef, this.pep );
-    }, 1000),
+			await update(docRef, this.pep);
+		}, 1000),
 
-
-		handleIllness:_.debounce(async function () {
-      console.log("Medicamentos selecionados:", this.selectedIllness);
-			console.log(this.pep.iuid)
-			const docRef = docs(db, "pep", this.pep.iuid)
+		handleIllness: _.debounce(async function () {
+			console.log("Medicamentos selecionados:", this.selectedIllness);
+			console.log(this.pep.iuid);
+			const docRef = docs(db, "pep", this.pep.iuid);
 			this.pep.illness = this.selectedIllness;
-			await update(docRef, this.pep );
-    }, 1000),
+			await update(docRef, this.pep);
+		}, 1000),
 	},
 	watch: {
-    selectedPills: {
-      handler: "handlePills",
-      deep: true,
-    },
+		selectedPills: {
+			handler: "handlePills",
+			deep: true,
+		},
 		selectedProcedure: {
-      handler: "handleProcedure",
-      deep: true,
-    },
+			handler: "handleProcedure",
+			deep: true,
+		},
 		selectedIllness: {
-      handler: "handleIllness",
-      deep: true,
-    },
-  },
+			handler: "handleIllness",
+			deep: true,
+		},
+	},
 };
 </script>

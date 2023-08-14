@@ -8,9 +8,9 @@ const store = createStore({
 		gestations: [],
 		pep: {},
 		company: {},
-		peps:[],
+		peps: [],
 
-		pepId:''
+		pepId: "",
 	},
 
 	getters: {
@@ -21,7 +21,7 @@ const store = createStore({
 	actions: {
 		async user() {
 			try {
-				const docRef = docs(db, "users", "PeeBxWWbXxTu1YbY3NicMWjQGOj2" ); // "3lmgPQI5I4c760x3fe2IoCb0AhO2" "Uxo3PLXy6deMZZ4nnOXEUYGEZRw2"
+				const docRef = docs(db, "users", "PeeBxWWbXxTu1YbY3NicMWjQGOj2"); // "3lmgPQI5I4c760x3fe2IoCb0AhO2" "Uxo3PLXy6deMZZ4nnOXEUYGEZRw2"
 				const docSnap = await gd(docRef);
 				if (docSnap.exists()) {
 					const user = docSnap.data();
@@ -46,10 +46,9 @@ const store = createStore({
 		},
 		async gestationInteraction(context, payload) {
 			try {
-
 				const q = querys(
 					collections(db, "gestationInteraction"),
-					wheres("patient.id", "==", context.state.patient.iuid ),
+					wheres("patient.id", "==", context.state.patient.iuid),
 				);
 
 				const querySnapshot = await gds(q);
@@ -88,33 +87,32 @@ const store = createStore({
 				console.log(err);
 			}
 		},
-		pepId ( context, payload) {
-			console.log(payload.id)
-			context.dispatch('pep',{id:payload.id})
+		pepId(context, payload) {
+			console.log(payload.id);
+			context.dispatch("pep", { id: payload.id });
 			context.commit("pepId", payload.id);
 		},
 
-		async pep (context, payload) {
+		async pep(context, payload) {
 			try {
-				console.log('=========================== pep ======================')
-				console.log(payload)
+				console.log("=========================== pep ======================");
+				console.log(payload);
 				const docRef = docs(db, "pep", payload.id);
 
 				const docSnap = await gd(docRef);
 				if (docSnap.exists()) {
 					// console.log(this.state, docSnap.data());
 					// console.log(docSnap.data());
-					this.commit("setPep", docSnap.data() );
-
+					this.commit("setPep", docSnap.data());
 				}
 			} catch (error) {
 				alert(error);
 			}
 		},
 
-		async pepByPatient (context, payload) {
+		async pepByPatient(context, payload) {
 			try {
-				console.log(context.state.patient.iuid)
+				console.log(context.state.patient.iuid);
 				const q = querys(
 					collections(db, "pep"),
 					wheres("patient.id", "==", context.state.patient.iuid),
@@ -129,14 +127,11 @@ const store = createStore({
 				});
 				this.commit("setPeps", obj);
 			} catch (err) {
-				console.log(err)
-				alert(err)
-
+				console.log(err);
+				alert(err);
 			}
-
-		}
+		},
 	},
-
 
 	mutations: {
 		setPatient(state, payload) {
@@ -148,15 +143,14 @@ const store = createStore({
 		setGestations(state, payload) {
 			state.gestations = payload;
 		},
-		pepId (state,payload){
-			state.pepId = payload
+		pepId(state, payload) {
+			state.pepId = payload;
 		},
-		setPep (state,payload){
-
+		setPep(state, payload) {
 			state.pep = payload;
-			console.log(state)
+			console.log(state);
 		},
-		setPeps(state,payload){
+		setPeps(state, payload) {
 			state.peps = payload;
 		},
 		setCompany(state, payload) {

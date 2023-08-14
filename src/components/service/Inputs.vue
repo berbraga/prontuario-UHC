@@ -20,7 +20,7 @@ v-card.pa-4.mt-5(color="")
 <script>
 import { mapState } from "vuex";
 import _ from "lodash";
-import {db, docs, update} from "@/store/firebase"
+import { db, docs, update } from "@/store/firebase";
 
 export default {
 	data() {
@@ -32,14 +32,14 @@ export default {
 		...mapState({
 			patient: (state) => state.patient,
 			pep: (state) => state.pep,
-			pepId: (state) => state.pepId
+			pepId: (state) => state.pepId,
 		}),
 	},
 	methods: {
-		save: async function (event,name ) {
+		save: async function (event, name) {
 			const docRef = docs(db, "pep", this.pepId);
-			this.pep[name] = event.target.value
-			console.log(this.pep)
+			this.pep[name] = event.target.value;
+			console.log(this.pep);
 			await update(docRef, this.pep);
 
 			const value = event.target.value;

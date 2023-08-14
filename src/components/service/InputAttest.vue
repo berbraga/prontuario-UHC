@@ -10,8 +10,6 @@ v-card.pa-2.d-flex.flex-column( elevation="2")
 </template>
 
 <script setup>
-
 import DateToday from "../card/DateToday.vue";
 import Wysiwyg from "../service/Wysiwyg.vue";
-
 </script>
