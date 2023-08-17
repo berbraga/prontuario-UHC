@@ -9,6 +9,7 @@ const store = createStore({
 		pep: {},
 		company: {},
 		peps: [],
+		studies:[],
 
 		pepId: "",
 	},
@@ -25,11 +26,10 @@ const store = createStore({
 				const docSnap = await gd(docRef);
 				if (docSnap.exists()) {
 					const user = docSnap.data();
-					// console.log(user);
 					this.commit("setUser", user);
 				}
 			} catch (error) {
-				console.log(error);
+				alert(error);
 			}
 		},
 
@@ -41,7 +41,7 @@ const store = createStore({
 					this.commit("setPatient", docSnap.data());
 				}
 			} catch (err) {
-				console.log(err);
+				alert(err);
 			}
 		},
 		async gestationInteraction(context, payload) {
@@ -53,6 +53,7 @@ const store = createStore({
 
 				const querySnapshot = await gds(q);
 				let obj = [];
+
 				querySnapshot.forEach((doc) => {
 					const job = { ...doc.data() };
 					const nomeDoc = doc._key.path.segments[6];
@@ -61,7 +62,7 @@ const store = createStore({
 				});
 				this.commit("setGestations", obj);
 			} catch (error) {
-				console.log(error);
+				alert(error);
 			}
 		},
 
@@ -73,8 +74,8 @@ const store = createStore({
 				);
 
 				const querySnapshot = await gds(q);
-
 				let obj = [];
+
 				querySnapshot.forEach((doc) => {
 					const job = { ...doc.data() };
 					const nomeDoc = doc._key.path.segments[6];
@@ -84,7 +85,7 @@ const store = createStore({
 
 				this.commit("setCompany", obj[0]);
 			} catch (err) {
-				console.log(err);
+				alert(err);
 			}
 		},
 		pepId(context, payload) {
@@ -95,14 +96,12 @@ const store = createStore({
 
 		async pep(context, payload) {
 			try {
-				console.log("=========================== pep ======================");
+				console.log("=========================== create new pep ======================");
 				console.log(payload);
-				const docRef = docs(db, "pep", payload.id);
 
+				const docRef = docs(db, "pep", payload.id);
 				const docSnap = await gd(docRef);
 				if (docSnap.exists()) {
-					// console.log(this.state, docSnap.data());
-					// console.log(docSnap.data());
 					this.commit("setPep", docSnap.data());
 				}
 			} catch (error) {
@@ -112,7 +111,6 @@ const store = createStore({
 
 		async pepByPatient(context, payload) {
 			try {
-				console.log(context.state.patient.iuid);
 				const q = querys(
 					collections(db, "pep"),
 					wheres("patient.id", "==", context.state.patient.iuid),
@@ -122,12 +120,10 @@ const store = createStore({
 				let obj = [];
 				querySnapshot.forEach((doc) => {
 					const job = { ...doc.data() };
-
 					obj.push(job);
 				});
 				this.commit("setPeps", obj);
 			} catch (err) {
-				console.log(err);
 				alert(err);
 			}
 		},
@@ -142,16 +138,23 @@ const store = createStore({
 		},
 		setGestations(state, payload) {
 			state.gestations = payload;
+			state.studies = payload;
 		},
 		pepId(state, payload) {
 			state.pepId = payload;
 		},
 		setPep(state, payload) {
 			state.pep = payload;
-			console.log(state);
 		},
 		setPeps(state, payload) {
+
 			state.peps = payload;
+			for (let i = 0; i < payload.length; i++) {
+				const pep = payload[i];
+				const lenght = state.studies.length
+				state.studies[lenght] = pep
+			}
+
 		},
 		setCompany(state, payload) {
 			state.company = payload;

@@ -13,7 +13,12 @@ export default {
 	},
 	async mounted() {
 		await this.$store.dispatch("user");
+		// await this.$store.dispatch("gestationInteraction");
+			// await this.$store.dispatch("user");
+		await this.$store.dispatch("patient")
 		await this.$store.dispatch("gestationInteraction");
+		await this.$store.dispatch("company");
+		await this.$store.dispatch("pepByPatient");
 	},
 };
 </script>

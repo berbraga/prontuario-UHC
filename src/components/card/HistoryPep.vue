@@ -12,7 +12,7 @@ v-card.pa-3.my-3.w-100(elevation="3" :rounded="true" :border="true")
 				p {{ this.pep.status }}
 	v-divider
 
-	div.px-2.d-flex.flex-row.justify-space-between
+	//- div.px-2.d-flex.flex-row.justify-space-between
 		div.w-25(v-if="this.pep.complaint")
 			h4.my-3 Queixa de {{ this.pep.patient.name }}
 			p {{ this.pep.complaint }}
@@ -24,12 +24,13 @@ v-card.pa-3.my-3.w-100(elevation="3" :rounded="true" :border="true")
 			p {{ this.pep.history }}
 	v-divider
 
-	div.pa-3(v-if="this.pep.attest")
+	div.pa-3(v-if="this.pep.attest || this.gestation.forms['conclusion.info.text'] ")
+		//- div(v-html="this.pep.attest")\
+		| bernado
 
-		div(v-html="this.pep.attest")
 	v-divider
 
-	div.mt-3.w-100.d-flex.flex.row.align-center
+	//- div.mt-3.w-100.d-flex.flex.row.align-center
 		v-list-item.pa-0(prepend-avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWc9kZq9EbswA20E-IX3nFwJuQeeCogLqUFyamUuw_DMtVUtmD&quot")
 		| Dr.{{this.pep.doctor.name}}
 
