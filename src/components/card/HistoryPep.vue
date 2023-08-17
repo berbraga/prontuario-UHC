@@ -1,39 +1,38 @@
 <template lang="pug">
-v-card.pa-3.my-3.w-100(elevation="3" :rounded="true" :border="true")
-
-	div.pb-2.d-flex.flex-row.justify-space-between.align-center
-		strong {{ this.day}}
-		//- h2 {{ this.pep.doctor.name }}
-		div.d-flex.flex-row.align-center(@click="delet()")
-			//- v-icon.mr-3(icon="mdi-eye",v-if='this.gestation.status !== "ANDAMENTO"', @click="viewExam()")
-			div.bg-yellow.pa-2.rounded(v-if='this.pep.status == "ANDAMENTO"' )
-				p {{ this.pep.status }}
-			div.bg-primary.pa-2.rounded(v-else)
-				p {{ this.pep.status }}
-	v-divider
-
-	//- div.px-2.d-flex.flex-row.justify-space-between
-		div.w-25(v-if="this.pep.complaint")
-			h4.my-3 Queixa de {{ this.pep.patient.name }}
-			p {{ this.pep.complaint }}
-		div.w-25(v-if="this.pep.familyHistory")
-			h4.my-3 Histórico familiar de {{ this.pep.patient.name }}
-			p {{ this.pep.familyHistory }}
-		div.w-25(v-if="this.pep.history")
-			h4.my-3 Histórico de {{ this.pep.patient.name }}
-			p {{ this.pep.history }}
-	v-divider
-
-	div.pa-3(v-if="this.pep.attest || this.gestation.forms['conclusion.info.text'] ")
-		//- div(v-html="this.pep.attest")\
-		| bernado
-
-	v-divider
-
-	//- div.mt-3.w-100.d-flex.flex.row.align-center
-		v-list-item.pa-0(prepend-avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWc9kZq9EbswA20E-IX3nFwJuQeeCogLqUFyamUuw_DMtVUtmD&quot")
-		| Dr.{{this.pep.doctor.name}}
-
+v-timeline-item(dot-color="primary", class="bernardo")
+  template(v-slot:opposite)
+    div.pt-1.headline.font-weight-bold.text-primary
+      strong {{ this.day }}
+  v-card(:class="`pa-3 my-3 w-100 bg-${this.pep.inPep ? 'blue' : 'gg'}`", elevation="5", :rounded="true", :border="true", style="max-width: 500px")
+    div.pb-2.d-flex.flex-row.justify-space-between.align-center
+      strong {{ !this.pep.inPep ? 'CONSULTA' : 'EXAME' }}
+      div.d-flex.flex-row.align-center.ml-3
+        v-icon.mr-3(icon="mdi-eye", v-if="!this.pep.inPep && this.pep.status != 'ANDAMENTO' || !this.pep.inPep && this.pep.forms['conclusion.info.text']", @click="viewExam()")
+        div.bg-yellow.d-flex.flex-row.pa-2.rounded-pill(v-if="this.pep.status == 'ANDAMENTO'")
+          v-icon.mr-1(color="black", size="small", icon="mdi-dots-horizontal")
+          p(style="font-size: 15px") {{ this.pep.status }}
+        div.bg-primary.d-flex.flex-row.pa-2.rounded-pill(v-else)
+          v-icon.mr-1(color="black", size="small", icon="mdi-check")
+          p(style="font-size: 15px") {{ this.pep.status }}
+    v-divider
+    div.px-2.d-flex.flex-row.justify-space-between(v-if="this.pep.complaint || this.pep.familyHistory || this.pep.history")
+      div.w-25(v-if="this.pep.complaint")
+        h4.my-3 Queixa de {{ this.pep.patient.name }}
+        p {{ this.pep.complaint }}
+      div.w-25(v-if="this.pep.familyHistory")
+        h4.my-3 Histórico familiar de {{ this.pep.patient.name }}
+        p {{ this.pep.familyHistory }}
+      div.w-25(v-if="this.pep.history")
+        h4.my-3 Histórico de {{ this.pep.patient.name }}
+        p {{ this.pep.history }}
+    div(v-else) Em Andamento
+    v-divider
+    div.pa-3(v-if="this.pep.attest || this.pep.forms['conclusion.info.text']")
+      div(v-html="this.pep.attest || this.pep.forms['conclusion.info.text']")
+    v-divider
+    div.mt-3.w-100.d-flex.flex-row.align-center
+      v-list-item.pa-0(prepend-avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWc9kZq9EbswA20E-IX3nFwJuQeeCogLqUFyamUuw_DMtVUtmD")
+        | Dr.{{ this.pep.doctor.name }}
 </template>
 
 <script>
@@ -69,8 +68,15 @@ export default {
 
 			const formattedDate = `${day}/${month}/${year}`;
 
-			this.day = formattedDate;
+			// this.day = formattedDate;
 			return formattedDate;
+		},
+		viewExam: function () {
+			const url =
+				"https://report-server-dot-ultracarebr.appspot.com/report/" +
+				this.pep.id;
+			var win = window.open(url, "_blank");
+			win.focus();
 		},
 		delet: async function () {
 			// alert(this.pep.iuid)

@@ -12,6 +12,8 @@ const myCustomLightTheme = {
 		red: "#991919",
 		grey: "#F6F6F6",
 		yellow: "#ff9800",
+		blue: "#E5F8FF",
+		gg: "#F3FFFC",
 	},
 };
 

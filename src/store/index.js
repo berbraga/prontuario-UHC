@@ -9,7 +9,7 @@ const store = createStore({
 		pep: {},
 		company: {},
 		peps: [],
-		studies:[],
+		studies: [],
 
 		pepId: "",
 	},
@@ -96,7 +96,9 @@ const store = createStore({
 
 		async pep(context, payload) {
 			try {
-				console.log("=========================== create new pep ======================");
+				console.log(
+					"=========================== create new pep ======================",
+				);
 				console.log(payload);
 
 				const docRef = docs(db, "pep", payload.id);
@@ -138,7 +140,7 @@ const store = createStore({
 		},
 		setGestations(state, payload) {
 			state.gestations = payload;
-			state.studies = payload;
+			// state.studies = payload;
 		},
 		pepId(state, payload) {
 			state.pepId = payload;
@@ -147,14 +149,18 @@ const store = createStore({
 			state.pep = payload;
 		},
 		setPeps(state, payload) {
-
 			state.peps = payload;
+			state.studies = [];
+			state.studies = state.gestations;
+			// console.log(state.studies.length )
+
 			for (let i = 0; i < payload.length; i++) {
 				const pep = payload[i];
-				const lenght = state.studies.length
-				state.studies[lenght] = pep
+				const lenght = state.studies.length;
+				state.studies[lenght] = pep;
 			}
-
+			// Ordenar os estudos por data
+			state.studies.sort((a, b) => a.date.seconds - b.date.seconds);
 		},
 		setCompany(state, payload) {
 			state.company = payload;

@@ -2,7 +2,7 @@
 	<div>
 		<v-container>
 			<editor
-				@change="save($event, 'attest')"
+				@change="save($event, this.camp)"
 				api-key="ca9jhc4xbdf49pphczv9e9o0bcy14v9zni5bijgqvawm4yy5"
 				:inline="false"
 				id="tiny"
@@ -39,6 +39,11 @@ export default {
 	components: {
 		editor: Editor,
 	},
+	data() {
+		return {
+			camp: "attest",
+		};
+	},
 	computed: {
 		...mapState({
 			patient: (state) => state.patient,
@@ -49,15 +54,11 @@ export default {
 	methods: {
 		save: async function (event, name) {
 			const value = event.level.content;
-			// _.debounce(function () {
-			// 	console.log(value);
-			// }, 1000);
-			console.log(event.level.content);
+
+			console.log(value);
 			const docRef = docs(db, "pep", this.pepId);
 			this.pep[name] = value;
 			await update(docRef, this.pep);
-
-			// console.log(name, value);
 		},
 	},
 };

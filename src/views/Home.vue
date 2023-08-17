@@ -4,10 +4,8 @@ v-container.pa-10(class="d-flex flex-column")
 
 	div.align-center(style=" display: flex; flex-direction: column;")
 		h1 Historico
-		v-divider
 
-		div.d-flex.w-50
-			div.d-flex.flex-column.mr-2(class="w-100")
+		v-timeline.w-100(align="start")
 			HistoryPep(v-for="pep in this.studies", :pep="pep")
 
 </template>
@@ -15,7 +13,7 @@ v-container.pa-10(class="d-flex flex-column")
 <script>
 import GeralPatient from "@/components/card/GeralPatient.vue";
 import HistoryPatient from "@/components/card/HistoryPatient.vue";
-import HistoryPep from "@/components/card/HistoryPep.vue"
+import HistoryPep from "@/components/card/HistoryPep.vue";
 import { mapState } from "vuex";
 
 export default {
@@ -27,7 +25,7 @@ export default {
 	data() {
 		return {
 			bernardo: 0,
-			gestationsPep: [],
+			gestationsPep: {},
 		};
 	},
 	computed: {
@@ -37,29 +35,14 @@ export default {
 			studies: (state) => state.studies,
 		}),
 	},
-	async created() {
+	async mounted() {
 		await this.$store.dispatch("user");
-		await this.$store.dispatch("patient")
+		await this.$store.dispatch("patient");
 		await this.$store.dispatch("gestationInteraction");
 		await this.$store.dispatch("company");
 		await this.$store.dispatch("pepByPatient");
 
+		this.gestationsPep = this.studies;
 	},
-
-	mounted() {
-		console.log('======')
-		console.log(this.studies)
-	},
-	methods: {},
-	 watch: {
-    studies: {
-      immediate: true, // Executa a função de observação imediatamente
-      handler(newValue) {
-        if (newValue.length) {
-					console.log(newValue)
-        }
-      },
-    },
-  },
 };
 </script>
