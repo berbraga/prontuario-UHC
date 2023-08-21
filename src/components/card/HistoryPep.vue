@@ -32,7 +32,7 @@ v-timeline-item(dot-color="primary", class="bernardo")
     v-divider
     div.mt-3.w-100.d-flex.flex-row.align-center
       v-list-item.pa-0(prepend-avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWc9kZq9EbswA20E-IX3nFwJuQeeCogLqUFyamUuw_DMtVUtmD")
-        | Dr.{{ this.pep.doctor.name }}
+        | Dr(a).{{ this.pep.doctor.name }}
 </template>
 
 <script>

@@ -15,14 +15,19 @@ div
 
 <script>
 import { mapState } from "vuex";
+
 import { aggregate } from "@/utils/aggregations";
-import { collections, serverTime } from "@/store/firebase";
 import { start, stop } from "@/utils/Status";
-import { add } from "@/store/firebase";
-import { db } from "@/store/firebase";
-import { docs } from "@/store/firebase";
-import { update } from "@/store/firebase";
-import { serverTimestamp } from "firebase/firestore/lite";
+
+import {
+  collections,
+  serverTime,
+  add,
+  db,
+  docs,
+  update
+} from "@/store/firebase";
+
 export default {
 	data() {
 		this.$router.push("/home");
@@ -56,7 +61,7 @@ export default {
 	},
 	methods: {
 		startTimer: async function () {
-			try {
+			// try {
 				if (!this.isRunning) {
 					const objImportant = {
 						company: aggregate("company", this.company),
@@ -88,13 +93,13 @@ export default {
 					objImportant.date = { seconds: timestamp, nanoseconds: 0 };
 					objImportant.status = start();
 
-					let doc = await add(collections(db, "pep"), objImportant);
-					if (doc) {
-						objImportant.iuid = doc.id;
-						this.$store.dispatch("pepId", { id: doc.id });
-						const docRef = docs(db, "pep", doc.id);
-						await update(docRef, objImportant);
-					}
+					// let doc = await add(collections(db, "pep"), objImportant);
+					// if (doc) {
+					// 	objImportant.iuid = doc.id;
+					// 	this.$store.dispatch("pepId", { id: doc.id });
+					// 	const docRef = docs(db, "pep", doc.id);
+					// 	await update(docRef, objImportant);
+					// }
 
 					this.isRunning = true;
 					this.startTime = new Date().getTime();
@@ -104,9 +109,6 @@ export default {
 
 					console.log(objImportant);
 				}
-			} catch (err) {
-				alert(err);
-			}
 		},
 		stopTimer: async function () {
 			if (this.isRunning) {
@@ -132,7 +134,7 @@ export default {
 				// isRunning está agora true
 			} else {
 				// isRunning está agora false
-				// this.$router.push("/home");
+				this.$router.push("/home");
 			}
 		},
 	},
