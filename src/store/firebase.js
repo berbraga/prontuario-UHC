@@ -33,11 +33,11 @@ const options = {
 	appId: "1:197582994272:web:526b1daf4360bb66b43c05",
 };
 
-const firebaseApp = initializeApp(options	);
+const firebaseApp = initializeApp(options);
 
 export const storage = getStorage(firebaseApp);
 
-export const ref = ref
+export const ref = ref;
 export const core = firebaseApp;
 export const db = getFirestore(firebaseApp);
 export const gd = getDoc;
