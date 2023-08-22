@@ -20,12 +20,12 @@ import { aggregate } from "@/utils/aggregations";
 import { start, stop } from "@/utils/Status";
 
 import {
-  collections,
-  serverTime,
-  add,
-  db,
-  docs,
-  update
+	collections,
+	serverTime,
+	add,
+	db,
+	docs,
+	update,
 } from "@/store/firebase";
 
 export default {
@@ -62,53 +62,54 @@ export default {
 	methods: {
 		startTimer: async function () {
 			// try {
-				if (!this.isRunning) {
-					const objImportant = {
-						company: aggregate("company", this.company),
-						patient: aggregate("patient", this.patient),
-						doctor: aggregate("doctor", this.user),
-					};
-					console.log(this.company);
+			if (!this.isRunning) {
+				const objImportant = {
+					company: aggregate("company", this.company),
+					patient: aggregate("patient", this.patient),
+					doctor: aggregate("doctor", this.user),
+				};
+				console.log(this.company);
 
-					objImportant.patId = new Date()
-						.toISOString()
-						.replace(/[-:TZ.]/g, "")
-						.substring(0, 14);
-					const hoje = new Date();
+				objImportant.patId = new Date()
+					.toISOString()
+					.replace(/[-:TZ.]/g, "")
+					.substring(0, 14);
+				const hoje = new Date();
 
-					const ano = hoje.getFullYear();
-					const mes = String(hoje.getMonth() + 1).padStart(2, "0");
-					const dia = String(hoje.getDate()).padStart(2, "0");
-					const hora = String(hoje.getHours()).padStart(2, "0");
-					const minuto = String(hoje.getMinutes()).padStart(2, "0");
-					const segundo = String(hoje.getSeconds()).padStart(2, "0");
+				const ano = hoje.getFullYear();
+				const mes = String(hoje.getMonth() + 1).padStart(2, "0");
+				const dia = String(hoje.getDate()).padStart(2, "0");
+				const hora = String(hoje.getHours()).padStart(2, "0");
+				const minuto = String(hoje.getMinutes()).padStart(2, "0");
+				const segundo = String(hoje.getSeconds()).padStart(2, "0");
 
-					const dataFormatada = `${ano}-${mes}-${dia} ${hora}:${minuto}:${segundo}`;
+				const dataFormatada = `${ano}-${mes}-${dia} ${hora}:${minuto}:${segundo}`;
 
-					const date = new Date(dataFormatada);
-					const timestamp = date.getTime() / 1000;
-					console.log({ seconds: timestamp, nanoseconds: 0 });
+				const date = new Date(dataFormatada);
+				const timestamp = date.getTime() / 1000;
+				console.log({ seconds: timestamp, nanoseconds: 0 });
 
-					objImportant.inPep = "PEP";
-					objImportant.date = { seconds: timestamp, nanoseconds: 0 };
-					objImportant.status = start();
+				objImportant.inPep = "PEP";
+				objImportant.date = serverTime(); //{ seconds: timestamp, nanoseconds: 0 };
+				objImportant.status = start();
+				console.log(objImportant.date);
 
-					// let doc = await add(collections(db, "pep"), objImportant);
-					// if (doc) {
-					// 	objImportant.iuid = doc.id;
-					// 	this.$store.dispatch("pepId", { id: doc.id });
-					// 	const docRef = docs(db, "pep", doc.id);
-					// 	await update(docRef, objImportant);
-					// }
-
-					this.isRunning = true;
-					this.startTime = new Date().getTime();
-					this.currentTime = this.startTime;
-					this.updateTimer();
-					this.$router.push("/service");
-
-					console.log(objImportant);
+				let doc = await add(collections(db, "pep"), objImportant);
+				if (doc) {
+					objImportant.iuid = doc.id;
+					this.$store.dispatch("pepId", { id: doc.id });
+					const docRef = docs(db, "pep", doc.id);
+					await update(docRef, objImportant);
 				}
+
+				this.isRunning = true;
+				this.startTime = new Date().getTime();
+				this.currentTime = this.startTime;
+				this.updateTimer();
+				this.$router.push("/service");
+
+				console.log(objImportant);
+			}
 		},
 		stopTimer: async function () {
 			if (this.isRunning) {

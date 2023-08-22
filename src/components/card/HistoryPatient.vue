@@ -1,15 +1,15 @@
 <template lang="pug">
-v-card.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="", style="width:100%")
+//- p gestation
+v-card.bg-gg.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="", style="width: 600px")
 	div.d-flex.flex-row.justify-space-between.align-center
-
-		strong  {{ this.day }}
-
+		strong CONSULTA
 		div.d-flex.flex-row.align-center
 			v-icon.mr-3(icon="mdi-eye",v-if='this.gestation.status !== "ANDAMENTO"', @click="viewExam()")
 			div.bg-yellow.pa-2.rounded(v-if='this.gestation.status == "ANDAMENTO"')
 				p {{ this.gestation.status }}
 			div.bg-primary.pa-2.rounded(v-else)
 				p {{ this.gestation.status }}
+	v-divider
 
 	div.d-flex.flex-row
 		div.w-50
@@ -19,13 +19,15 @@ v-card.mt-4.pa-4.flex-column.align-center.justify-center(elevation="3",color="",
 		div.w-50(v-if="this.gestation.observations")
 			h1 Observacoes
 			div(v-html="this.gestation.observations")
+	v-divider
 
 	div(v-if="this.gestation.forms['conclusion.info.text']")
 		h1.text-center.mt-4.mb-4 Laudo
 		div(v-html="this.gestation.forms['conclusion.info.text']")
+	v-divider
 	div.mt-3.w-100.d-flex.flex.row.align-center()
 		v-list-item.pa-0( prepend-avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWc9kZq9EbswA20E-IX3nFwJuQeeCogLqUFyamUuw_DMtVUtmD&quot")
-		|Dr.{{this.doctor}}
+		|Dr(a).{{this.doctor}}
 
 </template>
 

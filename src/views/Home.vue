@@ -1,13 +1,15 @@
 <template lang="pug">
 v-container.pa-10(class="d-flex flex-column")
-	GeralPatient
-
-	div.align-center(style=" display: flex; flex-direction: column;")
-		h1 Historico
-
-		v-timeline.w-100(align="start")
-			HistoryPep(v-for="pep in this.studies", :pep="pep")
-
+  GeralPatient
+  div.align-center(style="display: flex; flex-direction: column;")
+    h1 Historico
+    v-timeline.w-100(align="start")
+      v-timeline-item(v-for="pep in this.studies", dot-color="primary", class="bernardo")
+        template(v-slot:opposite)
+          div.pt-1.headline.font-weight-bold.text-primary
+            strong {{ this.formatDateExtend(pep.date) }}
+        HistoryPep(:pep="pep" v-if="pep.inPep")
+        HistoryPatient(:gestation="pep" v-else)
 </template>
 
 <script>
@@ -43,6 +45,23 @@ export default {
 		await this.$store.dispatch("pepByPatient");
 
 		this.gestationsPep = this.studies;
+	},
+	methods: {
+		formatDateExtend: function (value) {
+			// console.log(value)
+			const timestampInSeconds = value.seconds;
+			const timestampInMilliseconds = timestampInSeconds * 1000;
+			const date = new Date(timestampInMilliseconds);
+
+			const day = date.getDate().toString().padStart(2, "0");
+			const month = (date.getMonth() + 1).toString().padStart(2, "0");
+			const year = date.getFullYear().toString();
+
+			const formattedDate = `${day}/${month}/${year}`;
+			// console.log(formattedDate)
+			// this.day = formattedDate;
+			return formattedDate;
+		},
 	},
 };
 </script>
