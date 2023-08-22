@@ -90,9 +90,11 @@ export default {
 				console.log({ seconds: timestamp, nanoseconds: 0 });
 
 				objImportant.inPep = "PEP";
+				console.log("============================================");
 				objImportant.date = serverTime(); //{ seconds: timestamp, nanoseconds: 0 };
 				objImportant.status = start();
 				console.log(objImportant.date);
+				console.log("============================================");
 
 				let doc = await add(collections(db, "pep"), objImportant);
 				if (doc) {

@@ -7,7 +7,13 @@ import {
 } from "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
-import { getStorage, ref } from "firebase/storage";
+import {
+	getStorage,
+	listAll,
+	ref,
+	uploadBytes,
+	uploadString,
+} from "firebase/storage";
 import {
 	getFirestore,
 	getDoc,
@@ -51,16 +57,14 @@ export const set = setDoc;
 export const serverTime = serverTimestamp;
 export const update = updateDoc;
 export const del = deleteDoc;
+export const upStr = uploadString;
+export const upBts = uploadBytes;
+export const list = listAll;
 
 export const auth = getAuth(firebaseApp);
 
 setPersistence(auth, browserSessionPersistence)
 	.then(async () => {
-		// Existing and future Auth states are now persisted in the current
-		// session only. Closing the window would clear any existing state even
-		// if a user forgets to sign out.
-		// ...
-		// New sign-in will be persisted with session persistence.
 		const email = "bernardo.sbraga@rafsoft.com.br"; //;"lucas.iohan@rafsoft.com.br";
 		const password = "bernardo"; //"lucas123" ;
 

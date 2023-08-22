@@ -2,13 +2,15 @@
 v-card(color="", class="d-flex flex-column")
 	div.d-flex.justify-space-between.ma-3
 		h2 Documentos dos Exames
-		div.d-flex
-			v-btn(color="primary", class="mr-1") Inserir arquivo
-	v-file-input(chips multiple label="Inserir arquivo" clearable variant="outlined")
+
+	v-file-input.mx-5(chips multiple label="Inserir arquivo" clearable variant="outlined" @change="handleFileSelection")
 
 </template>
 
 <script>
+import { storage } from "@/store/firebase";
+import { upBts, rf } from "@/store/firebase";
+import { uploadBytes } from "firebase/storage";
 import { mapState } from "vuex";
 
 export default {
@@ -20,27 +22,37 @@ export default {
 	computed: {
 		...mapState({
 			gestations: (state) => state.gestations,
+			pep: (state) => state.pep,
+			pepId: (state) => state.pepId,
 		}),
 	},
 	methods: {
-		generatePDF: function (text) {
-			alert(text);
+		async handleFileSelection(event) {
+			const files = event.target.files;
+			const iuid = this.pepId;
+			console.log(iuid);
+			for (let i = 0; i < files.length; i++) {
+				const base64Data = await this.readFileAsBase64(files[i]);
+				const sanitizedBase64 = base64Data.replace(/[/+=]/g, "");
+				const name = files[i].name;
+				upBts(rf(storage, `pep/${iuid}/${name}`), files[i]).then((snapshot) => {
+					console.log("Uploaded a blob or file!");
+					console.log(snapshot);
+				});
+			}
 		},
 
-		getFormsList: function (forms) {
-			if (!forms) return;
-			let result = [];
-
-			Object.entries(forms).forEach(([key, value]) => {
-				const formatKey = key.split(".")[0];
-				if (result.indexOf(formatKey) < 0) result.push(formatKey);
+		readFileAsBase64(file) {
+			return new Promise((resolve, reject) => {
+				const reader = new FileReader();
+				reader.onload = (event) => {
+					resolve(event.target.result);
+				};
+				reader.onerror = (error) => {
+					reject(error);
+				};
+				reader.readAsDataURL(file);
 			});
-
-			result = result.map((item) => {
-				return item;
-			});
-
-			return result;
 		},
 	},
 };

@@ -35,7 +35,7 @@ const store = createStore({
 
 		async patient() {
 			try {
-				const docRef = docs(db, "patients", "EbtxxOBRN26C8eJwcKjo");
+				const docRef = docs(db, "patients", "ioxyB3V8aUDNpBCJlyYj");
 				const docSnap = await gd(docRef);
 				if (docSnap.exists()) {
 					this.commit("setPatient", docSnap.data());
