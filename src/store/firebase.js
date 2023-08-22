@@ -37,7 +37,7 @@ const firebaseApp = initializeApp(options);
 
 export const storage = getStorage(firebaseApp);
 
-export const ref = ref;
+export const rf = ref;
 export const core = firebaseApp;
 export const db = getFirestore(firebaseApp);
 export const gd = getDoc;
