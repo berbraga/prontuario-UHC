@@ -7,7 +7,7 @@ v-container.pa-10(class="d-flex flex-column")
       v-timeline-item(v-for="pep in this.studies", dot-color="primary", class="bernardo")
         template(v-slot:opposite)
           div.pt-1.headline.font-weight-bold.text-primary
-            strong {{ this.formatDateExtend(pep.date) }}
+            strong {{ pep.date ? this.formatDateExtend(pep.date) : '00:00' }}
         HistoryPep(:pep="pep" v-if="pep.inPep")
         HistoryPatient(:gestation="pep" v-else)
 </template>
@@ -48,7 +48,8 @@ export default {
 	},
 	methods: {
 		formatDateExtend: function (value) {
-			// console.log(value)
+			console.log(value);
+			console.log(this.gestations);
 			const timestampInSeconds = value.seconds;
 			const timestampInMilliseconds = timestampInSeconds * 1000;
 			const date = new Date(timestampInMilliseconds);
@@ -58,8 +59,6 @@ export default {
 			const year = date.getFullYear().toString();
 
 			const formattedDate = `${day}/${month}/${year}`;
-			// console.log(formattedDate)
-			// this.day = formattedDate;
 			return formattedDate;
 		},
 	},
