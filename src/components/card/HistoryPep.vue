@@ -37,6 +37,8 @@ v-card(:class="`pa-3 my-3 w-100 bg-blue`", elevation="5", :rounded="true", :bord
         strong(v-else) Qual seria a receita médica e a doença de {{ this.pep.patient.name }}
     div(v-else) Em Andamento
     v-divider
+    //- GetImag(:inputFileView='false', :pepId="this.pep.iuid")
+    v-divider
     div.pa-3(v-if="this.pep.attest")
       div(v-html="this.pep.attest")
     v-divider
@@ -47,12 +49,15 @@ v-card(:class="`pa-3 my-3 w-100 bg-blue`", elevation="5", :rounded="true", :bord
 
 <script>
 import { collections, db, del, docs, serverTime } from "@/store/firebase";
-
+import GetImag from "../image/GetImag.vue";
 export default {
 	props: {
 		pep: {
 			type: Object,
 		},
+	},
+	components: {
+		GetImag,
 	},
 	data() {
 		// console.log(this.pep)

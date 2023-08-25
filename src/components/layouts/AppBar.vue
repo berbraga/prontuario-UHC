@@ -35,6 +35,7 @@ export default {
 					page: "prescriptions",
 				},
 				{ title: "Exame", icon: "mdi-medical-cotton-swab", page: "exam" },
+				{ title: "Pre-Natal", icon: "mdi-human-pregnant", page: "pre-natal" },
 				{ title: "Atestados ", icon: "mdi-note-text", page: "attest" },
 				{
 					title: "Documentos",

@@ -1,11 +1,9 @@
 <template lang="pug">
-v-card.pa-3(color="", class="d-flex flex-column")
-	div.d-flex.justify-space-between.ma-3
-		h2 Documentos dos Exames
-		//- v-btn(color="primary" v-bind="props" ) Ver Imagens
-	//- div.pa-3(id='myimg' class='d-flex flex-wrap ')
-	GetImag(:inputFileView='true', :pepId="this.pepId")
-
+div.d-flex.flex-column
+	div.d-flex
+		v-file-input(chips multiple label="Inserir arquivo" v-if="inputFileView" clearable variant="outlined" @change="handleFileSelection")
+		v-btn.mx-4(color="primary"  @click="listStg()") Ver Imagens
+	div.w-100.pa-3(id='myimg' class='d-flex flex-wrap ')
 
 </template>
 
@@ -14,23 +12,25 @@ import { storage } from "@/store/firebase";
 import { upBts, rf } from "@/store/firebase";
 import { getDownloadURL, listAll } from "firebase/storage";
 import { mapState } from "vuex";
-import GetImag from "../image/GetImag.vue";
 
 export default {
-	components: {
-		GetImag,
-	},
 	data() {
 		return {
 			bernardo: 1,
 		};
 	},
+	props: {
+		inputFileView: {
+			type: Boolean,
+		},
+		pepId: {
+			type: Boolean,
+		},
+	},
 	computed: {
-		...mapState({
-			gestations: (state) => state.gestations,
-			pep: (state) => state.pep,
-			pepId: (state) => state.pepId,
-		}),
+		// ...mapState({
+		// pepId: (state) => state.pepId,
+		// }),
 	},
 	methods: {
 		listStg: function () {
@@ -122,10 +122,3 @@ export default {
 	},
 };
 </script>
-
-<style scoped>
-.imgElement {
-	width: 30px;
-	height: 30px;
-}
-</style>

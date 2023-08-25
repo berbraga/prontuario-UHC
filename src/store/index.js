@@ -29,7 +29,7 @@ const store = createStore({
 					this.commit("setUser", user);
 				}
 			} catch (error) {
-				alert(error);
+				console.log(error);
 			}
 		},
 
@@ -41,7 +41,7 @@ const store = createStore({
 					this.commit("setPatient", docSnap.data());
 				}
 			} catch (err) {
-				alert(err);
+				console.log(err);
 			}
 		},
 		async gestationInteraction(context, payload) {
@@ -62,7 +62,7 @@ const store = createStore({
 				});
 				this.commit("setGestations", obj);
 			} catch (error) {
-				alert(error);
+				console.log(error);
 			}
 		},
 
@@ -85,7 +85,7 @@ const store = createStore({
 
 				this.commit("setCompany", obj[0]);
 			} catch (err) {
-				alert(err);
+				console.log(err);
 			}
 		},
 		pepId(context, payload) {
@@ -107,7 +107,7 @@ const store = createStore({
 					this.commit("setPep", docSnap.data());
 				}
 			} catch (error) {
-				alert(error);
+				console.log(error);
 			}
 		},
 
@@ -126,7 +126,7 @@ const store = createStore({
 				});
 				this.commit("setPeps", obj);
 			} catch (err) {
-				alert(err);
+				console.log(err);
 			}
 		},
 	},

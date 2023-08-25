@@ -34,7 +34,7 @@ const options = {
 	authDomain: "ultracarebr.firebaseapp.com",
 	databaseURL: "https://ultracarebr.firebaseio.com",
 	projectId: "ultracarebr",
-	storageBucket: "ultracarebr.appspot.com",
+	storageBucket: "ultracarebr-pep",
 	messagingSenderId: "197582994272",
 	appId: "1:197582994272:web:526b1daf4360bb66b43c05",
 };
